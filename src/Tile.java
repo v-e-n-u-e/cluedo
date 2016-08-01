@@ -1,4 +1,5 @@
+import java.awt.Point;
 
-public class Tile {
-
+public class Tile { 
+	Point pos; //the position of this tile
 }
