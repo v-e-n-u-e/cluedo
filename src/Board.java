@@ -1,5 +1,11 @@
+import java.util.List;
 
 public class Board {
-	Tile[][] tiles;
+	private Tile[][] tiles;
+	private List<Player> players;
 
+	public Board() {
+
+		
+	}
 }

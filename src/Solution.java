@@ -5,9 +5,14 @@ public class Solution {
 	Card suspect; //THE KILLER
 	
 	//Randomly generate all of the above each game?
+	public Solution(){
+		
+	}
 	
 	public Boolean checkSolution(Card checkRoom, Card checkWeapon, Card checkSuspect){
-		if(this.room.equals(checkRoom) && this.weapon.equals(checkWeapon) && this.suspect.equals(checkSuspect)){
+		if(this.room.getName().equals(checkRoom.getName()) 
+				&& this.weapon.getName().equals(checkWeapon.getName()) 
+				&& this.suspect.getName().equals(checkSuspect.getName())){
 		return true;//WINNER WINNER CHICKEN DINNER
 		}
 		return false;//NOT A WINNER
