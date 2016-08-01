@@ -54,4 +54,11 @@ public class Game {
 		
 	}
 	
+	/**
+	 * Deals cards between players in the local list
+	 */
+	public void dealCards(){
+		
+	}
+	
 }

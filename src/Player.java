@@ -36,7 +36,29 @@ public class Player {
 		return isOut;
 	}
 	
+	
+	/**
+	 * sets isOut field to true
+	 */
 	public void lost(){
+		isOut = true;
+	}
+	
+	/**
+	 * returns true if player has this car in their hand
+	 * @param card
+	 * @return
+	 */
+	public Boolean holds(Card card){
+		
+		return false;
+	}
+	
+	/**
+	 * adds given card to hand
+	 * @param card
+	 */
+	public void addCard(Card card){
 		
 	}
 	
