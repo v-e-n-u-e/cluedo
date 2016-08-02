@@ -31,7 +31,7 @@ public class Room implements Tile {
 		}else if(this.getName().equals("conservatory")){
 			return "C";
 		}else if(this.getName().equals("diningRoom")){
-			return "D";
+			return "d";
 		}else if(this.getName().equals("billiardRoom")){
 			return "b";
 		}else if(this.getName().equals("lounge")){

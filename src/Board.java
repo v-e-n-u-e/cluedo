@@ -6,14 +6,26 @@ import java.util.Scanner;
 
 public class Board {
 	private Tile[][] tiles;
-	private List<Player> players;
 
 	/**
-	 * upon Construction, loads the board with the players on it.
+	 * upon Construction, loads the board. KEY:
+	 * # = wall
+	 * + = hallway
+	 * 0 = spawn
+	 * D = door
+	 * K = kitchen
+	 * B = ballRoom
+	 * C = conservatory
+	 * b = billiardRoom
+	 * d = DiningRoom
+	 * L = Library
+	 * l = lounge
+	 * H = hall
+	 * S = study
+	 * 
 	 */
-	public Board(List<Player> players) {
+	public Board() {
 		tiles = new Tile[25][25];
-		this.players = players;
 		int row = 0;
 		try {
 			Scanner scan = new Scanner(new File("CluedoBoard"));
@@ -127,8 +139,11 @@ public class Board {
 						p = new Point(row, col);
 						tiles[row][col] = new Door("studyDoor", p);
 						break;
+						
+					case "S":
+						p = new Point(row,col);
+						tiles[row][col] = new Room("spawn",p);
 					}
-
 				}
 				row++;
 
@@ -137,9 +152,9 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		}
-		printBoard();
-
 	}
+	
+	
 
 	/**
 	 * prints the board to the console
@@ -150,7 +165,7 @@ public class Board {
 			for (int col = 0; col <= 24; col++) {
 				
 				if(tiles[row][col] == null){
-					boardMap += "+" + " ";
+					boardMap += "#" + " ";
 				}
 				else{
 					boardMap += tiles[row][col].print() + " ";
@@ -159,6 +174,17 @@ public class Board {
 			boardMap += "\n";
 		}
 		System.out.println(boardMap);
+	}
+	
+	
+	/**
+	 * places characters onto the spawn squares
+	 * 
+	 */
+	public void setCharacters(List<Player> players){
+		for(Player p:players){
+			tiles[p.getLocation().y][p.getLocation().x] = p;
+		}
 	}
 
 	/**

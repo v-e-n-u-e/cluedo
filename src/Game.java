@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,12 +27,12 @@ public class Game {
 	public void createPlayers() {
 
 		/* Creates all characters */
-		Player player1 = new Player("missScarlet");
-		Player player2 = new Player("professorPlum");
-		Player player3 = new Player("mrsPeacock");
-		Player player4 = new Player("reverendGreen");
-		Player player5 = new Player("colonelMustard");
-		Player player6 = new Player("mrsWhite");
+		Player player1 = new Player("missScarlett",new Point(7,24));
+		Player player2 = new Player("professorPlum",new Point(24,19));
+		Player player3 = new Player("mrsPeacock",new Point(24,6));
+		Player player4 = new Player("reverendGreen",new Point(15,0));
+		Player player5 = new Player("colonelMustard",new Point(0,17));
+		Player player6 = new Player("mrsWhite",new Point(9,0));
 		players.add(player1);
 		players.add(player2);
 		players.add(player3);
@@ -46,7 +47,9 @@ public class Game {
 	 * creates an instance of the board and populates it with the players
 	 */
 	public void loadBoard() {
-		this.board = new Board(players);
+		this.board = new Board();
+		board.setCharacters(players);
+		board.printBoard();
 	}
 
 	/**

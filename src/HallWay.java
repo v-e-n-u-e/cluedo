@@ -9,7 +9,7 @@ public class HallWay implements Tile {
 
 	@Override
 	public String print() {
-		return " ";
+		return "+";
 	}
 
 }

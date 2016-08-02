@@ -2,14 +2,15 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Tile {
 	private List<Card> hand = new ArrayList<Card>();
 	private String name;
-	private Boolean isOut;
+	private Boolean isOut = false;
 	private Point location;
 	
-	public Player(String name){
+	public Player(String name,Point startingPos){
 		this.name = name;
+		this.location = startingPos;
 	}
 	
 	public String getName(){
@@ -71,6 +72,34 @@ public class Player {
 	public void addCard(Card card){
 		hand.add(card);
 		
+	}
+
+	/**
+	 * returns a number corrosponding to the name KEY:
+	 * 1 = miss Scarlett
+	 * 2 = Professor Plum
+	 * 3 = Mrs Peacock
+	 * 4 = Reverend Green
+	 * 5 = Colonel Mustard
+	 * 6 = Mrs White
+	 */
+	@Override
+	public String print() {
+		
+		if(this.getName().equals("missScarlett")){
+			return "1";
+		} else if(this.getName().equals("professorPlum")){
+			return "2";
+		} else if(this.getName().equals("mrsPeacock")){
+			return "3";
+		} else if(this.getName().equals("reverendGreen")){
+			return "4";
+		} else if(this.getName().equals("colonelMustard")){
+			return "5";
+		} else if(this.getName().equals("mrsWhite")){
+			return "6";
+		}
+		return null;
 	}
 	
 }
