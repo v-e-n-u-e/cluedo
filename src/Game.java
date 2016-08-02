@@ -6,9 +6,10 @@ public class Game {
 	Player currentPlayer;
 	List<Card> cards;
 	List<Player> players;
+	int numPlayers;
 	
 	public Game(int players){
-		
+		this.numPlayers = players;
 	}
 	
 	/**
@@ -16,14 +17,21 @@ public class Game {
 	 * to be passed on to Board
 	 * @param players
 	 */
-	public void createPlayers(int players){
+	public void createPlayers(){
 		
 	}
 	
 	/**
-	 * creates an instance of the board
+	 * creates an instance of the board and populates it with the players
 	 */
 	public void loadBoard(){
+		
+	}
+	
+	/**
+	 * loads all the cards in seperate arrays e.g(Weapons, suspects and rooms)
+	 */
+	public void loadAllCards(){
 		
 	}
 	
