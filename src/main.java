@@ -10,12 +10,16 @@ public class main {
 	public static void main(String args[]) {
 		System.out.println("WELCOME TO CLUEDO!!!");
 		makePlayers();
+		
+		/*Initialization-----*/
 		game = new Game(numPlayers);
 		game.loadAllCards();
 		game.generateSolution();
 		game.shuffleDeck();
 		game.createPlayers();
+		game.dealCards();
 		game.loadBoard();
+		/*--------------------*/
 		game.running();// rest of operations will take place inside the game class
 		
 	}

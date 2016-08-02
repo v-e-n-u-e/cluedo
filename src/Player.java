@@ -1,14 +1,15 @@
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-	private List<Card> hand;
+	private List<Card> hand = new ArrayList<Card>();
 	private String name;
 	private Boolean isOut;
 	private Point location;
 	
-	public Player(){
-		
+	public Player(String name){
+		this.name = name;
 	}
 	
 	public String getName(){
@@ -59,6 +60,7 @@ public class Player {
 	 * @param card
 	 */
 	public void addCard(Card card){
+		hand.add(card);
 		
 	}
 	
