@@ -22,23 +22,23 @@ public class Room implements Tile {
 
 	@Override
 	public String print() {
-		if(this.getName().equals("RK")){
+		if(this.getName().equals("kitchen")){
 			return "K";
-		}else if(this.getName().equals("RL")){
+		}else if(this.getName().equals("library")){
 			return "L";
-		}else if(this.getName().equals("RB")){
+		}else if(this.getName().equals("ballRoom")){
 			return "B";
-		}else if(this.getName().equals("RC")){
+		}else if(this.getName().equals("conservatory")){
 			return "C";
-		}else if(this.getName().equals("RD")){
+		}else if(this.getName().equals("diningRoom")){
 			return "D";
-		}else if(this.getName().equals("Rb")){
+		}else if(this.getName().equals("billiardRoom")){
 			return "b";
-		}else if(this.getName().equals("Rl")){
+		}else if(this.getName().equals("lounge")){
 			return "l";
-		}else if(this.getName().equals("RH")){
+		}else if(this.getName().equals("hall")){
 			return "H";
-		}else if(this.getName().equals("RS")){
+		}else if(this.getName().equals("study")){
 			return "S";
 		}
 		return" ";

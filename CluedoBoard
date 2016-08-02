@@ -23,11 +23,3 @@ E E E E E E E H H E E E E E E E H H RS E E E E E E
 E E E E E E E H H E E E E E E E H H E E E E E E E
 E E E E E E E H H E E E E E E E H H E E E E E E E  
 E E E E E E W S W E E E E E E E W H E E E E E E E
-#
-
-key:W= wall
-    H= Hallway
-    S= spawn
-    R= room
-    D= door
-    E= empty
