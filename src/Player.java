@@ -25,8 +25,11 @@ public class Player {
 	 * @return hand to string
 	 */
 	public String handString(){
-		
-		return "";
+		String handString ="";
+		for(Card c: hand){
+			handString += "|"+c.getName()+"|";
+		}
+		return handString;
 	}
 	
 	/**
@@ -51,7 +54,9 @@ public class Player {
 	 * @return
 	 */
 	public Boolean holds(Card card){
-		
+		if(hand.contains(card)){
+			return true;
+		}
 		return false;
 	}
 	

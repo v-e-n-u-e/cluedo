@@ -9,8 +9,8 @@ public class Board {
 	 * upon Construction, loads the board with the players 
 	 * on it.
 	 */
-	public Board() {
-		
+	public Board(List<Player> players) {
+		this.players = players;
 		
 	}
 	

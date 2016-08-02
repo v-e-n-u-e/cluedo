@@ -134,7 +134,7 @@ public class Game {
 	}
 
 	/**
-	 * Deals cards between players in the local list
+	 * Deals cards between players in the local list, but not to player who arnt playing
 	 */
 	public void dealCards() {
 		int count = 0;
@@ -149,13 +149,20 @@ public class Game {
 		}
 	}
 
+	
 	/**
-	 * runs the game
+	 * This runs until a player had won the game.
 	 */
 	public void running() {
 
 	}
 
+	
+	/**
+	 * returns the next player to have their turn
+	 * @param current
+	 * @return
+	 */
 	public Player nextPlayer(Player current) {
 
 		return null;
@@ -177,6 +184,15 @@ public class Game {
 	 */
 	public void makeAssumption(Player player) {
 
+	}
+	
+	
+	/**
+	 * reutrns the players hand
+	 * @param player
+	 */
+	public void printCards(Player player){
+		player.handString();
 	}
 
 }

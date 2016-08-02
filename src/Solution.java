@@ -6,6 +6,9 @@ public class Solution {
 	
 	//Randomly generate all of the above each game?
 	public Solution(Card room,Card weapon,Card suspect){
+		this.room=room;
+		this.weapon=weapon;
+		this.suspect=suspect;
 		
 	}
 	
