@@ -5,7 +5,7 @@ public class Solution {
 	Card suspect; //THE KILLER
 	
 	//Randomly generate all of the above each game?
-	public Solution(){
+	public Solution(Card room,Card weapon,Card suspect){
 		
 	}
 	

@@ -12,6 +12,8 @@ public class main {
 		makePlayers();
 		game = new Game(numPlayers);
 		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
 		game.createPlayers();
 		game.loadBoard();
 		game.running();// rest of operations will take place inside the game class

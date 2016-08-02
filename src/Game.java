@@ -1,14 +1,16 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
 	Solution sol; //each game will have one solution
 	Board board; //each game will have one board
 	Player currentPlayer;
-	List<Card> shuffledcards;
-	List<Card> weaponCards;
-	List<Card> roomCards;
-	List<Card> suspectCards;
-	List<Player> players;
+	List<Card> shuffledCards = new ArrayList<Card>();
+	List<Card> weaponCards = new ArrayList<Card>();;
+	List<Card> roomCards = new ArrayList<Card>();;
+	List<Card> suspectCards = new ArrayList<Card>();;
+	List<Player> players = new ArrayList<Player>();;
 	int numPlayers;
 	
 	public Game(int players){
@@ -90,6 +92,39 @@ public class Game {
 		
 		
 	}
+	/**
+	 * picks a random suspect,weapon and room from arrays above.
+	 */
+	public void generateSolution(){
+		int suspectIndex =(int) Math.random()*5;
+		int roomIndex = (int) Math.random()*8;
+		int weaponIndex = (int) Math.random()*5;
+		sol= new Solution(roomCards.get(roomIndex),weaponCards.get(weaponIndex),suspectCards.get(suspectIndex));
+		//Remove cards from deck
+		roomCards.remove(roomIndex);
+		weaponCards.remove(weaponIndex);
+		suspectCards.remove(suspectIndex);
+	}
+	
+	
+	/**
+	 * shuffles all three of the decks together into one array called cards
+	 */
+	public void shuffleDeck(){
+		shuffledCards.addAll(weaponCards);
+		shuffledCards.addAll(roomCards);
+		shuffledCards.addAll(suspectCards);
+		Collections.shuffle(shuffledCards);
+		
+	}
+	
+	
+	/**
+	 * Deals cards between players in the local list
+	 */
+	public void dealCards(){
+		
+	}
 	
 	/**
 	 * runs the game
@@ -118,11 +153,5 @@ public class Game {
 		
 	}
 	
-	/**
-	 * Deals cards between players in the local list
-	 */
-	public void dealCards(){
-		
-	}
 	
 }
