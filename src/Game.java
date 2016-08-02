@@ -4,7 +4,10 @@ public class Game {
 	Solution sol; //each game will have one solution
 	Board board; //each game will have one board
 	Player currentPlayer;
-	List<Card> cards;
+	List<Card> shuffledcards;
+	List<Card> weaponCards;
+	List<Card> roomCards;
+	List<Card> suspectCards;
 	List<Player> players;
 	int numPlayers;
 	
@@ -32,6 +35,59 @@ public class Game {
 	 * loads all the cards in seperate arrays e.g(Weapons, suspects and rooms)
 	 */
 	public void loadAllCards(){
+		
+		/*Load Weapon Cards into array*/
+		WeaponCard revolver = new WeaponCard("revolver");
+		WeaponCard knife = new WeaponCard("knife");
+		WeaponCard candleStick = new WeaponCard("candleStick");
+		WeaponCard leadPipe = new WeaponCard("leadPipe");
+		WeaponCard rope = new WeaponCard("rope");
+		WeaponCard wrench = new WeaponCard("wrench");
+		weaponCards.add(revolver);
+		weaponCards.add(knife);
+		weaponCards.add(candleStick);
+		weaponCards.add(leadPipe);
+		weaponCards.add(rope);
+		weaponCards.add(wrench);
+		/*---------------------------*/
+		
+		/*Load Room Cards into array*/
+		RoomCard kitchen = new RoomCard("kitchen");
+		RoomCard ballRoom = new RoomCard("ballRoom");
+		RoomCard conservatory = new RoomCard("conservatory");
+		RoomCard diningRoom = new RoomCard("diningRoom");
+		RoomCard billiardRoom = new RoomCard("billiardRoom");
+		RoomCard library = new RoomCard("library");
+		RoomCard lounge = new RoomCard("lounge");
+		RoomCard hall = new RoomCard("hall");
+		RoomCard study = new RoomCard("study");
+		roomCards.add(kitchen);
+		roomCards.add(ballRoom);
+		roomCards.add(conservatory);
+		roomCards.add(diningRoom);
+		roomCards.add(billiardRoom);
+		roomCards.add(library);
+		roomCards.add(lounge);
+		roomCards.add(hall);
+		roomCards.add(study);
+		/*--------------------------*/
+		
+		/*Loads Suspect Cards into array*/
+		SuspectCard missScarlet = new SuspectCard("missScarlet");
+		SuspectCard professorPlum = new SuspectCard("professorPlum");
+		SuspectCard mrsPeacock = new SuspectCard("mrsPeacock");
+		SuspectCard reverendGreen = new SuspectCard("reverendGreen");
+		SuspectCard colonelMustard = new SuspectCard("colonelMustard");
+		SuspectCard mrsWhite = new SuspectCard("mrsWhite");
+		suspectCards.add(missScarlet);
+		suspectCards.add(professorPlum);
+		suspectCards.add(mrsPeacock);
+		suspectCards.add(reverendGreen);
+		suspectCards.add(colonelMustard);
+		suspectCards.add(mrsWhite);
+		/*----------------------------*/
+		
+		
 		
 	}
 	
