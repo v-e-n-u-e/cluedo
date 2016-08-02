@@ -1,13 +1,13 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class main {
+public class Main {
 	
 	private static int numPlayers;
 	private static Scanner input;
 	static Game game;
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		System.out.println("WELCOME TO CLUEDO!!!");
 		makePlayers();
 		

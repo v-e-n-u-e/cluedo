@@ -46,7 +46,7 @@ public class Game {
 	 * creates an instance of the board and populates it with the players
 	 */
 	public void loadBoard() {
-
+		this.board = new Board(players);
 	}
 
 	/**
@@ -134,7 +134,8 @@ public class Game {
 	}
 
 	/**
-	 * Deals cards between players in the local list, but not to player who arnt playing
+	 * Deals cards between players in the local list, but not to players who arnt playing
+	 * e.g numPlayers = 3 then the cards will be delt to the first 3 players in the array.
 	 */
 	public void dealCards() {
 		int count = 0;
@@ -174,7 +175,7 @@ public class Game {
 	 * @param player
 	 */
 	public void makeAqusation(Player player) {
-
+		
 	}
 
 	/**

@@ -9,6 +9,6 @@ public interface Card {
 	 * returns the name of this card
 	 * @return
 	 */
-	String getName();
+	public String getName();
 	
 }

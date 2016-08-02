@@ -1,13 +1,13 @@
 import java.awt.Point;
 
-public abstract class Tile { 
-	Point pos; //the position of this tile
+public interface Tile { 
 	
-	public Tile(){
-		
-	}
 	
-	public Point getLoc(){
-		return this.pos;
-	}
+	/**
+	 * returns character to be printed to console
+	 * @return
+	 */
+	public String print();
+	
+	
 }

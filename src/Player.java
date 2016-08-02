@@ -20,6 +20,10 @@ public class Player {
 		return location;
 	}
 	
+	public void setLocation(){
+		
+	}
+	
 	/**
 	 * prints the hand to the console
 	 * @return hand to string
