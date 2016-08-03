@@ -225,7 +225,6 @@ public class Board {
 	 */
 	public Boolean canMove(Player player, Point destination) {
 		Point playLoc=player.getLocation();
-		
 		if((playLoc!=destination)){//still has some room to move, not moving on same space somehow
 			if(this.tiles[destination.y][destination.x].print()=="+" || //OK if it's a hallway
 					this.tiles[destination.y][destination.x].print()=="D"){ //OK if it's a door
