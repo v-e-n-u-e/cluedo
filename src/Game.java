@@ -173,7 +173,7 @@ public class Game {
 	 * 
 	 * @param player
 	 */
-	public void makeAqusation(Player player) {
+	public void makeAccusation(Player player) {
 		input = new Scanner(System.in);
 		int room;
 		int suspect;
@@ -271,7 +271,7 @@ public class Game {
 					System.out.println("your hand is :" + currentPlayer.handString() + "\n");
 					System.out.println("Commands:|up|down|left|right|");
 					System.out.println("         assumption (Must be in a room)");
-					System.out.println("         aqusation (Must be in a room)");
+					System.out.println("         accusation (Must be in a room)");
 
 					while (roll != 0 && currentPlayer.inRoom() == false) {
 						System.out.println("You have " + roll + " squares left to move.");
@@ -281,9 +281,9 @@ public class Game {
 						if(command.equals("assumption")){
 							roll =0;
 							makeAssumption(currentPlayer);
-						}else if(command.equals("aqusation")){
+						}else if(command.equals("accusation")){
 							roll =0;
-							makeAqusation(currentPlayer);
+							makeAccusation(currentPlayer);
 						}else if(command.equals("up")){
 							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y-1);
 							board.move(currentPlayer, destination);
