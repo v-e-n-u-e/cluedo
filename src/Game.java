@@ -292,6 +292,7 @@ public class Game {
 						board.printBoard();
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
+						System.out.println(currentPlayer.getLocation());
 						command = input.next();
 						
 						if(command.equals("assumption")){
@@ -302,7 +303,7 @@ public class Game {
 							makeAccusation(currentPlayer);
 						}else if(command.equals("up")){
 							System.out.println();
-							Point destination = new Point(currentPlayer.getLocation().y-1,currentPlayer.getLocation().x);
+							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y-1);
 							if(board.canMove(currentPlayer, destination)==true){
 								board.move(currentPlayer, destination);
 								roll--;
@@ -311,7 +312,7 @@ public class Game {
 								System.out.println("Invalid move!");
 							}
 						}else if(command.equals("down")){
-							Point destination = new Point(currentPlayer.getLocation().y+1,currentPlayer.getLocation().x);
+							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y+1);
 							if(board.canMove(currentPlayer, destination)==true){
 								board.move(currentPlayer, destination);
 								roll--;
@@ -320,7 +321,7 @@ public class Game {
 								System.out.println("Invalid move!");
 							}
 						}else if(command.equals("left")){
-							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x-1);
+							Point destination = new Point(currentPlayer.getLocation().x-1,currentPlayer.getLocation().y);
 							if(board.canMove(currentPlayer, destination)==true){
 								board.move(currentPlayer, destination);
 								roll--;
@@ -329,7 +330,7 @@ public class Game {
 								System.out.println("Invalid move!");
 							}
 						}else if(command.equals("right")){
-							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x+1);
+							Point destination = new Point(currentPlayer.getLocation().x+1,currentPlayer.getLocation().y);
 							if(board.canMove(currentPlayer, destination)==true){
 								board.move(currentPlayer, destination);
 								roll--;
