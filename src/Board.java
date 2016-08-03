@@ -26,6 +26,14 @@ public class Board {
 	 */
 	public Board() {
 		tiles = new Tile[25][25];
+	}
+	
+	/**
+	 * THIS CREATES A NEW BOARD AS DEFAULT VALUES
+	 * THIS IS USED ON STARTING THE GAME AND ALSO EVERY TIME A PLAYER MOVES
+	 * 
+	 */
+	public void createBoard(){
 		int row = 0;
 		try {
 			Scanner scan = new Scanner(new File("CluedoBoard"));
@@ -153,8 +161,6 @@ public class Board {
 			System.out.println("File not found");
 		}
 	}
-	
-	
 
 	/**
 	 * prints the board to the console

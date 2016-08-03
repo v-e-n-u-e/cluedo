@@ -50,8 +50,9 @@ public class Game {
 	 */
 	public void loadBoard() {
 		this.board = new Board();
+		this.board.createBoard();
 		board.setCharacters(players);
-		board.printBoard();
+		//board.printBoard();
 	}
 
 	/**
@@ -183,7 +184,7 @@ public class Game {
 				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");
 		room = input.nextInt();
 
-		System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
+		System.out.println("Please pick a weapon: \n" + "1 = 3candleStick 2 = knife 3 =leadPipe \n"
 				+ "4 = rope 5 = wrench 6 =revolver");
 		weapon = input.nextInt();
 
@@ -275,6 +276,7 @@ public class Game {
 					currentPlayer = players.get(i);
 					if (currentPlayer.isOut() != true) {
 					int roll = this.rollDice();
+					//board.printBoard();
 					System.out.println("KEY:    D=Door             +=Hallway       #=Wall      K=Kitchen \n");
 					System.out.println("        C=Conservatory     S=Study         L=Library   b=Billiard Room \n");
 					System.out.println("        B=Ballroom         d=Dining Room   H=Hall      l=Lounge \n");
@@ -285,6 +287,7 @@ public class Game {
 					System.out.println("         accusation (Must be in a room)");
 
 					while (roll != 0 && currentPlayer.inRoom() == false) {
+						board.printBoard();
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
 						command = input.next();
@@ -296,19 +299,19 @@ public class Game {
 							roll =0;
 							makeAccusation(currentPlayer);
 						}else if(command.equals("up")){
-							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y-1);
+							Point destination = new Point(currentPlayer.getLocation().y-1,currentPlayer.getLocation().x);
 							board.move(currentPlayer, destination);
 						
 						}else if(command.equals("down")){
-							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y+1);
+							Point destination = new Point(currentPlayer.getLocation().y+1,currentPlayer.getLocation().x);
 							board.move(currentPlayer, destination);
 						
 						}else if(command.equals("left")){
-							Point destination = new Point(currentPlayer.getLocation().x-1,currentPlayer.getLocation().y);
+							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x-1);
 							board.move(currentPlayer, destination);
 						
 						}else if(command.equals("right")){
-							Point destination = new Point(currentPlayer.getLocation().x+1,currentPlayer.getLocation().y);
+							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x+1);
 							board.move(currentPlayer, destination);
 						}
 					}
