@@ -8,7 +8,7 @@ public class Main {
 	static Game game;
 
 	public static void main(String[] args) {
-		System.out.println("WELCOME TO CLUEDO!!!");
+		System.out.println("!!!WELCOME TO CLUEDO!!!");
 		makePlayers();
 		
 		/*Initialization-----*/

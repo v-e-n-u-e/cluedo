@@ -197,7 +197,7 @@ public class Game {
 		
 		Guess guess = new Guess(room,weapon,suspect);
 		
-		//PLAYER HAS WON STOP THE GAME
+		//Player has won the game
 		if(solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true){
 			
 			//stop game method here

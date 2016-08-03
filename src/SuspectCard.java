@@ -1,4 +1,4 @@
-import java.awt.Point;
+
 
 public class SuspectCard implements Card {
 

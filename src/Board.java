@@ -176,6 +176,11 @@ public class Board {
 		System.out.println(boardMap);
 	}
 	
+	public void printKey(){
+		
+		
+	}
+	
 	
 	/**
 	 * places characters onto the spawn squares
