@@ -212,6 +212,10 @@ public class Game {
 	 * @param player
 	 */
 	public void makeAssumption(Player player) {
+		if(player.inRoom() == true){
+			System.out.println("you are not currently in a room");
+			return;
+		}
 		input = new Scanner(System.in);
 		int room;
 		int suspect;
