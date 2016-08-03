@@ -207,7 +207,50 @@ public class Board {
 	 */
 	public void move(Player player, Point destination) {
 		//if(canMove(player,destination)==true){
+			
+			if(this.tiles[destination.y][destination.x].print()=="D"){//THIS IS IF THEY MOVE INDOORS
+				Door door = (Door) this.tiles[destination.y][destination.x];//get the door they're entering
+				String room = door.connectedRoom;//get name of room they're entering
+				if(room=="kitchen"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="dining room"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="lounge"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="ballroom"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="hall"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="conservatory"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="billiard room"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="library"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+				if(room=="study"){
+					Point roomPos=new Point(3,23);
+					player.setLocation(roomPos);
+				}
+			}
+			else{//not going in a room
 			player.setLocation(destination);
+			}
 		//}
 		//else{
 			//System.out.println("Invalid move!");

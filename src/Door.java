@@ -34,7 +34,7 @@ public class Door implements Tile {
 			return "dining room";
 		}
 		if(pos.y==19){//this means it's the lounge
-			return "kitchen";
+			return "lounge";
 		}
 	}
 	if(pos.x>=8 && pos.x<=16){//this means it's either ballroom or hall (MIDDLE)
