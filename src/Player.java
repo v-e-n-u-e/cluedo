@@ -8,6 +8,7 @@ public class Player implements Tile {
 	private boolean isOut = false;
 	private Point location;
 	private boolean inRoom;
+	private Point startingPos;
 
 	public Player(String name, Point startingPos) {
 		this.name = name;
@@ -61,6 +62,7 @@ public class Player implements Tile {
 	 */
 	public void lost() {
 		isOut = true;
+		this.setLocation(startingPos);
 	}
 
 	/**
