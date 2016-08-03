@@ -211,38 +211,174 @@ public class Board {
 			if(this.tiles[destination.y][destination.x].print()=="D"){//THIS IS IF THEY MOVE INDOORS
 				if(this.tiles[lookahead.y][lookahead.x].print()=="K"){ //if they enter the kitchen
 					Point roomPos=new Point(3,3);
-					player.setLocation(roomPos);
+					
+						if(player.print()=="2"){
+							 roomPos=new Point(4,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+						}
+						if(player.print()=="3"){
+							 roomPos=new Point(5,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+						}
+						if(player.print()=="4"){
+							 roomPos=new Point(3,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+						}
+						if(player.print()=="5"){
+							 roomPos=new Point(4,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+						}
+						if(player.print()=="6"){
+							 roomPos=new Point(5,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+						}
+						player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="d"){//enter dining room
-					Point roomPos=new Point(3,11);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION
+					Point roomPos=new Point(3,11);
+					if(player.print()=="2"){
+						 roomPos=new Point(4,11);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(5,11);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(3,12);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(4,12);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(5,12);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="l"){//if they enter the lounge
 					Point roomPos=new Point(2,21);
+					if(player.print()=="2"){
+						 roomPos=new Point(3,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(4,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(2,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(3,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(4,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="B"){//enter ballroom
 					Point roomPos=new Point(12,4);
+					if(player.print()=="2"){
+						 roomPos=new Point(13,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(14,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(12,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(13,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(14,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="H"){//enter hall
 					Point roomPos=new Point(12,20);
+					if(player.print()=="2"){
+						 roomPos=new Point(13,20);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(14,20);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(12,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(13,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(14,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="C"){//enter conservatory
 					Point roomPos=new Point(23,3);
+					if(player.print()=="2"){
+						 roomPos=new Point(24,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(25,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(23,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(24,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(25,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="b"){//billiard room
 					Point roomPos=new Point(23,9);
+					if(player.print()=="2"){
+						 roomPos=new Point(24,9);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(25,9);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(23,10);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(24,10);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(25,10);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="L"){//library
 					Point roomPos=new Point(23,15);
+					if(player.print()=="2"){
+						 roomPos=new Point(24,15);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(25,15);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(23,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(24,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(25,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="S"){//study
 					Point roomPos=new Point(3,22);
+					if(player.print()=="2"){
+						 roomPos=new Point(4,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="3"){
+						 roomPos=new Point(5,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="4"){
+						 roomPos=new Point(3,23);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="5"){
+						 roomPos=new Point(4,23);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
+					if(player.print()=="6"){
+						 roomPos=new Point(5,23);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					}
 					player.setLocation(roomPos);
 				}
 				else{
