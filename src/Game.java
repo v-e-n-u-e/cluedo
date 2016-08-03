@@ -2,9 +2,10 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
-	Solution sol; // each game will have one solution
+	Solution solution; // each game will have one solution
 	Board board; // each game will have one board
 	Player currentPlayer;
 	List<Card> shuffledCards = new ArrayList<Card>();
@@ -13,6 +14,7 @@ public class Game {
 	List<Card> suspectCards = new ArrayList<Card>();
 	List<Player> players = new ArrayList<Player>();
 	int numPlayers;
+	private Scanner input;
 
 	public Game(int players) {
 		this.numPlayers = players;
@@ -118,7 +120,7 @@ public class Game {
 		int suspectIndex = (int) Math.random() * 5;
 		int roomIndex = (int) Math.random() * 8;
 		int weaponIndex = (int) Math.random() * 5;
-		sol = new Solution(roomCards.get(roomIndex), weaponCards.get(weaponIndex), suspectCards.get(suspectIndex));
+		solution = new Solution(roomCards.get(roomIndex), weaponCards.get(weaponIndex), suspectCards.get(suspectIndex));
 		// Remove cards from deck
 		roomCards.remove(roomIndex);
 		weaponCards.remove(weaponIndex);
@@ -155,14 +157,6 @@ public class Game {
 
 	
 	/**
-	 * This runs until a player had won the game.
-	 */
-	public void running() {
-
-	}
-
-	
-	/**
 	 * returns the next player to have their turn
 	 * @param current
 	 * @return
@@ -174,29 +168,91 @@ public class Game {
 
 	/**
 	 * make an Aqusation, player can win or lose off this move
+	 * The player picks a room,a weapon and a suspect from the 
+	 * list printed.
 	 * 
 	 * @param player
 	 */
 	public void makeAqusation(Player player) {
+		input = new Scanner(System.in);
+		int room;
+		int suspect;
+		int weapon;
 		
+		System.out.println("Please Pick a room: \n"
+				+ "1 = kitchen 2 = ballRoom 3 = conservatory \n"
+				+ "4 = billiardRoom 5 = library 6= study \n"
+				+ "7= hall 8 = lounge 9 = diningRoom");
+		room = input.nextInt();
+		
+		System.out.println("Please pick a weapon: \n"
+				+ "1 = candleStick 2 = knife 3 =leadPipe \n"
+				+ "4 = rope 5 = wrench 6 =revolver");
+		weapon = input.nextInt();
+		
+		System.out.println("Please pick a suspect: \n"
+				+ "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
+				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
+		suspect = input.nextInt();
+		
+		Guess guess = new Guess(room,weapon,suspect);
+		
+		//PLAYER HAS WON STOP THE GAME
+		if(solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true){
+			
+			//stop game method here
+		}else{
+			System.out.println("Incorrect guess, You are out of the game");
+			player.lost();
+		}
 	}
 
 	/**
-	 * make an Assumption with another player
+	 * make an Assumption with another player, player guesses
+	 * a weapon, room and suspect and if any player has one of those cards
+	 * they must show it. also the suspect is transported to the room.
 	 * 
 	 * @param player
 	 */
 	public void makeAssumption(Player player) {
-
+		input = new Scanner(System.in);
+		int room;
+		int suspect;
+		int weapon;
+		
+		System.out.println("Please Pick a room: \n"
+				+ "1 = kitchen 2 = ballRoom 3 = conservatory \n"
+				+ "4 = billiardRoom 5 = library 6= study \n"
+				+ "7= hall 8 = lounge 9 = diningRoom");
+		room = input.nextInt();
+		
+		System.out.println("Please pick a weapon: \n"
+				+ "1 = candleStick 2 = knife 3 =leadPipe \n"
+				+ "4 = rope 5 = wrench 6 =revolver");
+		weapon = input.nextInt();
+		
+		System.out.println("Please pick a suspect: \n"
+				+ "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
+				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
+		suspect = input.nextInt();
+		
+		Guess guess = new Guess(room,weapon,suspect);
+		
 	}
 	
-	
 	/**
-	 * reutrns the players hand
+	 * returns the players hand
 	 * @param player
 	 */
 	public void printCards(Player player){
-		player.handString();
+		System.out.println(player.handString());
+	}
+	
+	/**
+	 * This runs until a player has won the game.
+	 */
+	public void running() {
+
 	}
 
 }

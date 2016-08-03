@@ -21,8 +21,8 @@ public class Player implements Tile {
 		return location;
 	}
 	
-	public void setLocation(){
-		
+	public void setLocation(Point newLoc){
+		this.location = newLoc;
 	}
 	
 	/**
