@@ -326,7 +326,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y - 1);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination);
+								board.move(currentPlayer, destination, new Point(destination.x,destination.y-1));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
@@ -335,7 +335,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y + 1);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination);
+								board.move(currentPlayer, destination, new Point(destination.x,destination.y+1));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
@@ -344,7 +344,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x - 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination);
+								board.move(currentPlayer, destination, new Point(destination.x-1,destination.y));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
@@ -353,7 +353,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x + 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination);
+								board.move(currentPlayer, destination, new Point(destination.x+1,destination.y));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
