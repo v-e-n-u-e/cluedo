@@ -211,7 +211,7 @@ public class Board {
 			if(this.tiles[destination.y][destination.x].print()=="D"){//THIS IS IF THEY MOVE INDOORS
 				Door door = (Door) this.tiles[destination.y][destination.x];//get the door they're entering
 				String room = door.connectedRoom;//get name of room they're entering
-				if(room=="kitchen"){
+				if(room=="kitchen"){ 
 					Point roomPos=new Point(3,23);
 					player.setLocation(roomPos);
 				}

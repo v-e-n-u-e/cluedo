@@ -12,7 +12,7 @@ public class Door implements Tile {
 	}
 	
 	public String getName(){
-		return name;
+		return name; 
 	}
 
 	@Override
