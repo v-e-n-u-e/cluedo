@@ -168,7 +168,7 @@ public class Game {
 	}
 
 	/**
-	 * make an Aqusation, player can win or lose off this move The player picks
+	 * make an Accusation, player can win or lose off this move The player picks
 	 * a room,a weapon and a suspect from the list printed.
 	 * 
 	 * @param player
