@@ -199,9 +199,13 @@ public class Board {
 	 * @param point
 	 * @return The amount of moves left
 	 */
-	public int move(Player player, Point point) {
-		
-		return 0;
+	public void move(Player player, Point destination) {
+		if(canMove(player,destination)==true){
+		player.setLocation(destination);
+		}
+		else{
+			System.out.println("Invalid move!");
+		}
 	}
 
 	/**
@@ -213,9 +217,17 @@ public class Board {
 	 * @param roll
 	 * @return
 	 */
-	public Boolean canMove(Player player, Point point, int roll) {
-
-		return false;
+	public Boolean canMove(Player player, Point destination) {
+		Point playLoc=player.getLocation();
+		
+		if((playLoc!=destination)){//still has some room to move, not moving on same space somehow
+			if(this.tiles[destination.y][destination.x].print()=="+" || //OK if it's a hallway
+					this.tiles[destination.y][destination.x].print()=="D"){ //OK if it's a door
+				return true;
+			}
+		}
+		
+		return false;//no movement left
 	}
 	
 
