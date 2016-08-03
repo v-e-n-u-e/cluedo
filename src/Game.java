@@ -196,8 +196,9 @@ public class Game {
 
 		// Player has won the game
 		if (solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true) {
-
-			// stop game method here
+			System.out.println(currentPlayer.getName()+" You have guess correct and won the game!");
+			System.out.println("Exiting game now");
+			System.exit(0);
 		} else {
 			System.out.println("Incorrect guess, You are out of the game");
 			player.lost();
@@ -212,6 +213,10 @@ public class Game {
 	 * @param player
 	 */
 	public void makeAssumption(Player player) {
+		if(player.inRoom() == true){
+			System.out.println("you are not currently in a room");
+			return;
+		}
 		input = new Scanner(System.in);
 		int room;
 		int suspect;

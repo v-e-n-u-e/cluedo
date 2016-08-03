@@ -7,7 +7,7 @@ public class Player implements Tile {
 	private String name;
 	private boolean isOut = false;
 	private Point location;
-	private boolean inRoom;
+	private boolean inRoom = false;
 	private Point startingPos;
 
 	public Player(String name, Point startingPos) {
