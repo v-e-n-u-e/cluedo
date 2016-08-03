@@ -56,7 +56,7 @@ public class Door implements Tile {
 			return "library";
 		}
 		if(pos.y==22){//this means it's the study
-			return "study";
+			return "study"; 
 		}
 	}
 	return "Not a door? hello?";
