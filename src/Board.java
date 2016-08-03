@@ -206,12 +206,12 @@ public class Board {
 	 * @return The amount of moves left
 	 */
 	public void move(Player player, Point destination) {
-		if(canMove(player,destination)==true){
-		player.setLocation(destination);
-		}
-		else{
-			System.out.println("Invalid move!");
-		}
+		//if(canMove(player,destination)==true){
+			player.setLocation(destination);
+		//}
+		//else{
+			//System.out.println("Invalid move!");
+		//}
 	}
 
 	/**

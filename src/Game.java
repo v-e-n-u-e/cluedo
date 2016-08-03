@@ -287,6 +287,8 @@ public class Game {
 					System.out.println("         accusation (Must be in a room)");
 
 					while (roll != 0 && currentPlayer.inRoom() == false) {
+						board.createBoard();
+						board.setCharacters(players);
 						board.printBoard();
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
@@ -299,23 +301,42 @@ public class Game {
 							roll =0;
 							makeAccusation(currentPlayer);
 						}else if(command.equals("up")){
+							System.out.println();
 							Point destination = new Point(currentPlayer.getLocation().y-1,currentPlayer.getLocation().x);
-							board.move(currentPlayer, destination);
-							roll--;
-						
+							if(board.canMove(currentPlayer, destination)==true){
+								board.move(currentPlayer, destination);
+								roll--;
+							}
+							else{
+								System.out.println("Invalid move!");
+							}
 						}else if(command.equals("down")){
 							Point destination = new Point(currentPlayer.getLocation().y+1,currentPlayer.getLocation().x);
-							board.move(currentPlayer, destination);
-							roll--;
-						
+							if(board.canMove(currentPlayer, destination)==true){
+								board.move(currentPlayer, destination);
+								roll--;
+							}
+							else{
+								System.out.println("Invalid move!");
+							}
 						}else if(command.equals("left")){
 							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x-1);
-							board.move(currentPlayer, destination);
-							roll--;
+							if(board.canMove(currentPlayer, destination)==true){
+								board.move(currentPlayer, destination);
+								roll--;
+							}
+							else{
+								System.out.println("Invalid move!");
+							}
 						}else if(command.equals("right")){
 							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x+1);
-							board.move(currentPlayer, destination);
-							roll--;
+							if(board.canMove(currentPlayer, destination)==true){
+								board.move(currentPlayer, destination);
+								roll--;
+							}
+							else{
+								System.out.println("Invalid move!");
+							}
 						}
 					}
 				}
