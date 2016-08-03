@@ -13,6 +13,7 @@ public class Player implements Tile {
 	public Player(String name, Point startingPos) {
 		this.name = name;
 		this.location = startingPos;
+		this.startingPos =startingPos;
 	}
 
 	public String getName() {

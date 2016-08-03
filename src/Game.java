@@ -217,6 +217,7 @@ public class Game {
 		int suspect;
 		int weapon;
 
+		/*-------------------------------making Guess------------------------------------------------*/
 		System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
 				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");
 		room = input.nextInt();
@@ -230,6 +231,8 @@ public class Game {
 		suspect = input.nextInt();
 
 		Guess guess = new Guess(room, weapon, suspect);
+		/*------------------------------------------------------------------------------------------*/
+		
 			for(Player p : players){
 				if (p.getName().equals(guess.getMurderer())) {
 					p.setLocation(currentPlayer.getLocation());

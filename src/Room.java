@@ -34,6 +34,8 @@ public class Room implements Tile {
 			return "H";
 		}else if(this.getName().equals("study")){
 			return "S";
+		}else if(this.getName().equals("spawn")){
+			return "s";
 		}
 		return" ";
 	}
