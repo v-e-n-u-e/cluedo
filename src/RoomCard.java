@@ -8,7 +8,6 @@ public class RoomCard implements Card {
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return this.name;
 	}
 

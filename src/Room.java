@@ -4,7 +4,6 @@ public class Room implements Tile {
 
 	Point pos;
 	String name;
-	String weapon;
 	public Room(String name,Point pos){
 		this.name=name;
 		this.pos=pos;
@@ -15,11 +14,6 @@ public class Room implements Tile {
 		return this.name;
 	}
 	
-	public String getWep(){
-		return this.weapon;
-	}
-
-
 	@Override
 	public String print() {
 		if(this.getName().equals("kitchen")){
