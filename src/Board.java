@@ -218,18 +218,5 @@ public class Board {
 		return false;
 	}
 	
-	/**
-	 * This will roll two dice and return the result as an int. The player will then be able to move 
-	 * this amount of spaces in their turn. 
-	 * 
-	 * @return
-	 */
-	public int diceRoll(){
-		int d1;
-		int d2;
-		d1 = (int) ((6.0 * Math.random()) + 1);
-		d2 = (int) ((6.0 * Math.random()) + 1);
-		return d1+d2;
-	}
 
 }

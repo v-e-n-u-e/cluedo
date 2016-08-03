@@ -29,12 +29,12 @@ public class Game {
 	public void createPlayers() {
 
 		/* Creates all characters */
-		Player player1 = new Player("missScarlett",new Point(7,24));
-		Player player2 = new Player("professorPlum",new Point(24,19));
-		Player player3 = new Player("mrsPeacock",new Point(24,6));
-		Player player4 = new Player("reverendGreen",new Point(15,0));
-		Player player5 = new Player("colonelMustard",new Point(0,17));
-		Player player6 = new Player("mrsWhite",new Point(9,0));
+		Player player1 = new Player("missScarlett", new Point(7, 24));
+		Player player2 = new Player("professorPlum", new Point(24, 19));
+		Player player3 = new Player("mrsPeacock", new Point(24, 6));
+		Player player4 = new Player("reverendGreen", new Point(15, 0));
+		Player player5 = new Player("colonelMustard", new Point(0, 17));
+		Player player6 = new Player("mrsWhite", new Point(9, 0));
 		players.add(player1);
 		players.add(player2);
 		players.add(player3);
@@ -139,8 +139,9 @@ public class Game {
 	}
 
 	/**
-	 * Deals cards between players in the local list, but not to players who arnt playing
-	 * e.g numPlayers = 3 then the cards will be delt to the first 3 players in the array.
+	 * Deals cards between players in the local list, but not to players who
+	 * arnt playing e.g numPlayers = 3 then the cards will be delt to the first
+	 * 3 players in the array.
 	 */
 	public void dealCards() {
 		int count = 0;
@@ -155,9 +156,9 @@ public class Game {
 		}
 	}
 
-	
 	/**
 	 * returns the next player to have their turn
+	 * 
 	 * @param current
 	 * @return
 	 */
@@ -167,9 +168,8 @@ public class Game {
 	}
 
 	/**
-	 * make an Aqusation, player can win or lose off this move
-	 * The player picks a room,a weapon and a suspect from the 
-	 * list printed.
+	 * make an Aqusation, player can win or lose off this move The player picks
+	 * a room,a weapon and a suspect from the list printed.
 	 * 
 	 * @param player
 	 */
@@ -178,39 +178,35 @@ public class Game {
 		int room;
 		int suspect;
 		int weapon;
-		
-		System.out.println("Please Pick a room: \n"
-				+ "1 = kitchen 2 = ballRoom 3 = conservatory \n"
-				+ "4 = billiardRoom 5 = library 6= study \n"
-				+ "7= hall 8 = lounge 9 = diningRoom");
+
+		System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
+				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");
 		room = input.nextInt();
-		
-		System.out.println("Please pick a weapon: \n"
-				+ "1 = candleStick 2 = knife 3 =leadPipe \n"
+
+		System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
 				+ "4 = rope 5 = wrench 6 =revolver");
 		weapon = input.nextInt();
-		
-		System.out.println("Please pick a suspect: \n"
-				+ "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
+
+		System.out.println("Please pick a suspect: \n" + "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
 				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
 		suspect = input.nextInt();
-		
-		Guess guess = new Guess(room,weapon,suspect);
-		
-		//Player has won the game
-		if(solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true){
-			
-			//stop game method here
-		}else{
+
+		Guess guess = new Guess(room, weapon, suspect);
+
+		// Player has won the game
+		if (solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true) {
+
+			// stop game method here
+		} else {
 			System.out.println("Incorrect guess, You are out of the game");
 			player.lost();
 		}
 	}
 
 	/**
-	 * make an Assumption with another player, player guesses
-	 * a weapon, room and suspect and if any player has one of those cards
-	 * they must show it. also the suspect is transported to the room.
+	 * make an Assumption with another player, player guesses a weapon, room and
+	 * suspect and if any player has one of those cards they must show it. also
+	 * the suspect is transported to the room.
 	 * 
 	 * @param player
 	 */
@@ -219,71 +215,69 @@ public class Game {
 		int room;
 		int suspect;
 		int weapon;
-		
-		System.out.println("Please Pick a room: \n"
-				+ "1 = kitchen 2 = ballRoom 3 = conservatory \n"
-				+ "4 = billiardRoom 5 = library 6= study \n"
-				+ "7= hall 8 = lounge 9 = diningRoom");
+
+		System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
+				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");
 		room = input.nextInt();
-		
-		System.out.println("Please pick a weapon: \n"
-				+ "1 = candleStick 2 = knife 3 =leadPipe \n"
+
+		System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
 				+ "4 = rope 5 = wrench 6 =revolver");
 		weapon = input.nextInt();
-		
-		System.out.println("Please pick a suspect: \n"
-				+ "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
+
+		System.out.println("Please pick a suspect: \n" + "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
 				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
 		suspect = input.nextInt();
-		
-		Guess guess = new Guess(room,weapon,suspect);
-		
+
+		Guess guess = new Guess(room, weapon, suspect);
+
 	}
-	
+
 	/**
-	 * returns the players hand 
-	 * For Testing only
+	 * returns the players hand For Testing only
+	 * 
 	 * @param player
 	 */
-	public void printCards(Player player){
+	public void printCards(Player player) {
 		System.out.println(player.handString());
 	}
-	
+
 	/**
 	 * roll two dice (numbers between 2-12)
+	 * 
 	 * @return
 	 */
-	public int rollDice(){
-		
+	public int rollDice() {
+
 		int roll = (int) (Math.random() * 6) + 1;
 		int roll2 = (int) (Math.random() * 6) + 1;
 		return roll + roll2;
 	}
-	
+
 	/**
 	 * This runs until a player has won the game.
 	 */
 	public void running() {
 		input = new Scanner(System.in);
-		while(true){
-			for(int i =0; i<numPlayers;i++){
-				String command;
-				currentPlayer = players.get(i);
-				int roll = this.rollDice();
-				System.out.println(currentPlayer.getName()+": You Rolled a "+roll+" \n");
-				System.out.println("your hand is :" + currentPlayer.handString()+"\n");
-				System.out.println("Commands:|up|down|left|right|");
-				System.out.println("         assumption (Must be in a room)");
-				System.out.println("         aqusation (Must be in a room)");
-				
-				while(roll != 0 && currentPlayer.inRoom() == false ){
-					System.out.println("You have "+ roll +" squares left to move.");
-					System.out.println("enter your command:");
-					 command= input.next();
-					
+		while (true) {
+			for (int i = 0; i < numPlayers; i++) {
+					String command;
+					currentPlayer = players.get(i);
+					if (currentPlayer.isOut() != true) {
+					int roll = this.rollDice();
+					System.out.println(currentPlayer.getName()+"("+currentPlayer.print()+")" + ": You Rolled a " + roll + " \n");
+					System.out.println("your hand is :" + currentPlayer.handString() + "\n");
+					System.out.println("Commands:|up|down|left|right|");
+					System.out.println("         assumption (Must be in a room)");
+					System.out.println("         aqusation (Must be in a room)");
+
+					while (roll != 0 && currentPlayer.inRoom() == false) {
+						System.out.println("You have " + roll + " squares left to move.");
+						System.out.println("enter your command:");
+						command = input.next();
+					}
+
 				}
-				
-				
+
 			}
 		}
 	}
