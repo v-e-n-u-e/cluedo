@@ -360,7 +360,7 @@ public class Board {
 					if(player.print()=="6"){
 						 roomPos=new Point(25,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
 					}
-					player.setLocation(roomPos);
+					player.setLocation(roomPos); 
 				}
 				else if(this.tiles[lookahead.y][lookahead.x].print()=="S"){//study
 					Point roomPos=new Point(3,22);
