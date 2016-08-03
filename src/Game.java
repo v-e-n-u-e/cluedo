@@ -264,6 +264,7 @@ public class Game {
 					currentPlayer = players.get(i);
 					if (currentPlayer.isOut() != true) {
 					int roll = this.rollDice();
+					System.out.println("");
 					System.out.println(currentPlayer.getName()+"("+currentPlayer.print()+")" + ": You Rolled a " + roll + " \n");
 					System.out.println("your hand is :" + currentPlayer.handString() + "\n");
 					System.out.println("Commands:|up|down|left|right|");
