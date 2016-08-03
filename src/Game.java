@@ -234,11 +234,11 @@ public class Game {
 		for(Player p: players){
 	
 			if(p.holds(guess.getRoom())){//If the player holds the room card
-				System.out.println(p.getName() + "holds:"+guess.getRoom().getName());
+				System.out.println(p.getName() + " holds: "+guess.getRoom().getName());
 			}if(p.holds(guess.getMurderer())){//If the player holds the suspect card
-				System.out.println(p.getName() + "holds:"+guess.getMurderer().getName());
+				System.out.println(p.getName() + " holds: "+guess.getMurderer().getName());
 			}if(p.holds(guess.getWeapon())){//If the player holds the weapon card
-				System.out.println(p.getName() + "holds:"+guess.getWeapon().getName());
+				System.out.println(p.getName() + " holds: "+guess.getWeapon().getName());
 			}
 			
 			if(p.getName().equals(guess.getMurderer())){
