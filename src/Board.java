@@ -200,7 +200,7 @@ public class Board {
 	 * @return The amount of moves left
 	 */
 	public int move(Player player, Point point) {
-
+		
 		return 0;
 	}
 
@@ -216,6 +216,20 @@ public class Board {
 	public Boolean canMove(Player player, Point point, int roll) {
 
 		return false;
+	}
+	
+	/**
+	 * This will roll two dice and return the result as an int. The player will then be able to move 
+	 * this amount of spaces in their turn. 
+	 * 
+	 * @return
+	 */
+	public int diceRoll(){
+		int d1;
+		int d2;
+		d1 = (int) ((6.0 * Math.random()) + 1);
+		d2 = (int) ((6.0 * Math.random()) + 1);
+		return d1+d2;
 	}
 
 }
