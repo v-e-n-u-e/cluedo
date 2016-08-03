@@ -301,25 +301,25 @@ public class Game {
 						}else if(command.equals("up")){
 							Point destination = new Point(currentPlayer.getLocation().y-1,currentPlayer.getLocation().x);
 							board.move(currentPlayer, destination);
+							roll--;
 						
 						}else if(command.equals("down")){
 							Point destination = new Point(currentPlayer.getLocation().y+1,currentPlayer.getLocation().x);
 							board.move(currentPlayer, destination);
+							roll--;
 						
 						}else if(command.equals("left")){
 							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x-1);
 							board.move(currentPlayer, destination);
-						
+							roll--;
 						}else if(command.equals("right")){
 							Point destination = new Point(currentPlayer.getLocation().y,currentPlayer.getLocation().x+1);
 							board.move(currentPlayer, destination);
+							roll--;
 						}
 					}
-
 				}
-
 			}
 		}
 	}
-
 }
