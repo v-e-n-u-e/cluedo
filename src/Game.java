@@ -274,6 +274,29 @@ public class Game {
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
 						command = input.next();
+						
+						if(command.equals("assumption")){
+							roll =0;
+							makeAssumption(currentPlayer);
+						}else if(command.equals("aqusation")){
+							roll =0;
+							makeAqusation(currentPlayer);
+						}else if(command.equals("up")){
+							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y-1);
+							board.move(currentPlayer, destination);
+						
+						}else if(command.equals("down")){
+							Point destination = new Point(currentPlayer.getLocation().x,currentPlayer.getLocation().y+1);
+							board.move(currentPlayer, destination);
+						
+						}else if(command.equals("left")){
+							Point destination = new Point(currentPlayer.getLocation().x-1,currentPlayer.getLocation().y);
+							board.move(currentPlayer, destination);
+						
+						}else if(command.equals("right")){
+							Point destination = new Point(currentPlayer.getLocation().x+1,currentPlayer.getLocation().y);
+							board.move(currentPlayer, destination);
+						}
 					}
 
 				}
