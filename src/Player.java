@@ -5,8 +5,9 @@ import java.util.List;
 public class Player implements Tile {
 	private List<Card> hand = new ArrayList<Card>();
 	private String name;
-	private Boolean isOut = false;
+	private boolean isOut = false;
 	private Point location;
+	private boolean inRoom;
 	
 	public Player(String name,Point startingPos){
 		this.name = name;
@@ -23,6 +24,14 @@ public class Player implements Tile {
 	
 	public void setLocation(Point newLoc){
 		this.location = newLoc;
+	}
+	
+	public boolean inRoom(){
+		return this.inRoom;
+	}
+	
+	public boolean setInRoom(boolean b){
+		return this.inRoom = b;
 	}
 	
 	/**

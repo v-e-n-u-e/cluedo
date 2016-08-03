@@ -241,7 +241,8 @@ public class Game {
 	}
 	
 	/**
-	 * returns the players hand
+	 * returns the players hand 
+	 * For Testing only
 	 * @param player
 	 */
 	public void printCards(Player player){
@@ -249,10 +250,42 @@ public class Game {
 	}
 	
 	/**
+	 * roll two dice (numbers between 2-12)
+	 * @return
+	 */
+	public int rollDice(){
+		
+		int roll = (int) (Math.random() * 6) + 1;
+		int roll2 = (int) (Math.random() * 6) + 1;
+		return roll + roll2;
+	}
+	
+	/**
 	 * This runs until a player has won the game.
 	 */
 	public void running() {
-
+		input = new Scanner(System.in);
+		while(true){
+			for(int i =0; i<numPlayers;i++){
+				String command;
+				currentPlayer = players.get(i);
+				int roll = this.rollDice();
+				System.out.println(currentPlayer.getName()+": You Rolled a "+roll+" \n");
+				System.out.println("your hand is :" + currentPlayer.handString()+"\n");
+				System.out.println("Commands:|up|down|left|right|");
+				System.out.println("         assumption (Must be in a room)");
+				System.out.println("         aqusation (Must be in a room)");
+				
+				while(roll != 0 && currentPlayer.inRoom() == false ){
+					System.out.println("You have "+ roll +" squares left to move.");
+					System.out.println("enter your command:");
+					 command= input.next();
+					
+				}
+				
+				
+			}
+		}
 	}
 
 }
