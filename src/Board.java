@@ -205,48 +205,50 @@ public class Board {
 	 * @param point
 	 * @return The amount of moves left
 	 */
-	public void move(Player player, Point destination) {
+	public void move(Player player, Point destination, Point lookahead) {
 		//if(canMove(player,destination)==true){
 			
 			if(this.tiles[destination.y][destination.x].print()=="D"){//THIS IS IF THEY MOVE INDOORS
-				Door door = (Door) this.tiles[destination.y][destination.x];//get the door they're entering
-				String room = door.connectedRoom;//get name of room they're entering
-				if(room=="kitchen"){ 
-					Point roomPos=new Point(3,23);
+				if(this.tiles[lookahead.y][lookahead.x].print()=="K"){ //if they enter the kitchen
+					Point roomPos=new Point(3,3);
 					player.setLocation(roomPos);
 				}
-				if(room=="dining room"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="d"){//enter dining room
+					Point roomPos=new Point(3,11);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION
 					player.setLocation(roomPos);
 				}
-				if(room=="lounge"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="l"){//if they enter the lounge
+					Point roomPos=new Point(2,21);
 					player.setLocation(roomPos);
 				}
-				if(room=="ballroom"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="B"){//enter ballroom
+					Point roomPos=new Point(12,4);
 					player.setLocation(roomPos);
 				}
-				if(room=="hall"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="H"){//enter hall
+					Point roomPos=new Point(12,20);
 					player.setLocation(roomPos);
 				}
-				if(room=="conservatory"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="C"){//enter conservatory
+					Point roomPos=new Point(23,3);
 					player.setLocation(roomPos);
 				}
-				if(room=="billiard room"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="b"){//billiard room
+					Point roomPos=new Point(23,9);
 					player.setLocation(roomPos);
 				}
-				if(room=="library"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="L"){//library
+					Point roomPos=new Point(23,15);
 					player.setLocation(roomPos);
 				}
-				if(room=="study"){
-					Point roomPos=new Point(3,23);
+				else if(this.tiles[lookahead.y][lookahead.x].print()=="S"){//study
+					Point roomPos=new Point(3,22);
 					player.setLocation(roomPos);
 				}
+				else{
+					System.out.println("not a room? hello?");//hello?
+				}
+				
 			}
 			else{//not going in a room
 			player.setLocation(destination);
