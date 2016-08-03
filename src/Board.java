@@ -213,7 +213,7 @@ public class Board {
 			//System.out.println("Invalid move!");
 		//}
 	}
-
+	
 	/**
 	 * Checks to see if the player can actually move to the given square eg(In
 	 * bounds of map or appropriate dice roll
