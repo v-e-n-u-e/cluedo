@@ -120,9 +120,9 @@ public class Game {
 	 * picks a random suspect,weapon and room from arrays above.
 	 */
 	public void generateSolution() {
-		int suspectIndex = (int) Math.random() * 5;
-		int roomIndex = (int) Math.random() * 8;
-		int weaponIndex = (int) Math.random() * 5;
+		int suspectIndex = (int) (Math.random() * 5);
+		int roomIndex = (int) (Math.random() * 8);
+		int weaponIndex = (int) (Math.random() * 5);
 		solution = new Solution(roomCards.get(roomIndex), weaponCards.get(weaponIndex), suspectCards.get(suspectIndex));
 		// Remove cards from deck
 		roomCards.remove(roomIndex);
@@ -198,7 +198,7 @@ public class Game {
 
 		// Player has won the game
 		if (solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true) {
-			System.out.println("Player:"+currentPlayer.print()+" You have guess correct and won the game!");
+			System.out.println("Player:" + currentPlayer.print() + " You have guess correct and won the game!");
 			System.out.println("Exiting game now");
 			System.exit(0);
 		} else {
@@ -215,7 +215,7 @@ public class Game {
 	 * @param player
 	 */
 	public void makeAssumption(Player player) {
-		if(player.inRoom() == true){
+		if(player.inRoom() == false){
 			System.out.println("you are not currently in a room");
 			return;
 		}
@@ -243,8 +243,61 @@ public class Game {
 			for(Player p: players){
 				if(p.getName().equals(guess.getMurderer().getName())){
 					//Move accused player into same room as current player
-					
 				}
+			}
+			
+			int playerIndex= 0;
+			for(int i=0;i<players.size();i++){
+				if(players.get(i).getName().equals(currentPlayer.getName())){// finds the players position in the array
+					playerIndex = i;
+				}
+			}
+			//check going clockwise if a player contains one of the three cards
+			boolean found = false;
+			String item = "";
+			int playerHolding= 0;		
+			for(int i=playerIndex+1;i<players.size();i++){
+				if(i == playerIndex){
+					break;			//We have looped around
+				/*----------check hand contains cards-------------*/
+				
+				//room
+				}else if(found == true){
+				//do nothing
+				
+			    }else if(players.get(i).holds(guess.getRoom())){
+					found = true;
+					item = "room";
+					playerHolding = i;
+				//murderer
+				}else if(players.get(i).holds(guess.getMurderer())){
+					found = true;
+					item = "murderer";
+					playerHolding = i;
+				//weapon	
+				}else if(players.get(i).holds(guess.getWeapon())){
+					found = true;
+					item = "weapon";
+					playerHolding = i;
+				}
+				
+				
+				/*-------------------------------------------------*/
+				if(i == (players.size()-1))//Loop back around
+						i=0;
+				}
+			
+			if(found == false){
+				System.out.println("No Player is holding your cards");
+			}else{
+				if(item.equals("room")){
+					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getRoom().getName());
+				}else if(item.equals("murderer")){
+					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getMurderer().getName());
+				}else if(item.equals("weapon")){
+					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getWeapon().getName());
+				}
+				
 			}
 
 	}
@@ -293,13 +346,13 @@ public class Game {
 					System.out.println("         accusation (Must be in a room)");
 					System.out.println("         leave      (Must be in a room)");
 
-					while (roll != 0/* && currentPlayer.inRoom() == false*/) {
+					while (roll != 0/* && currentPlayer.inRoom() == false */) {
 						board.createBoard();
 						board.setCharacters(players);
 						board.printBoard();
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
-						//System.out.println(currentPlayer.getLocation());
+						// System.out.println(currentPlayer.getLocation());
 						command = input.next();
 
 						if (command.equals("assumption")) {
@@ -308,7 +361,7 @@ public class Game {
 						} else if (command.equals("accusation")) {
 							roll = 0;
 							makeAccusation(currentPlayer);
-						}else if (command.equals("leave")) {
+						} else if (command.equals("leave")) {
 							roll--;
 							board.leaveRoom(currentPlayer);
 						} else if (command.equals("up")) {
@@ -316,7 +369,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y - 1);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination, new Point(destination.x,destination.y-1));
+								board.move(currentPlayer, destination, new Point(destination.x, destination.y - 1));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
@@ -325,7 +378,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y + 1);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination, new Point(destination.x,destination.y+1));
+								board.move(currentPlayer, destination, new Point(destination.x, destination.y + 1));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
@@ -334,7 +387,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x - 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination, new Point(destination.x-1,destination.y));
+								board.move(currentPlayer, destination, new Point(destination.x - 1, destination.y));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
@@ -343,7 +396,7 @@ public class Game {
 							Point destination = new Point(currentPlayer.getLocation().x + 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
-								board.move(currentPlayer, destination, new Point(destination.x+1,destination.y));
+								board.move(currentPlayer, destination, new Point(destination.x + 1, destination.y));
 								roll--;
 							} else {
 								System.out.println("Invalid move!");
