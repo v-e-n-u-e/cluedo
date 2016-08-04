@@ -16,32 +16,33 @@ public class Guess {
 		/* mapping numbers to cards*/
 		switch(this.room) {
 		
-		case 1: 
+		case 0: 
 			murderRoom = new RoomCard("kitchen");
-		
-		case 2: 
-			murderRoom = new RoomCard("ballRoom");
-		
-		case 3: 
-			murderRoom = new RoomCard("conservatory");
-		
-		case 4: 
-			murderRoom = new RoomCard("billiardRoom");
-		
-		case 5: 
-			murderRoom = new RoomCard("library");
-		
-		case 6: 
-			murderRoom = new RoomCard("study");
-		
-		case 7: 
-			murderRoom = new RoomCard("hall");
-		
-		case 8: 
-			murderRoom = new RoomCard("lounge");
-		
-		case 9: 
+			break;
+		case 1: 
 			murderRoom = new RoomCard("diningRoom");
+			break;
+		case 2: 
+			murderRoom = new RoomCard("lounge");
+			break;
+		case 3: 
+			murderRoom = new RoomCard("ballRoom");
+			break;
+		case 4: 
+			murderRoom = new RoomCard("hall");
+			break;
+		case 5: 
+			murderRoom = new RoomCard("conservatory");
+			break;
+		case 6: 
+			murderRoom = new RoomCard("billiardRoom");
+			break;
+		case 7: 
+			murderRoom = new RoomCard("library");
+			break;
+		case 8: 
+			murderRoom = new RoomCard("study");
+			break;
 		}
 		
 		
@@ -49,16 +50,22 @@ public class Guess {
 		
 		case 1: 
 			murderWeapon = new WeaponCard("candleStick");
+			break;
 		case 2: 
 			murderWeapon = new WeaponCard("knife");
+			break;
 		case 3: 
 			murderWeapon = new WeaponCard("leadPipe");
+			break;
 		case 4: 
 			murderWeapon = new WeaponCard("rope");
+			break;
 		case 5: 
 			murderWeapon = new WeaponCard("wrench");
+			break;
 		case 6: 
 			murderWeapon = new WeaponCard("revolver");
+			break;
 		}
 		
 		
@@ -66,16 +73,22 @@ public class Guess {
 		
 		case 1: 
 			murderer = new SuspectCard("missScarlett");
+			break;
 		case 2: 
 			murderer = new SuspectCard("professorPlum");
+			break;
 		case 3: 
 			murderer = new SuspectCard("mrsPeacock");
+			break;
 		case 4: 
 			murderer = new SuspectCard("reverendGreen");
+			break;
 		case 5: 
 			murderer = new SuspectCard("colonelMustard");
+			break;
 		case 6: 
 			murderer = new SuspectCard("mrsWhite");
+			break;
 		
 		}
 		/*--------------------------*/

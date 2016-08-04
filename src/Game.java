@@ -186,8 +186,8 @@ public class Game {
 		int suspect;
 		int weapon;
 
-		System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
-				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");
+		System.out.println("Please Pick a room: \n" + "0 = kitchen 1 = diningRoom 2 = lounge \n"
+				+ "3 = ballroom 4 = hall 5= conservatory \n" + "6= billiard room 7 = library 8 = study");
 		room = input.nextInt();
 
 		System.out.println("Please pick a weapon: \n" + "1 = 3candleStick 2 = knife 3 =leadPipe \n"
