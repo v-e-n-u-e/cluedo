@@ -281,30 +281,48 @@ public class Game {
 					System.out.println(p.print());
 					if(roomChar.equals("K")){
 						p.setLocation(p.getRoomPos()[0]);
+						p.inRoom=true;
+						p.lastRoom="K";
 					}
 					if(roomChar.equals("d")){
 						p.setLocation(p.getRoomPos()[1]);
+						p.inRoom=true;
+						p.lastRoom="d";
 					}
 					if(roomChar.equals("l")){
 						p.setLocation(p.getRoomPos()[2]);
+						p.inRoom=true;
+						p.lastRoom="l";
 					}
 					if(roomChar.equals("B")){
 						p.setLocation(p.getRoomPos()[3]);
+						p.inRoom=true;
+						p.lastRoom="B";
 					}
 					if(roomChar.equals("H")){
 						p.setLocation(p.getRoomPos()[4]);
+						p.inRoom=true;
+						p.lastRoom="H";
 					}
 					if(roomChar.equals("C")){
 						p.setLocation(p.getRoomPos()[5]);
+						p.inRoom=true;
+						p.lastRoom="C";
 					}
 					if(roomChar.equals("b")){
 						p.setLocation(p.getRoomPos()[6]);
+						p.inRoom=true;
+						p.lastRoom="b";
 					}
 					if(roomChar.equals("L")){
 						p.setLocation(p.getRoomPos()[7]);
+						p.inRoom=true;
+						p.lastRoom="L";
 					}
 					if(roomChar.equals("S")){
 						p.setLocation(p.getRoomPos()[8]);
+						p.inRoom=true;
+						p.lastRoom="S";
 					}
 				}
 			}
