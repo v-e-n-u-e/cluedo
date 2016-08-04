@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
+
 	Solution solution; // each game will have one solution
 	Board board; // each game will have one board
 	Player currentPlayer;
@@ -15,6 +16,7 @@ public class Game {
 	List<Player> players = new ArrayList<Player>();
 	int numPlayers;
 	private Scanner input;
+	public static int roll;
 
 	public Game(int players) {
 		this.numPlayers = players;
@@ -299,7 +301,7 @@ public class Game {
 				String command;
 				currentPlayer = players.get(i);
 				if (currentPlayer.isOut() != true) {
-					int roll = this.rollDice();
+					roll = this.rollDice();
 					// board.printBoard();
 					System.out.println("KEY:    D=Door             +=Hallway       #=Wall      K=Kitchen \n");
 					System.out.println("        C=Conservatory     S=Study         L=Library   b=Billiard Room \n");
@@ -310,8 +312,9 @@ public class Game {
 					System.out.println("Commands:|up|down|left|right|");
 					System.out.println("         assumption (Must be in a room)");
 					System.out.println("         accusation (Must be in a room)");
+					System.out.println("         leave      (Must be in a room)");
 
-					while (roll != 0 && currentPlayer.inRoom() == false) {
+					while (roll != 0/* && currentPlayer.inRoom() == false*/) {
 						board.createBoard();
 						board.setCharacters(players);
 						board.printBoard();
@@ -326,6 +329,9 @@ public class Game {
 						} else if (command.equals("accusation")) {
 							roll = 0;
 							makeAccusation(currentPlayer);
+						}else if (command.equals("leave")) {
+							roll--;
+							board.leaveRoom(currentPlayer);
 						} else if (command.equals("up")) {
 							System.out.println();
 							Point destination = new Point(currentPlayer.getLocation().x,
