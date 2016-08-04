@@ -190,7 +190,7 @@ public class Game {
 				+ "3 = ballroom 4 = hall 5= conservatory \n" + "6= billiard room 7 = library 8 = study");
 		room = input.nextInt();
 
-		System.out.println("Please pick a weapon: \n" + "1 = 3candleStick 2 = knife 3 =leadPipe \n"
+		System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
 				+ "4 = rope 5 = wrench 6 =revolver");
 		weapon = input.nextInt();
 
@@ -206,7 +206,7 @@ public class Game {
 			System.out.println("Exiting game now");
 			System.exit(0);
 		} else {
-			System.out.println("Incorrect guess, You are out of the game \n");
+			System.out.println("Incorrect guess, You are out of the game");
 			player.lost();
 		}
 	}
@@ -398,12 +398,12 @@ public class Game {
 				if (currentPlayer.isOut() != true) {
 					roll = this.rollDice();
 					// board.printBoard();
-					System.out.println("KEY:    D=Door             +=Hallway       #=Wall      K=Kitchen \n");
+					/*System.out.println("KEY:    D=Door             +=Hallway       #=Wall      K=Kitchen \n");
 					System.out.println("        C=Conservatory     S=Study         L=Library   b=Billiard Room \n");
-					System.out.println("        B=Ballroom         d=Dining Room   H=Hall      l=Lounge \n");
+					System.out.println("        B=Ballroom         d=Dining Room   H=Hall      l=Lounge \n");*/
 					System.out.println(currentPlayer.getName() + "(" + currentPlayer.print() + ")" + ": You Rolled a "
-							+ roll + " \n");
-					System.out.println("your hand is :" + currentPlayer.handString() + "\n");
+							+ roll);
+					System.out.println("your hand is :" + currentPlayer.handString());
 					System.out.println("Commands:|up|down|left|right|");
 					System.out.println("         assumption (Must be in a room)");
 					System.out.println("         accusation (Must be in a room)");
