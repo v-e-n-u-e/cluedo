@@ -215,7 +215,7 @@ public class Game {
 	 * @param player
 	 */
 	public void makeAssumption(Player player) {
-		if(player.inRoom() == true){
+		if(player.inRoom() == false){
 			System.out.println("you are not currently in a room");
 			return;
 		}
