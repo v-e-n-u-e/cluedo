@@ -590,7 +590,7 @@ public class Board {
 		if(destination.x>24 || destination.x<0){
 			return false;//don't go there
 		}
-		if((playLoc!=destination)){//still has some room to move, not moving on same space somehow
+		else if((playLoc!=destination)){//still has some room to move, not moving on same space somehow
 			if((this.tiles[destination.y][destination.x].print()=="+" || //OK if it's a hallway
 					this.tiles[destination.y][destination.x].print()=="D")){ //OK if it's a door
 				return true;
@@ -599,6 +599,18 @@ public class Board {
 		
 		return false;//no movement left
 	}
+	/*
+	//checks if a player has nowhere to move
+	private Boolean boxedIn(Player player){
+		if(!this.tiles[player.getLocation().y+1][player.getLocation().x].print().equals("+") &&
+			!this.tiles[player.getLocation().y-1][player.getLocation().x].print().equals("+") &&
+			!this.tiles[player.getLocation().y][player.getLocation().x-1].print().equals("+") &&
+			!this.tiles[player.getLocation().y][player.getLocation().x+1].print().equals("+")){
+			return true;
+		}
+		
+		return false;
+	}*/
 	
 
 }
