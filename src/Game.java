@@ -340,8 +340,11 @@ public class Game {
 			if(playerIndex+1==numPlayers){
 				playerIndex=-1;
 			}
-			for(int i=playerIndex+1;i<numPlayers;i++){//THIS WILL NEVER WORK ON THE LAST PLAYER. DOES NOT LOOP BACK THROUGH PROPERLY
+			for(int i=playerIndex+1;i<numPlayers;i++){//i think we made it boys
 				System.out.println("loop2");
+				if(i == (numPlayers))//Loop back around
+					i=0;
+				
 				if(i == playerIndex){
 					break;			//We have looped around
 				/*----------check hand contains cards-------------*/
@@ -368,8 +371,7 @@ public class Game {
 				
 				
 				/*-------------------------------------------------*/
-				if(i == (players.size()-1))//Loop back around
-						i=0;
+				
 				}
 			
 			if(found == false){
