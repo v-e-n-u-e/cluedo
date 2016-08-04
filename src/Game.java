@@ -248,7 +248,7 @@ public class Game {
 			
 			int playerIndex= 0;
 			for(int i=0;i<players.size();i++){
-				if(players.get(i).getName().equals(currentPlayer.getName())){// finds the players position in the array
+				if(players.get(i).getName().equals(player.getName())){// finds the players position in the array
 					playerIndex = i;
 				}
 			}
