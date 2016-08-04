@@ -245,6 +245,7 @@ public class Game {
 					//Move accused player into same room as current player
 					Point pLoc = player.getLocation();
 					String roomChar = board.getTiles()[pLoc.y-1][pLoc.x-1].print();
+					System.out.println(p.print());
 					if(roomChar.equals("K")){
 						p.setLocation(p.getRoomPos()[0]);
 					}
