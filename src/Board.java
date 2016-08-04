@@ -228,7 +228,7 @@ public class Board {
 			}
 			else if(command.equals("right") && !(this.tiles[doors.get(0).y][doors.get(0).x+1] instanceof Player)){//These check whether or not someone is standing
 				player.setLocation(doors.get(0));															//in front of the door, and wont let you out
-			}
+			} 
 			else if(command.equals("bottom")  && !(this.tiles[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
 			}
