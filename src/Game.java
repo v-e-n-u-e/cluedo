@@ -283,7 +283,7 @@ public class Game {
 			}
 			//check going clockwise if a player contains one of the three cards.
 			boolean found = false;
-			String item = "";
+			Card item = new WeaponCard("temp");
 			int playerHolding= 0;		
 			for(int i=playerIndex+1;i<numPlayers;i++){
 				System.out.println("loop2");
@@ -297,17 +297,17 @@ public class Game {
 				
 			    }else if(players.get(i).holds(guess.getRoom())){
 					found = true;
-					item = "room";
+					item = guess.getRoom();
 					playerHolding = i;
 				//murderer
 				}else if(players.get(i).holds(guess.getMurderer())){
 					found = true;
-					item = "murderer";
+					item = guess.getMurderer();
 					playerHolding = i;
 				//weapon	
 				}else if(players.get(i).holds(guess.getWeapon())){
 					found = true;
-					item = "weapon";
+					item = guess.getWeapon();
 					playerHolding = i;
 				}
 				
@@ -320,11 +320,11 @@ public class Game {
 			if(found == false){
 				System.out.println("No Player is holding your cards");
 			}else{
-				if(item.equals("room")){
+				if(item instanceof RoomCard){
 					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getRoom().getName());
-				}else if(item.equals("murderer")){
+				}else if(item instanceof SuspectCard){
 					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getMurderer().getName());
-				}else if(item.equals("weapon")){
+				}else if(item instanceof WeaponCard){
 					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getWeapon().getName());
 				}
 				
