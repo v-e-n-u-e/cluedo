@@ -109,10 +109,10 @@ public class Player implements Tile {
 			points[1]=new Point(3,11);//dining room
 			points[2]=new Point(2,21);//lounge
 			points[3]=new Point(12,3);//ballroom
-			points[4]=new Point(12,19);//hall
+			points[4]=new Point(11,20);//hall
 			points[5]=new Point(21,1);//conservatory
-			points[6]=new Point(21,8);//billiard room
-			points[7]=new Point(20,14);//library
+			points[6]=new Point(21,9);//billiard room
+			points[7]=new Point(20,15);//library
 			points[8]=new Point(19,22);//study
 		}
 		else if(this.print().equals("2")){
@@ -120,10 +120,10 @@ public class Player implements Tile {
 			points[1]=new Point(4,11);
 			points[2]=new Point(3,21);
 			points[3]=new Point(13,3);
-			points[4]=new Point(13,19);
+			points[4]=new Point(12,20);
 			points[5]=new Point(22,1);
-			points[6]=new Point(22,8);
-			points[7]=new Point(21,14);
+			points[6]=new Point(22,9);
+			points[7]=new Point(21,15);
 			points[8]=new Point(20,22);
 		}
 		else if(this.print().equals("3")){
@@ -131,10 +131,10 @@ public class Player implements Tile {
 			points[1]=new Point(5,11);
 			points[2]=new Point(4,21);
 			points[3]=new Point(14,3);
-			points[4]=new Point(14,19);
+			points[4]=new Point(13,20);
 			points[5]=new Point(23,1);
-			points[6]=new Point(23,8);
-			points[7]=new Point(22,14);
+			points[6]=new Point(23,9);
+			points[7]=new Point(22,15);
 			points[8]=new Point(21,22);
 		}
 		else if(this.print().equals("4")){
@@ -142,10 +142,10 @@ public class Player implements Tile {
 			points[1]=new Point(3,13);
 			points[2]=new Point(2,23);
 			points[3]=new Point(12,5);
-			points[4]=new Point(12,22);
+			points[4]=new Point(11,22);
 			points[5]=new Point(21,3);
-			points[6]=new Point(21,10);
-			points[7]=new Point(20,16);
+			points[6]=new Point(21,11);
+			points[7]=new Point(20,17);
 			points[8]=new Point(19,24);
 		}
 		else if(this.print().equals("5")){
@@ -153,10 +153,10 @@ public class Player implements Tile {
 			points[1]=new Point(4,13);
 			points[2]=new Point(3,23);
 			points[3]=new Point(13,5);
-			points[4]=new Point(13,22);
+			points[4]=new Point(12,22);
 			points[5]=new Point(22,3);
-			points[6]=new Point(22,10);
-			points[7]=new Point(21,16);
+			points[6]=new Point(22,11);
+			points[7]=new Point(21,17);
 			points[8]=new Point(20,24);
 		}
 		else if(this.print().equals("6")){
@@ -164,10 +164,10 @@ public class Player implements Tile {
 			points[1]=new Point(5,13);
 			points[2]=new Point(4,23);
 			points[3]=new Point(14,5);
-			points[4]=new Point(14,22);
+			points[4]=new Point(13,22);
 			points[5]=new Point(23,3);
-			points[6]=new Point(23,10);
-			points[7]=new Point(22,16);
+			points[6]=new Point(23,11);
+			points[7]=new Point(22,17);
 			points[8]=new Point(21,24);
 		}
 		return points;
