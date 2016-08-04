@@ -211,7 +211,6 @@ public class Board {
 		int py = pLoc.y;
 		String command;
 		input = new Scanner(System.in);
-		player.inRoom=false;
 		if(this.getTiles()[py-1][px-1].print().equals("K")){//Leaving Kitchen
 			doors.add(new Point(4,6));
 			if((this.getTiles()[doors.get(0).y+1][doors.get(0).x] instanceof Player)){//This checks if all doors are blocked by players
@@ -219,6 +218,7 @@ public class Board {
 				Game.roll=0;
 			}else{//good to go
 			player.setLocation(doors.get(0));
+			player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("d")){//Leaving dining room
@@ -232,10 +232,12 @@ public class Board {
 				Game.roll=0;
 			}
 			else if(command.equals("right") && !(this.getTiles()[doors.get(0).y][doors.get(0).x+1] instanceof Player)){//These check whether or not someone is standing
-				player.setLocation(doors.get(0));															//in front of the door, and wont let you out
+				player.setLocation(doors.get(0));	
+				player.inRoom=false;//in front of the door, and wont let you out
 			} 
 			else if(command.equals("bottom")  && !(this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
+				player.inRoom=false;
 			}
 			else{
 				System.out.println("Someone's blocking that door!");
@@ -250,6 +252,7 @@ public class Board {
 				Game.roll=0;
 			}else{
 			player.setLocation(new Point(6,19));
+			player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("B")){//Leaving ballroom
@@ -268,15 +271,19 @@ public class Board {
 			}
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){
 				player.setLocation(doors.get(0));
+				player.inRoom=false;
 			}
 			else if(command.equals("bottom left")  && !(this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
+				player.inRoom=false;
 			}
 			else if(command.equals("bottom right")  && !(this.getTiles()[doors.get(2).y+1][doors.get(2).x] instanceof Player)){
 				player.setLocation(doors.get(2));
+				player.inRoom=false;
 			}
 			else if(command.equals("right")  && !(this.getTiles()[doors.get(3).y][doors.get(3).x+1] instanceof Player)){
 				player.setLocation(doors.get(3));
+				player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("H")){//Leaving hall
@@ -295,15 +302,19 @@ public class Board {
 			}
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)){
 				player.setLocation(doors.get(0) );
+				player.inRoom=false;
 			}
 			else if(command.equals("middle")  && !(this.getTiles()[doors.get(1).y-1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
+				player.inRoom=false;
 			}
 			else if(command.equals("right")  && !(this.getTiles()[doors.get(2).y-1][doors.get(2).x] instanceof Player)){
 				player.setLocation(doors.get(2));
+				player.inRoom=false;
 			}
 			else if(command.equals("bottom right")  && !(this.getTiles()[doors.get(3).y][doors.get(3).x+1] instanceof Player)){
 				player.setLocation(doors.get(3));
+				player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("C")){//Leaving conservatory
@@ -314,6 +325,7 @@ public class Board {
 				Game.roll=0;
 			}else{
 			player.setLocation(doors.get(0));
+			player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print()=="b"){//Leaving billiard room
@@ -328,9 +340,11 @@ public class Board {
 			}
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){
 				player.setLocation(doors.get(0));
+				player.inRoom=false;
 			}
 			else if(command.equals("bottom")  && !(this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
+				player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("L")){//Leaving library
@@ -345,9 +359,11 @@ public class Board {
 			}
 			else if(command.equals("top")  && !(this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)){
 				player.setLocation(doors.get(0));
+				player.inRoom=false;
 			}
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(1).y][doors.get(1).x-1] instanceof Player)){
 				player.setLocation(doors.get(1));
+				player.inRoom=false;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("S")){//Leaving study
@@ -357,7 +373,8 @@ public class Board {
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
 				Game.roll=0;
 			}else{
-			player.setLocation(doors.get(0));}
+			player.setLocation(doors.get(0));
+			player.inRoom=false;}
 		}
 		else{
 			System.out.println("Not in a room? hello?");
@@ -376,200 +393,144 @@ public class Board {
 			
 			if(this.getTiles()[destination.y][destination.x].print()=="D"){//THIS IS IF THEY MOVE INDOORS
 				if(this.getTiles()[lookahead.y][lookahead.x].print()=="K"){ //if they enter the kitchen
-					Point roomPos=new Point(2,2);
-					Game.roll=1;
-						/*if(player.print()=="2"){
-							 roomPos=new Point(3,2);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-						}
-						if(player.print()=="3"){
-							 roomPos=new Point(4,2);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-						}
-						if(player.print()=="4"){
-							 roomPos=new Point(2,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-						}
-						if(player.print()=="5"){
-							 roomPos=new Point(3,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-						}
-						if(player.print()=="6"){
-							 roomPos=new Point(4,4);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-						}*/
+					//Point roomPos=new Point(2,2);
+					
+						
+					if(player.lastRoom.equals("K")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 						player.inRoom=true;
+						Game.roll=1;
 						player.setLocation(player.getRoomPos()[0]);
+						player.lastRoom="K";
+
 						//player.setLocation(roomPos);
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="d"){//enter dining room
-					Point roomPos=new Point(3,11);
-					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(4,11);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
+					//Point roomPos=new Point(3,11);
+					
+					
+					if(player.lastRoom.equals("d")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
 					}
-					if(player.print()=="3"){
-						 roomPos=new Point(5,11);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(3,13);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(4,13);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(5,13);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
+					Game.roll=1;
 					player.setLocation(player.getRoomPos()[1]);
+					player.lastRoom="d";
+
 					//player.setLocation(roomPos);
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="l"){//if they enter the lounge
-					Point roomPos=new Point(2,21);
+					//Point roomPos=new Point(2,21);
+					
+				
+					if(player.lastRoom.equals("l")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(3,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(4,21);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(2,23);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(3,23);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(4,23);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[2]);
+					player.lastRoom="l";
+
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="B"){//enter ballroom
-					Point roomPos=new Point(12,3);
+					//Point roomPos=new Point(12,3);
+					
+					
+					if(player.lastRoom.equals("B")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(13,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(14,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(12,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(13,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(14,5);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[3]);
+					player.lastRoom="B";
+
 					//player.setLocation(roomPos);
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="H"){//enter hall
-					Point roomPos=new Point(12,18);
+				
+					
+					if(player.lastRoom.equals("H")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(13,18);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(14,18);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(12,20);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(13,20);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(14,20);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[4]);
+					player.lastRoom="H";
+
 					//player.setLocation(roomPos);
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="C"){//enter conservatory
-					Point roomPos=new Point(21,1);
+					//Point roomPos=new Point(21,1);
+				
+					
+					if(player.lastRoom.equals("C")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(22,1);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(23,1);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(21,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(22,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(23,3);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[5]);
+					player.lastRoom="C";
+
 					//player.setLocation(roomPos);
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="b"){//billiard room
-					Point roomPos=new Point(21,8);
+					//Point roomPos=new Point(21,8);
+					
+					
+					if(player.lastRoom.equals("b")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(22,8);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(23,8);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(21,10);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(22,10);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(23,10);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[6]);
+					player.lastRoom="b";
+
 					//player.setLocation(roomPos);
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="L"){//library
-					Point roomPos=new Point(20,14);
+					//Point roomPos=new Point(20,14);
+					
+					
+					if(player.lastRoom.equals("L")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(21,14);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(22,14);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(20,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(21,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(22,16);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[7]);
+					player.lastRoom="L";
+
 					//player.setLocation(roomPos);  
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="S"){//study
-					Point roomPos=new Point(19,22);
+					//Point roomPos=new Point(19,22);
+					
+					
+					if(player.lastRoom.equals("S")){
+						Game.roll++;
+						System.out.println("You can't enter the last room you were in!");
+						return;
+					}
 					Game.roll=1;
-					/*if(player.print()=="2"){
-						 roomPos=new Point(20,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="3"){
-						 roomPos=new Point(21,22);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="4"){
-						 roomPos=new Point(19,24);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="5"){
-						 roomPos=new Point(20,24);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}
-					if(player.print()=="6"){
-						 roomPos=new Point(21,24);//WE NEED TO FIX THIS SO IT"S NOT ONE LOCATION	
-					}*/
 					player.inRoom=true;
 					player.setLocation(player.getRoomPos()[8]);
+					player.lastRoom="S";
 					//player.setLocation(roomPos);
 				}
 				else{
