@@ -177,6 +177,10 @@ public class Game {
 	 * @param player
 	 */
 	public void makeAccusation(Player player) {
+		/*if(player.inRoom() == false){
+			System.out.println("you are not currently in a room");
+			return;
+		}*/
 		input = new Scanner(System.in);
 		int room;
 		int suspect;
@@ -225,9 +229,38 @@ public class Game {
 		int weapon;
 
 		/*-------------------------------making Guess------------------------------------------------*/
-		System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
-				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");
-		room = input.nextInt();
+		/*System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
+				+ "4 = billiardRoom 5 = library 6= study \n" + "7= hall 8 = lounge 9 = diningRoom");*/
+		Point pLoc = player.getLocation();
+		String roomChar = board.getTiles()[pLoc.y-1][pLoc.x-1].print();
+		if(roomChar.equals("K")){
+			room=0;
+		}
+		else if(roomChar.equals("d")){
+			room=1;
+		}
+		else if(roomChar.equals("l")){
+			room=2;
+		}
+		else if(roomChar.equals("B")){
+			room=3;
+		}
+		else if(roomChar.equals("H")){
+			room=4;
+		}
+		else if(roomChar.equals("C")){
+			room=5;
+		}
+		else if(roomChar.equals("b")){
+			room=6;
+		}
+		else if(roomChar.equals("L")){
+			room=7;
+		}
+		else{
+			room=8;
+		}
+		//room = input.nextInt();
 
 		System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
 				+ "4 = rope 5 = wrench 6 =revolver");
@@ -243,8 +276,8 @@ public class Game {
 			for(Player p: players){
 				if(p.getName().equals(guess.getMurderer().getName())){
 					//Move accused player into same room as current player
-					Point pLoc = player.getLocation();
-					String roomChar = board.getTiles()[pLoc.y-1][pLoc.x-1].print();
+					pLoc = player.getLocation();
+					roomChar = board.getTiles()[pLoc.y-1][pLoc.x-1].print();
 					System.out.println(p.print());
 					if(roomChar.equals("K")){
 						p.setLocation(p.getRoomPos()[0]);
