@@ -278,7 +278,7 @@ public class Game {
 			
 			int playerIndex= 0;
 			for(int i=0;i<players.size();i++){
-				if(players.get(i).getName().equals(currentPlayer.getName())){// finds the players position in the array
+				if(players.get(i).getName().equals(player.getName())){// finds the players position in the array
 					playerIndex = i;
 				}
 			}
@@ -286,7 +286,8 @@ public class Game {
 			boolean found = false;
 			String item = "";
 			int playerHolding= 0;		
-			for(int i=playerIndex+1;i<players.size();i++){
+			for(int i=playerIndex+1;i<numPlayers;i++){
+				System.out.println("loop2");
 				if(i == playerIndex){
 					break;			//We have looped around
 				/*----------check hand contains cards-------------*/
@@ -329,7 +330,6 @@ public class Game {
 				}
 				
 			}
-
 	}
 
 	/**
