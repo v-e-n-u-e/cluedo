@@ -209,24 +209,43 @@ public class Board {
 		player.inRoom=false;
 		if(this.tiles[py-1][px].print().equals("K")){//Leaving Kitchen
 			doors.add(new Point(4,6));
+			if((this.tiles[doors.get(0).y+1][doors.get(0).x] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}else{//good to go
 			player.setLocation(doors.get(0));
+			}
 		}
 		else if(this.tiles[py-1][px].print().equals("d")){//Leaving dining room
 			doors.add(new Point(7,12));//right
 			doors.add(new Point(6,15));//bottom
 			System.out.println("Which door would you like to exit from?\n right|bottom");			
 			command=input.next();
-			if(command.equals("right")){
-				player.setLocation(doors.get(0));
+			if((this.tiles[doors.get(0).y][doors.get(0).x+1] instanceof Player)
+					&& (this.tiles[doors.get(1).y+1][doors.get(1).x] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
 			}
-			else if(command.equals("bottom")){
+			else if(command.equals("right") && !(this.tiles[doors.get(0).y][doors.get(0).x+1] instanceof Player)){//These check whether or not someone is standing
+				player.setLocation(doors.get(0));															//in front of the door, and wont let you out
+			} 
+			else if(command.equals("bottom")  && !(this.tiles[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
+			}
+			else{
+				System.out.println("Someone's blocking that door!");
 			}
 		}
 		else if(this.tiles[py-1][px].print().equals("l")){//Leaving lounge
 			//System.out.println("we know it's lounge");
-			//doors.add(new Point(7,19));
+			doors.add(new Point(6,19));
+			if((this.tiles[doors.get(0).y-1][doors.get(0).x] instanceof Player)
+					&& (this.tiles[doors.get(0).y][doors.get(0).x+1] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}else{
 			player.setLocation(new Point(6,19));
+			}
 		}
 		else if(this.tiles[py-1][px].print().equals("B")){//Leaving ballroom
 			doors.add(new Point(8,5));//eft
@@ -235,16 +254,23 @@ public class Board {
 			doors.add(new Point(16,5));//right
 			System.out.println("Which door would you like to exit from?\n left|bottom left|bottom right|right");			
 			command=input.next();
-			if(command.equals("left")){
+			if((this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)
+					&& (this.tiles[doors.get(1).y+1][doors.get(1).x] instanceof Player)
+					&& (this.tiles[doors.get(2).y+1][doors.get(2).x] instanceof Player)
+					&& (this.tiles[doors.get(3).y][doors.get(3).x+1] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}
+			else if(command.equals("left")  && !(this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)){
 				player.setLocation(doors.get(0));
 			}
-			else if(command.equals("bottom left")){
+			else if(command.equals("bottom left")  && !(this.tiles[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
 			}
-			else if(command.equals("bottom right")){
+			else if(command.equals("bottom right")  && !(this.tiles[doors.get(2).y+1][doors.get(2).x] instanceof Player)){
 				player.setLocation(doors.get(2));
 			}
-			else if(command.equals("right")){
+			else if(command.equals("right")  && !(this.tiles[doors.get(3).y][doors.get(3).x+1] instanceof Player)){
 				player.setLocation(doors.get(3));
 			}
 		}
@@ -255,32 +281,50 @@ public class Board {
 			doors.add(new Point(15,20));//bottom right
 			System.out.println("Which door would you like to exit from?\n left|middle|right|bottom right");			
 			command=input.next();
-			if(command.equals("left")){
-				player.setLocation(doors.get(0));
+			if((this.tiles[doors.get(0).y-1][doors.get(0).x] instanceof Player)
+					&& (this.tiles[doors.get(1).y-1][doors.get(1).x] instanceof Player)
+					&& (this.tiles[doors.get(2).y-1][doors.get(2).x] instanceof Player)
+					&& (this.tiles[doors.get(3).y][doors.get(3).x+1] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
 			}
-			else if(command.equals("middle")){
+			else if(command.equals("left")  && !(this.tiles[doors.get(0).y-1][doors.get(0).x] instanceof Player)){
+				player.setLocation(doors.get(0) );
+			}
+			else if(command.equals("middle")  && !(this.tiles[doors.get(1).y-1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
 			}
-			else if(command.equals("right")){
+			else if(command.equals("right")  && !(this.tiles[doors.get(2).y-1][doors.get(2).x] instanceof Player)){
 				player.setLocation(doors.get(2));
 			}
-			else if(command.equals("bottom right")){
+			else if(command.equals("bottom right")  && !(this.tiles[doors.get(3).y][doors.get(3).x+1] instanceof Player)){
 				player.setLocation(doors.get(3));
 			}
 		}
 		else if(this.tiles[py-1][px].print().equals("C")){//Leaving conservatory
 			doors.add(new Point(19,4));
+			if((this.tiles[doors.get(0).y+1][doors.get(0).x] instanceof Player)
+					&& (this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}else{
 			player.setLocation(doors.get(0));
+			}
 		}
 		else if(this.tiles[py-1][px].print()=="b"){//Leaving billiard room
 			doors.add(new Point(19,9));//left
 			doors.add(new Point(23,12));//bottom
 			System.out.println("Which door would you like to exit from?\n left|bottom");			
 			command=input.next();
-			if(command.equals("left")){
+			if((this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)
+					&& (this.tiles[doors.get(0).y+1][doors.get(0).x] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}
+			else if(command.equals("left")  && !(this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)){
 				player.setLocation(doors.get(0));
 			}
-			else if(command.equals("bottom")){
+			else if(command.equals("bottom")  && !(this.tiles[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
 			}
 		}
@@ -289,16 +333,26 @@ public class Board {
 			doors.add(new Point(18,16));//left
 			System.out.println("Which door would you like to exit from?\n top|left");			
 			command=input.next();
-			if(command.equals("top")){
+			if((this.tiles[doors.get(0).y-1][doors.get(0).x] instanceof Player)
+					&& (this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}
+			else if(command.equals("top")  && !(this.tiles[doors.get(0).y-1][doors.get(0).x] instanceof Player)){
 				player.setLocation(doors.get(0));
 			}
-			else if(command.equals("left")){
+			else if(command.equals("left")  && !(this.tiles[doors.get(1).y][doors.get(1).x-1] instanceof Player)){
 				player.setLocation(doors.get(1));
 			}
 		}
 		else if(this.tiles[py-1][px].print().equals("S")){//Leaving study
 			doors.add(new Point(18,21));
-			player.setLocation(doors.get(0));
+			if((this.tiles[doors.get(0).y-1][doors.get(0).x] instanceof Player)
+					&& (this.tiles[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
+				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				Game.roll=0;
+			}else{
+			player.setLocation(doors.get(0));}
 		}
 		else{
 			System.out.println("Not in a room? hello?");
