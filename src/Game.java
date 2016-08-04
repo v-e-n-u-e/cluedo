@@ -337,7 +337,7 @@ public class Game {
 			boolean found = false;
 			String item = "";
 			int playerHolding= 0;		
-			for(int i=playerIndex+1;i<numPlayers;i++){
+			for(int i=playerIndex+1;i<numPlayers;i++){//THIS WILL NEVER WORK ON THE LAST PLAYER. DOES NOT LOOP BACK THROUGH PROPERLY
 				System.out.println("loop2");
 				if(i == playerIndex){
 					break;			//We have looped around
