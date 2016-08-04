@@ -243,6 +243,35 @@ public class Game {
 			for(Player p: players){
 				if(p.getName().equals(guess.getMurderer().getName())){
 					//Move accused player into same room as current player
+					Point pLoc = player.getLocation();
+					String roomChar = board.getTiles()[pLoc.y-1][pLoc.x-1].print();
+					if(roomChar.equals("K")){
+						p.setLocation(p.getRoomPos()[0]);
+					}
+					if(roomChar.equals("d")){
+						p.setLocation(p.getRoomPos()[1]);
+					}
+					if(roomChar.equals("l")){
+						p.setLocation(p.getRoomPos()[2]);
+					}
+					if(roomChar.equals("B")){
+						p.setLocation(p.getRoomPos()[3]);
+					}
+					if(roomChar.equals("H")){
+						p.setLocation(p.getRoomPos()[4]);
+					}
+					if(roomChar.equals("C")){
+						p.setLocation(p.getRoomPos()[5]);
+					}
+					if(roomChar.equals("b")){
+						p.setLocation(p.getRoomPos()[6]);
+					}
+					if(roomChar.equals("L")){
+						p.setLocation(p.getRoomPos()[7]);
+					}
+					if(roomChar.equals("S")){
+						p.setLocation(p.getRoomPos()[8]);
+					}
 				}
 			}
 			

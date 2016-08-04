@@ -99,6 +99,79 @@ public class Player implements Tile {
 		hand.add(card);
 
 	}
+	
+	//this will return an arraylist containing positions this player goes into when entering rooms. 
+	//this goes from top to bottom, left to right. e.g. kitchen is first, study is last.
+	public Point[] getRoomPos(){
+		Point[] points = new Point[9];
+		if(this.print().equals("1")){
+			points[0]=new Point(2,2);//kitchen
+			points[1]=new Point(3,11);//dining room
+			points[2]=new Point(2,21);//lounge
+			points[3]=new Point(12,3);//ballroom
+			points[4]=new Point(12,19);//hall
+			points[5]=new Point(21,1);//conservatory
+			points[6]=new Point(21,8);//billiard room
+			points[7]=new Point(20,14);//library
+			points[8]=new Point(19,22);//study
+		}
+		else if(this.print().equals("2")){
+			points[0]=new Point(3,2);
+			points[1]=new Point(4,11);
+			points[2]=new Point(3,21);
+			points[3]=new Point(13,3);
+			points[4]=new Point(13,19);
+			points[5]=new Point(22,1);
+			points[6]=new Point(22,8);
+			points[7]=new Point(21,14);
+			points[8]=new Point(20,22);
+		}
+		else if(this.print().equals("3")){
+			points[0]=new Point(4,2);
+			points[1]=new Point(5,11);
+			points[2]=new Point(4,21);
+			points[3]=new Point(14,3);
+			points[4]=new Point(14,19);
+			points[5]=new Point(23,1);
+			points[6]=new Point(23,8);
+			points[7]=new Point(22,14);
+			points[8]=new Point(21,22);
+		}
+		else if(this.print().equals("4")){
+			points[0]=new Point(2,4);
+			points[1]=new Point(3,13);
+			points[2]=new Point(2,23);
+			points[3]=new Point(12,5);
+			points[4]=new Point(12,22);
+			points[5]=new Point(21,3);
+			points[6]=new Point(21,10);
+			points[7]=new Point(20,16);
+			points[8]=new Point(19,24);
+		}
+		else if(this.print().equals("5")){
+			points[0]=new Point(3,4);
+			points[1]=new Point(4,13);
+			points[2]=new Point(3,23);
+			points[3]=new Point(13,5);
+			points[4]=new Point(13,22);
+			points[5]=new Point(22,3);
+			points[6]=new Point(22,10);
+			points[7]=new Point(21,16);
+			points[8]=new Point(20,24);
+		}
+		else if(this.print().equals("6")){
+			points[0]=new Point(4,4);
+			points[1]=new Point(5,13);
+			points[2]=new Point(4,23);
+			points[3]=new Point(14,5);
+			points[4]=new Point(14,22);
+			points[5]=new Point(23,3);
+			points[6]=new Point(23,10);
+			points[7]=new Point(22,16);
+			points[8]=new Point(21,24);
+		}
+		return points;
+	}
 
 	/**
 	 * returns a number corrosponding to the name KEY: 1 = miss Scarlett 2 =
