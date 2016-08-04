@@ -252,7 +252,7 @@ public class Game {
 					playerIndex = i;
 				}
 			}
-			//check going clockwise if a player contains one of the three cards
+			//check going clockwise if a player contains one of the three cards.
 			boolean found = false;
 			String item = "";
 			int playerHolding= 0;		
