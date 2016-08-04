@@ -196,11 +196,11 @@ public class Game {
 
 		// Player has won the game
 		if (solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true) {
-			System.out.println(currentPlayer.getName()+" You have guess correct and won the game!");
+			System.out.println("Player:"+currentPlayer.print()+" You have guess correct and won the game!");
 			System.out.println("Exiting game now");
 			System.exit(0);
 		} else {
-			System.out.println("Incorrect guess, You are out of the game");
+			System.out.println("Incorrect guess, You are out of the game \n");
 			player.lost();
 		}
 	}
@@ -317,7 +317,7 @@ public class Game {
 						board.printBoard();
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
-						System.out.println(currentPlayer.getLocation());
+						//System.out.println(currentPlayer.getLocation());
 						command = input.next();
 
 						if (command.equals("assumption")) {
