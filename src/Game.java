@@ -240,33 +240,12 @@ public class Game {
 		Guess guess = new Guess(room, weapon, suspect);
 		/*------------------------------------------------------------------------------------------*/
 		
-			for(Player p : players){
-				if (p.getName().equals(guess.getMurderer())) {
-					p.setLocation(currentPlayer.getLocation());
-					p.setInRoom(true);
+			for(Player p: players){
+				if(p.getName().equals(guess.getMurderer().getName())){
+					//Move accused player into same room as current player
+					
 				}
 			}
-			
-			boolean found = false;
-			while (found = false) {
-			for (Player p : players) {
-
-				if (p.holds(guess.getRoom()) && found == false) {// If the player holds the room// card
-		
-					System.out.println(p.getName() + " holds: " + guess.getRoom().getName());
-					found = true;
-				}
-				if (p.holds(guess.getMurderer()) && found == false) {// If the player holds the// suspect card
-													
-					System.out.println(p.getName() + " holds: " + guess.getMurderer().getName());
-					found = true;
-				}
-				if (p.holds(guess.getWeapon()) && found == false) {// If the player holds the // weapon card
-					System.out.println(p.getName() + " holds: " + guess.getWeapon().getName());
-					found = true;
-				}
-			}
-		}
 
 	}
 
