@@ -337,7 +337,7 @@ public class Board {
 					&& (this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
 				Game.roll=0;
-			}else{
+			}else{ 
 			player.setLocation(doors.get(0));
 			player.inRoom=false;
 			}

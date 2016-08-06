@@ -72,7 +72,7 @@ public class Tests {
 		assertFalse(currentPlayer.inRoom);
 	}
 	
-	
+
 	@Test
 	/**
 	 * tests roll is between 2 and 12
@@ -145,30 +145,6 @@ public class Tests {
 		game.board.leaveRoom(currentPlayer);
 		assertFalse(currentPlayer.inRoom);
 	}
-	
-	@Test
-	/**
-	 * checks that you cant leave a room if the doors are blocked
-	 */
-	public void testBlockedInRoom(){
-		
-		Game game = new Game(5);
-		game.loadAllCards();
-		game.generateSolution();
-		game.shuffleDeck();
-		game.createPlayers();
-		game.dealCards();
-		game.loadBoard();
-		Player currentPlayer = game.players.get(0);
-		Point destination = new Point(7,19);
-		Point door = new Point (6,19);
-		Point lookAhead = new Point(door.x - 1, door.y);
-		//game.board.move(currentPlayer, new Point(destination.x, destination.y - 1), new Point(destination.x, destination.y - 1));
-		game.board.move(currentPlayer, door, lookAhead);//p1 in conservatory
-		System.out.println(game.board.getTiles()[currentPlayer.getLocation().x][currentPlayer.getLocation().y].print());
-		System.out.println(currentPlayer.getLocation());
-		assertTrue(currentPlayer.inRoom);
-	}
-	
+
 	
 }
