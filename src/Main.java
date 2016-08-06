@@ -42,14 +42,20 @@ public class Main {
 	private static void makePlayers() {
 		numPlayers = 0;
 		input = new Scanner(System.in);
-
+		int players = 0;
 		System.out.println("How many players(Please enter a number between 3 and 6):");
 		try {
-			numPlayers = input.nextInt();
+			players = input.nextInt();
+			if(players>6 || players<3){
+				System.out.println("Invalid number of players.");
+				makePlayers();
+			}
+			numPlayers = players;
 		} catch (InputMismatchException e) {
 			System.out.println("Value entered was not a number");
+			makePlayers();
 		}
-
+		
 	}
 
 }
