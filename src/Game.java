@@ -70,9 +70,9 @@ public class Game {
 		WeaponCard leadPipe = new WeaponCard("leadPipe");
 		WeaponCard rope = new WeaponCard("rope");
 		WeaponCard wrench = new WeaponCard("wrench");
+		weaponCards.add(candleStick);
 		weaponCards.add(revolver);
 		weaponCards.add(knife);
-		weaponCards.add(candleStick);
 		weaponCards.add(leadPipe);
 		weaponCards.add(rope);
 		weaponCards.add(wrench);
@@ -120,12 +120,9 @@ public class Game {
 	 * picks a random suspect,weapon and room from arrays above.
 	 */
 	public void generateSolution() {
-/*		int suspectIndex = (int) (Math.random() * 5);
+		int suspectIndex = (int) (Math.random() * 5);
 		int roomIndex = (int) (Math.random() * 8);
-		int weaponIndex = (int) (Math.random() * 5);*/
-		int suspectIndex = 0;
-		int roomIndex = 0;
-		int weaponIndex = 0;
+		int weaponIndex = (int) (Math.random() * 5);
 		solution = new Solution(roomCards.get(roomIndex), weaponCards.get(weaponIndex), suspectCards.get(suspectIndex));
 		// Remove cards from deck
 		roomCards.remove(roomIndex);
