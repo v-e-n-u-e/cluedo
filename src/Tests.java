@@ -111,4 +111,24 @@ public class Tests {
 				currentPlayer.getLocation().y + 1);
 		assertFalse(game.board.canMove(currentPlayer, destination));
 	}
+	
+	@Test
+	/**
+	 * checks that you cant leave a room if you arnt in one
+	 */
+	public void testInvalidLeaveRoom(){
+		
+		Game game = new Game(5);
+		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
+		game.createPlayers();
+		game.dealCards();
+		game.loadBoard();
+		Player currentPlayer = game.players.get(0);
+		game.board.leaveRoom(currentPlayer);
+		assertFalse(currentPlayer.inRoom);
+	}
+	
+	
 }
