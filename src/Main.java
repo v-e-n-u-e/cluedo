@@ -2,6 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 	
 	private static int numPlayers;
 	private static Scanner input;

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
+	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 
 	Solution solution; // each game will have one solution
 	Board board; // each game will have one board

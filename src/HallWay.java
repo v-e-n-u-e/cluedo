@@ -1,4 +1,5 @@
 import java.awt.Point;
+//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 
 public class HallWay implements Tile {
 	Point pos;

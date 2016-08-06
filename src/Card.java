@@ -1,6 +1,6 @@
 /**
  * A Card can be either a Weapon,Suspect or Room
- * @author Connor
+ * THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
  *
  */
 

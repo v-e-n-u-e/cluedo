@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Board {
 	private Tile[][] tiles;
 	private Scanner input;
-	/**
+	/**THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 	 * upon Construction, loads the board. KEY:
 	 * # = wall
 	 * + = hallway
