@@ -190,7 +190,7 @@ public class Game {
 		Guess guess = new Guess(room, weapon, suspect);
 		// Player has won the game
 		if (solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true) {
-			System.out.println("Player:" + currentPlayer.print() + " You have guess correct and won the game!");
+			System.out.println("Player:" + currentPlayer.print() + " You have guessed correctly and won the game!");
 			System.out.println("Exiting game now");
 			System.exit(0);
 		} else {
