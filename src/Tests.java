@@ -71,10 +71,6 @@ public class Tests {
 		assertFalse(currentPlayer.inRoom);
 	}
 	
-	
-	
-	
-	
 	@Test
 	/**
 	 * tests roll is between 2 and 12
@@ -87,17 +83,8 @@ public class Tests {
 		game.createPlayers();
 		game.dealCards();
 		game.loadBoard();
-		assert(game.rollDice() == 2 ||
-				game.rollDice() == 3 ||
-				game.rollDice() == 4 ||
-				game.rollDice() == 5 ||
-				game.rollDice() == 6 ||
-				game.rollDice() == 7 ||
-				game.rollDice() == 8 ||
-				game.rollDice() == 9 ||
-				game.rollDice() == 10 ||
-				game.rollDice() == 11||
-				game.rollDice() == 12
+		assert(game.rollDice() >= 2 &&
+				game.rollDice() <= 12
 				);
 	}
 	
@@ -156,6 +143,5 @@ public class Tests {
 		game.board.leaveRoom(currentPlayer);
 		assertFalse(currentPlayer.inRoom);
 	}
-	
 	
 }

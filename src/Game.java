@@ -100,7 +100,7 @@ public class Game {
 		/*--------------------------*/
 
 		/* Loads Suspect Cards into array */
-		SuspectCard missScarlet = new SuspectCard("missScarlet");
+		SuspectCard missScarlet = new SuspectCard("missScarlett");
 		SuspectCard professorPlum = new SuspectCard("professorPlum");
 		SuspectCard mrsPeacock = new SuspectCard("mrsPeacock");
 		SuspectCard reverendGreen = new SuspectCard("reverendGreen");
@@ -186,9 +186,8 @@ public class Game {
 		System.out.println("Please pick a suspect: \n" + "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
 				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
 		suspect = input.nextInt();
-
+		
 		Guess guess = new Guess(room, weapon, suspect);
-
 		// Player has won the game
 		if (solution.checkSolution(guess.getRoom(), guess.getWeapon(), guess.getMurderer()) == true) {
 			System.out.println("Player:" + currentPlayer.print() + " You have guess correct and won the game!");
