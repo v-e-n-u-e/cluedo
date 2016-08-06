@@ -120,9 +120,12 @@ public class Game {
 	 * picks a random suspect,weapon and room from arrays above.
 	 */
 	public void generateSolution() {
-		int suspectIndex = (int) (Math.random() * 5);
+/*		int suspectIndex = (int) (Math.random() * 5);
 		int roomIndex = (int) (Math.random() * 8);
-		int weaponIndex = (int) (Math.random() * 5);
+		int weaponIndex = (int) (Math.random() * 5);*/
+		int suspectIndex = 0;
+		int roomIndex = 0;
+		int weaponIndex = 0;
 		solution = new Solution(roomCards.get(roomIndex), weaponCards.get(weaponIndex), suspectCards.get(suspectIndex));
 		// Remove cards from deck
 		roomCards.remove(roomIndex);
@@ -332,7 +335,7 @@ public class Game {
 
 
 			for(int i=playerIndex+1;i<numPlayers;i++){//i think we made it boys
-				System.out.println("loop2");
+				//System.out.println("loop2");
 				if(i == (numPlayers))//Loop back around
 					i=0;
 				

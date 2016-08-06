@@ -28,7 +28,7 @@ public class Tests {
 	
 	@Test
 	/**
-	 * transports player to just outside of door and then enters the room
+	 * test a player enters a room
 	 */
 	public void testValidEnter(){
 		
@@ -45,8 +45,33 @@ public class Tests {
 		Point lookAhead = new Point(door.x - 1, door.y);
 		game.board.move(currentPlayer, new Point(destination.x, destination.y - 1), new Point(destination.x, destination.y - 1));
 		game.board.move(currentPlayer, door, lookAhead);
+		System.out.println(game.board.getTiles()[currentPlayer.getLocation().x][currentPlayer.getLocation().y].print());
 		assertTrue(currentPlayer.inRoom());
 	}
+	
+	@Test
+	/**
+	 * test a player enters a room
+	 */
+	public void testValidLeaveRoom(){
+		
+		Game game = new Game(5);
+		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
+		game.createPlayers();
+		game.dealCards();
+		game.loadBoard();
+		Player currentPlayer = game.players.get(0);
+		Point destination = new Point(7,19);
+		Point door = new Point (6,19);
+		Point lookAhead = new Point(door.x - 1, door.y);
+		game.board.move(currentPlayer, new Point(destination.x, destination.y - 1), new Point(destination.x, destination.y - 1));
+		game.board.move(currentPlayer, door, lookAhead);
+		game.board.leaveRoom(currentPlayer);
+		assertFalse(currentPlayer.inRoom);
+	}
+	
 	
 	@Test
 	/**
@@ -60,17 +85,8 @@ public class Tests {
 		game.createPlayers();
 		game.dealCards();
 		game.loadBoard();
-		assert(game.rollDice() == 2 ||
-				game.rollDice() == 3 ||
-				game.rollDice() == 4 ||
-				game.rollDice() == 5 ||
-				game.rollDice() == 6 ||
-				game.rollDice() == 7 ||
-				game.rollDice() == 8 ||
-				game.rollDice() == 9 ||
-				game.rollDice() == 10 ||
-				game.rollDice() == 11||
-				game.rollDice() == 12
+		assert(game.rollDice() >= 2 &&
+				game.rollDice() <= 12
 				);
 	}
 	
@@ -111,4 +127,48 @@ public class Tests {
 				currentPlayer.getLocation().y + 1);
 		assertFalse(game.board.canMove(currentPlayer, destination));
 	}
+	
+	@Test
+	/**
+	 * checks that you cant leave a room if you arnt in one
+	 */
+	public void testInvalidLeaveRoom(){
+		
+		Game game = new Game(5);
+		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
+		game.createPlayers();
+		game.dealCards();
+		game.loadBoard();
+		Player currentPlayer = game.players.get(0);
+		game.board.leaveRoom(currentPlayer);
+		assertFalse(currentPlayer.inRoom);
+	}
+	
+	@Test
+	/**
+	 * checks that you cant leave a room if the doors are blocked
+	 */
+	public void testBlockedInRoom(){
+		
+		Game game = new Game(5);
+		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
+		game.createPlayers();
+		game.dealCards();
+		game.loadBoard();
+		Player currentPlayer = game.players.get(0);
+		Point destination = new Point(7,19);
+		Point door = new Point (6,19);
+		Point lookAhead = new Point(door.x - 1, door.y);
+		//game.board.move(currentPlayer, new Point(destination.x, destination.y - 1), new Point(destination.x, destination.y - 1));
+		game.board.move(currentPlayer, door, lookAhead);//p1 in conservatory
+		System.out.println(game.board.getTiles()[currentPlayer.getLocation().x][currentPlayer.getLocation().y].print());
+		System.out.println(currentPlayer.getLocation());
+		assertTrue(currentPlayer.inRoom);
+	}
+	
+	
 }

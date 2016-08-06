@@ -245,7 +245,8 @@ public class Board {
 				player.inRoom=false;
 			}
 			else{
-				System.out.println("Someone's blocking that door!");
+				System.out.println("Invalid door to leave from!");
+				Game.roll++;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("l")){//Leaving lounge
@@ -265,7 +266,7 @@ public class Board {
 			doors.add(new Point(9,7));//bottom left
 			doors.add(new Point(15,7));//bottom right
 			doors.add(new Point(16,5));//right
-			System.out.println("Which door would you like to exit from?\n left|bottom left|bottom right|right");			
+			System.out.println("Which door would you like to exit from?\n left|bottomleft|bottomright|right");			
 			command=input.next();
 			if((this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)
 					&& (this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)
@@ -278,11 +279,11 @@ public class Board {
 				player.setLocation(doors.get(0));
 				player.inRoom=false;
 			}
-			else if(command.equals("bottom left")  && !(this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
+			else if(command.equals("bottomleft")  && !(this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){
 				player.setLocation(doors.get(1));
 				player.inRoom=false;
 			}
-			else if(command.equals("bottom right")  && !(this.getTiles()[doors.get(2).y+1][doors.get(2).x] instanceof Player)){
+			else if(command.equals("bottomright")  && !(this.getTiles()[doors.get(2).y+1][doors.get(2).x] instanceof Player)){
 				player.setLocation(doors.get(2));
 				player.inRoom=false;
 			}
@@ -290,13 +291,17 @@ public class Board {
 				player.setLocation(doors.get(3));
 				player.inRoom=false;
 			}
+			else{
+				System.out.println("Invalid door to leave from!");
+				Game.roll++;
+			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("H")){//Leaving hall
 			doors.add(new Point(11,18));//left
 			doors.add(new Point(12,18));//middle
 			doors.add(new Point(13,18));//right
 			doors.add(new Point(15,20));//bottom right
-			System.out.println("Which door would you like to exit from?\n left|middle|right|bottom right");			
+			System.out.println("Which door would you like to exit from?\n left|middle|right|bottomright");			
 			command=input.next();
 			if((this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(1).y-1][doors.get(1).x] instanceof Player)
@@ -317,9 +322,13 @@ public class Board {
 				player.setLocation(doors.get(2));
 				player.inRoom=false;
 			}
-			else if(command.equals("bottom right")  && !(this.getTiles()[doors.get(3).y][doors.get(3).x+1] instanceof Player)){
+			else if(command.equals("bottomright")  && !(this.getTiles()[doors.get(3).y][doors.get(3).x+1] instanceof Player)){
 				player.setLocation(doors.get(3));
 				player.inRoom=false;
+			}
+			else{
+				System.out.println("Invalid door to leave from!");
+				Game.roll++;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("C")){//Leaving conservatory
@@ -351,6 +360,10 @@ public class Board {
 				player.setLocation(doors.get(1));
 				player.inRoom=false;
 			}
+			else{
+				System.out.println("Invalid door to leave from!");
+				Game.roll++;
+			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("L")){//Leaving library
 			doors.add(new Point(21,14));//top
@@ -369,6 +382,10 @@ public class Board {
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(1).y][doors.get(1).x-1] instanceof Player)){
 				player.setLocation(doors.get(1));
 				player.inRoom=false;
+			}
+			else{
+				System.out.println("Invalid door to leave from!");
+				Game.roll++;
 			}
 		}
 		else if(this.getTiles()[py-1][px-1].print().equals("S")){//Leaving study

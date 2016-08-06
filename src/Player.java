@@ -99,7 +99,6 @@ public class Player implements Tile {
 	 */
 	public void addCard(Card card) {
 		hand.add(card);
-
 	}
 	
 	/**
