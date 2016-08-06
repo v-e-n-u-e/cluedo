@@ -40,11 +40,17 @@ public class Tests {
 		game.dealCards();
 		game.loadBoard();
 		Player currentPlayer = game.players.get(0);
-		Point destination = new Point(7,21);
-		Point door = new Point (6,21);
+		Point destination = new Point(7,18);
+		Point door = new Point (6,18);
 		Point lookAhead = new Point(destination.x - 1, destination.y);
-		game.board.move(currentPlayer, destination, new Point(destination.x, destination.y - 1));
-		game.board.move(currentPlayer, door, lookAhead);
+		game.board.move(currentPlayer, new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 1), new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 2));
+		game.board.move(currentPlayer, new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 1), new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 2));
+		game.board.move(currentPlayer, new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 1), new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 2));
+		game.board.move(currentPlayer, new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 1), new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 2));
+		game.board.move(currentPlayer, new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 1), new Point(currentPlayer.getLocation().x, currentPlayer.getLocation().y - 2));
+		game.board.move(currentPlayer, new Point(currentPlayer.getLocation().x-1, currentPlayer.getLocation().y), new Point(currentPlayer.getLocation().x-2, currentPlayer.getLocation().y));
+		//game.board.move(currentPlayer, new Point(destination.x, destination.y - 1), new Point(destination.x, destination.y - 1));
+		//game.board.move(currentPlayer, door, lookAhead);
 		assertTrue(currentPlayer.inRoom());
 	}
 	
