@@ -1,6 +1,8 @@
 # cluedo
-oh boy
 
-Item will be interface containing relevant methods for all different weapons.
-Weapons will probably just be differentiated by their names, seeing as they all
-act in the same way. A player could also be an item, we'll see.
+To run the Cluedo game, right click on the main and click run as java application.
+Then open up your console and it will have printed how many players you want to player with
+enter a number and then follow the instructions printed in the console. Please type the commands
+as they are printed in the console.
+
+Thanks and enjoy the game!
