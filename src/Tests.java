@@ -80,6 +80,35 @@ public class Tests {
 	 */
 	public void testInvalidMove(){
 		
+		Game game = new Game(5);
+		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
+		game.createPlayers();
+		game.dealCards();
+		game.loadBoard();
+		Player currentPlayer = game.players.get(0);
+		Point destination = new Point(currentPlayer.getLocation().x - 1,
+				currentPlayer.getLocation().y);
+		assertFalse(game.board.canMove(currentPlayer, destination));
 	}
 	
+	@Test
+	/**
+	 * checks you cant move onto a null square
+	 */
+	public void testInvalidMoveToNull(){
+		
+		Game game = new Game(5);
+		game.loadAllCards();
+		game.generateSolution();
+		game.shuffleDeck();
+		game.createPlayers();
+		game.dealCards();
+		game.loadBoard();
+		Player currentPlayer = game.players.get(0);
+		Point destination = new Point(currentPlayer.getLocation().x,
+				currentPlayer.getLocation().y + 1);
+		assertFalse(game.board.canMove(currentPlayer, destination));
+	}
 }
