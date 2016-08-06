@@ -203,7 +203,12 @@ public class Board {
 			getTiles()[p.getLocation().y][p.getLocation().x] = p;
 		}
 	}
-	
+	/**
+	 * once called the player can leave the room, if the room has multiple doors
+	 * then the user is asked which door they would like to leave from. once left the player
+	 * is placed in the door square
+	 * @param player
+	 */
 	public void leaveRoom(Player player){
 		Point pLoc = player.getLocation();
 		ArrayList<Point> doors = new ArrayList<Point>();

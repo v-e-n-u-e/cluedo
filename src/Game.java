@@ -160,17 +160,6 @@ public class Game {
 	}
 
 	/**
-	 * returns the next player to have their turn
-	 * 
-	 * @param current
-	 * @return
-	 */
-	public Player nextPlayer(Player current) {
-
-		return null;
-	}
-
-	/**
 	 * make an Accusation, player can win or lose off this move The player picks
 	 * a room,a weapon and a suspect from the list printed.
 	 * 
@@ -340,8 +329,7 @@ public class Game {
 			if(playerIndex+1==numPlayers){
 				playerIndex=-1;
 			}
-			for(int i=playerIndex+1;i<numPlayers;i++){//THIS WILL NEVER WORK ON THE LAST PLAYER. DOES NOT LOOP BACK THROUGH PROPERLY
-				System.out.println("loop2");
+			for(int i=playerIndex+1;i<numPlayers;i++){
 				if(i == playerIndex){
 					break;			//We have looped around
 				/*----------check hand contains cards-------------*/
@@ -427,7 +415,7 @@ public class Game {
 					System.out.println("your hand is :" + currentPlayer.handString());
 					System.out.println("Commands:|up|down|left|right|");
 					System.out.println("         assumption (Must be in a room)");
-					System.out.println("         accusation (Must be in a room)");
+					System.out.println("         accusation");
 					System.out.println("         leave      (Must be in a room)");
 
 					while (roll != 0/* && currentPlayer.inRoom() == false */) {

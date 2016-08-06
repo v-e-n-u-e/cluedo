@@ -102,8 +102,11 @@ public class Player implements Tile {
 
 	}
 	
-	//this will return an arraylist containing positions this player goes into when entering rooms. 
-	//this goes from top to bottom, left to right. e.g. kitchen is first, study is last.
+	/**
+	 * this will return an arraylist containing positions this player goes into when entering rooms. 
+	 * this goes from top to bottom, left to right. e.g. kitchen is first, study is last.
+	 * @return
+	 */
 	public Point[] getRoomPos(){
 		Point[] points = new Point[9];
 		if(this.print().equals("1")){
