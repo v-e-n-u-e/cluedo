@@ -1,8 +1,16 @@
+package Board;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+
+import cards.Card;
+import cards.Guess;
+import cards.RoomCard;
+import cards.Solution;
+import cards.SuspectCard;
+import cards.WeaponCard;
 
 public class Game {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY

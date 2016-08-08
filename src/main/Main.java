@@ -1,5 +1,8 @@
+package main;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import Board.Game;
 
 public class Main {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY

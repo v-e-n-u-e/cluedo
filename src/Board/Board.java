@@ -1,9 +1,15 @@
+package Board;
 import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import tiles.Door;
+import tiles.HallWay;
+import tiles.Room;
+import tiles.Tile;
 
 public class Board {
 	private Tile[][] tiles;
