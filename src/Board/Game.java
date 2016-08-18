@@ -22,7 +22,7 @@ public class Game {
 	List<Card> weaponCards = new ArrayList<Card>();
 	List<Card> roomCards = new ArrayList<Card>();
 	List<Card> suspectCards = new ArrayList<Card>();
-	List<Player> players = new ArrayList<Player>();
+	public List<Player> players = new ArrayList<Player>();
 	int numPlayers;
 	private Scanner input;
 	public static int roll;

@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Board.Game;
+import gui.CluedoFrame;
 
 public class Main {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
@@ -12,52 +13,19 @@ public class Main {
 	static Game game;
 
 	public static void main(String[] args) {
-		System.out.println("====================================================================================================================================================");
-		System.out.println("##      ## ######## ##        ######   #######  ##     ## ########    ########  #######      ######  ##       ##     ## ######## ########   #######  ");
-		System.out.println("##  ##  ## ##       ##       ##    ## ##     ## ###   ### ##             ##    ##     ##    ##    ## ##       ##     ## ##       ##     ## ##     ##");
-		System.out.println("##  ##  ## ##       ##       ##       ##     ## #### #### ##             ##    ##     ##    ##       ##       ##     ## ##       ##     ## ##     ## ");
-		System.out.println("##  ##  ## ######   ##       ##       ##     ## ## ### ## ######         ##    ##     ##    ##       ##       ##     ## ######   ##     ## ##     ##");
-		System.out.println("##  ##  ## ##       ##       ##       ##     ## ##     ## ##             ##    ##     ##    ##       ##       ##     ## ##       ##     ## ##     ##");
-		System.out.println("##  ##  ## ##       ##       ##    ## ##     ## ##     ## ##             ##    ##     ##    ##    ## ##       ##     ## ##       ##     ## ##     ## ");
-		System.out.println(" ###  ###  ######## ########  ######   #######  ##     ## ########       ##     #######      ######  ########  #######  ######## ########   ####### ");
-		System.out.println("====================================================================================================================================================");
-		System.out.println("KEY:    D=Door             +=Hallway       #=Wall      K=Kitchen \n");
-		System.out.println("        C=Conservatory     S=Study         L=Library   b=Billiard Room \n");
-		System.out.println("        B=Ballroom         d=Dining Room   H=Hall      l=Lounge \n");
-		makePlayers();
-		
 		/*Initialization-----*/
+		CluedoFrame cluedoframe = new CluedoFrame();
+		numPlayers = cluedoframe.numPlayers();
 		game = new Game(numPlayers);
 		game.loadAllCards();
 		game.generateSolution();
 		game.shuffleDeck();
 		game.createPlayers();
+		cluedoframe.selectCharacters(game.players);
 		game.dealCards();
 		game.loadBoard();
 		/*--------------------*/
 		game.running();// rest of operations will take place inside the game class
-		
-	}
-	/**
-	 * asks the user for number of players and stores in a local field
-	 * number must be between 3 and 6.
-	 */
-	private static void makePlayers() {
-		numPlayers = 0;
-		input = new Scanner(System.in);
-		int players = 0;
-		System.out.println("How many players(Please enter a number between 3 and 6):");
-		try {
-			players = input.nextInt();
-			if(players>6 || players<3){
-				System.out.println("Invalid number of players.");
-				makePlayers();
-			}
-			numPlayers = players;
-		} catch (InputMismatchException e) {
-			System.out.println("Value entered was not a number");
-			makePlayers();
-		}
 		
 	}
 
