@@ -16,11 +16,18 @@ import Board.Player;
 
 public class CluedoFrame extends JFrame implements WindowListener {
 
-	public JButton button1;
+	public JFrame cluedoFrame;
+	public JButton assumption,accusation,leave,cards,notes;
 	public JTextField textField1;
 	public JTextArea textArea1;
 	public JPanel selectionPanel;
 	public JRadioButton missScarlett, colonelMustard, professorPlum, reverendGreen, mrsWhite, mrsPeacock;
+	private JMenu jMenu1;
+	private JMenu jMenu2;
+	private JMenuBar jMenuBar;
+	private JMenuItem exit;
+	private JMenuItem showCards;
+	private JMenuItem showHelp;
 
 	public static void main(String[] args) {
 		new CluedoFrame();
@@ -30,25 +37,28 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public CluedoFrame() {
 		// Creates Frame.
 		super("CLUEDO");
+		this.cluedoFrame = this;
+		JOptionPane.showMessageDialog(null,  "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
 		this.setSize(400, 400);
 		this.setLocationRelativeTo(null);
+		
 		// tell frame to fire a WindowsListener event
 		// but not to close when "x" button clicked.
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		addWindowListener(this);
-
+		
 		// Panel stuff.
 		JPanel panelOne = new JPanel(); // is a "Section" on the frame
-		JLabel labelOne = new JLabel("Label");
-		labelOne.setText("Label");
+		JLabel labelOne = new JLabel("<html>hello world blah blah<br> more shit down here</html>");
 		labelOne.setToolTipText("This shows when hovering");
 
 		// Buttons.
-		button1 = new JButton("button");
-		button1.setContentAreaFilled(false);
-		button1.setText("new button");
+		assumption = new JButton("Assumption");
+		assumption.setContentAreaFilled(false);
+		assumption.setText("Assumption");
+		assumption.setToolTipText("Click here to make an assumption");
 		ListenForButton lForButton = new ListenForButton();
-		button1.addActionListener(lForButton);
+		assumption.addActionListener(lForButton);
 
 		// Text Field.
 		textField1 = new JTextField("TextField", 15);
@@ -80,9 +90,12 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		selectionPanel.add(mrsPeacock);
 		selectionPanel.add(reverendGreen);
 		selectionPanel.add(mrsWhite);
-
+		
+		// Menu.
+		setUpMenu();
+		
 		// Connecting Components.panelOne
-		panelOne.add(button1);
+		panelOne.add(assumption);
 		panelOne.add(textField1);
 		panelOne.add(labelOne); // adds label to "Section" one
 		panelOne.add(scrollBar1);
@@ -92,6 +105,69 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		ListenForMouse lForMouse = new ListenForMouse();
 		panelOne.addMouseListener(lForMouse);
 
+	}
+	/**
+	 * initializes the Jmenu
+	 */
+	private void setUpMenu() {
+		jMenuBar = new javax.swing.JMenuBar();
+		jMenu1 = new javax.swing.JMenu();
+		jMenu2 = new javax.swing.JMenu();
+		jMenu1.setText("Options");
+		exit = new JMenuItem("Exit");
+		showCards = new JMenuItem("Cards");
+		showHelp = new JMenuItem("Help");
+		
+		//setup Listener
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				int r = JOptionPane.showConfirmDialog(cluedoFrame, new JLabel(
+						"Are you sure you wish to exit?"), "Confirm Exit",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (r == JOptionPane.YES_OPTION) {
+					System.exit(0);
+				}
+			}
+
+		});
+		
+		//setup Listener
+		showHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				JFrame helpFrame = new JFrame("HELP");
+				JPanel helpPanel = new JPanel();
+				//sets up button
+				JButton close = new JButton("Close");
+				close.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent event) {
+						helpFrame.dispose();
+					}
+				});
+				
+				JLabel text = new JLabel("<html>Move around the board using the arrow keys<br>"
+						+ "You cannot make an assumption if you are<br>"
+						+ " not in a room. If you make an accusation<br>"
+						+ " and you are wrong you will be removed<br>"
+						+ " from the game. However if you are correct<br>"
+						+ " Then you win the game. To leave a room<br>"
+						+ " press the leave button.</html>");
+				
+				//set to pop up
+				helpPanel.add(text);
+				helpPanel.add(close);
+				helpFrame.add(helpPanel);
+				helpFrame.pack();
+				helpFrame.setLocationRelativeTo(cluedoFrame);
+				helpFrame.setVisible(true);
+			}
+		});
+		
+		//add to JMenus
+		jMenu1.add(exit);
+		jMenu1.add(showHelp);
+		jMenuBar.add(jMenu1);
+		this.setJMenuBar(jMenuBar);
+		
 	}
 
 	/**
@@ -108,9 +184,14 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 	}
 
+	/**
+	 * 
+	 * brings up a JWindow with selection via radio button, when one is selected the option is greyed out.
+	 */
 	public void selectCharacters(List<Player> players) {
 		for (Player p : players) {
-			//JOptionPane.showOptionDialog(null, selectionPanel);
+			JOptionPane.showInputDialog(null,selectionPanel);
+			p.setName("New name");
 		}
 
 	}
@@ -159,7 +240,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == button1) {
+			if (e.getSource() == assumption) {
 				textArea1.append("button1 pressed");
 				JOptionPane.showMessageDialog(CluedoFrame.this, "you have pressed the button", "title of message",
 						JOptionPane.PLAIN_MESSAGE);
