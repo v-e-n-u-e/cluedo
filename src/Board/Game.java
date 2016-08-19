@@ -16,7 +16,7 @@ public class Game {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 
 	Solution solution; // each game will have one solution
-	Board board; // each game will have one board
+	public Board board; // each game will have one board
 	Player currentPlayer;
 	List<Card> shuffledCards = new ArrayList<Card>();
 	List<Card> weaponCards = new ArrayList<Card>();
@@ -27,8 +27,12 @@ public class Game {
 	private Scanner input;
 	public static int roll;
 
-	public Game(int players) {
-		this.numPlayers = players;
+	public Game() {
+		
+	}
+	
+	public void setPlayers(int players){
+		this.numPlayers= players;
 	}
 
 	/**

@@ -12,6 +12,8 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import Board.Board;
+import Board.Game;
 import Board.Player;
 
 public class CluedoFrame extends JFrame implements WindowListener {
@@ -21,7 +23,9 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public JTextField textField1;
 	public JTextArea textArea1;
 	public JPanel selectionPanel;
+	public JPanel[][] tiles;
 	public JRadioButton missScarlett, colonelMustard, professorPlum, reverendGreen, mrsWhite, mrsPeacock;
+	public Game game;
 	private JMenu jMenu1;
 	private JMenu jMenu2;
 	private JMenuBar jMenuBar;
@@ -29,18 +33,13 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	private JMenuItem showCards;
 	private JMenuItem showHelp;
 
-	public static void main(String[] args) {
-		new CluedoFrame();
-
-	}
-
 	public CluedoFrame() {
 		// Creates Frame.
 		super("CLUEDO");
 		this.cluedoFrame = this;
 		this.setLayout(new BorderLayout());
 		JOptionPane.showMessageDialog(null,  "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
-		this.setSize(400, 400);
+		this.setSize(500, 500);
 		this.setLocationRelativeTo(null);
 		
 		// tell frame to fire a WindowsListener event
@@ -53,7 +52,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setLayout(new BorderLayout());
 		JPanel bottomLeftPanel = new JPanel();
-		bottomLeftPanel.setLayout(new GridLayout(1,4));
+		bottomLeftPanel.setLayout(new GridLayout(4,1));
 		JPanel leftPanel = new JPanel();
 		JPanel rightPanel = new JPanel();
 		JPanel centerPanel = new JPanel();
@@ -89,31 +88,35 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		
 
 		// RadioButtons.
-		missScarlett = new JRadioButton("missScarlett");
-		professorPlum = new JRadioButton("professorPlum");
-		colonelMustard = new JRadioButton("colonelMustard");
-		mrsPeacock = new JRadioButton("mrsPeacock");
-		reverendGreen = new JRadioButton("reverendGreen");
-		mrsWhite = new JRadioButton("mrsWhite");
-		selectionPanel = new JPanel();
-		Border selectionBorder = BorderFactory.createTitledBorder("Character");
-		selectionPanel.setBorder(selectionBorder);
-		selectionPanel.add(missScarlett);
-		selectionPanel.add(professorPlum);
-		selectionPanel.add(colonelMustard);
-		selectionPanel.add(mrsPeacock);
-		selectionPanel.add(reverendGreen);
-		selectionPanel.add(mrsWhite);
+		setupRadioButtons(lForButton);
 		
 		// Menu.
 		setUpMenu();
 		
 		// Connecting Components.bottomPanel
-		bottomPanel.add(assumption);
-		bottomPanel.add(accusation);
-		bottomPanel.add(leave);
-		bottomPanel.add(cards);
+		bottomLeftPanel.add(assumption);
+		bottomLeftPanel.add(accusation);
+		bottomLeftPanel.add(leave);
+		bottomLeftPanel.add(cards);
+		JTextArea notes = new JTextArea(10,10);
+		notes.setText("Notes...");
+		notes.setLineWrap(true);
+		JScrollPane notesScroll = new JScrollPane(notes,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		bottomPanel.add(notesScroll, BorderLayout.EAST);
+		bottomPanel.add(bottomLeftPanel,BorderLayout.WEST);
 		
+		//Create Board
+		if(game == null){
+			System.out.println("fuck you");
+		}
+		/*drawBoard(game.board);
+		JPanel gridPanel = new JPanel(new GridLayout(25, 25, 1, 1));
+    	for(int i = 0; i <25 ; i++){
+    		for(int j = 0; j < 25; j++){
+    			gridPanel.add(tiles[i][j]);
+    		}
+    	}
+		centerPanel.add(gridPanel);*/
 		// Connecting Components.topPanel
 		topPanel.add(labelOne); // adds label to "Section" one
 		this.add(topPanel,BorderLayout.NORTH);
@@ -126,9 +129,44 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		centerPanel.addMouseListener(lForMouse);
 
 	}
-	
-	
-	
+
+	/**
+	 * initializes radio buttons and adds listeners
+	 * @param lForButton
+	 */
+	private void setupRadioButtons(ListenForButton lForButton) {
+		
+		missScarlett = new JRadioButton("missScarlett");
+		professorPlum = new JRadioButton("professorPlum");
+		colonelMustard = new JRadioButton("colonelMustard");
+		mrsPeacock = new JRadioButton("mrsPeacock");
+		reverendGreen = new JRadioButton("reverendGreen");
+		mrsWhite = new JRadioButton("mrsWhite");
+		ButtonGroup group = new ButtonGroup();
+		group.add(missScarlett);
+		group.add(professorPlum);
+		group.add(colonelMustard);
+		group.add(mrsPeacock);
+		group.add(reverendGreen);
+		group.add(mrsWhite);
+		missScarlett.addActionListener(lForButton);
+		professorPlum.addActionListener(lForButton);
+		colonelMustard.addActionListener(lForButton);
+		mrsPeacock.addActionListener(lForButton);
+		reverendGreen.addActionListener(lForButton);
+		mrsWhite.addActionListener(lForButton);
+		selectionPanel = new JPanel();
+		Border selectionBorder = BorderFactory.createTitledBorder("Character");
+		selectionPanel.setBorder(selectionBorder);
+		selectionPanel.add(missScarlett);
+		selectionPanel.add(professorPlum);
+		selectionPanel.add(colonelMustard);
+		selectionPanel.add(mrsPeacock);
+		selectionPanel.add(reverendGreen);
+		selectionPanel.add(mrsWhite);
+		
+	}
+
 	/**
 	 * initializes the Jmenu
 	 */
@@ -196,6 +234,25 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		
 	}
 
+	public void drawBoard(Board board){
+		tiles = new JPanel[25][25];
+		for(int x = 0; x < 25; x++){
+			for(int y = 0; y < 25; y++){
+				tiles[x][y] = new JPanel();
+				JLabel label = new JLabel();
+				label.setBackground(Color.DARK_GRAY);
+				tiles[x][y].add(label);
+				if(board.getTiles()[x][y].print().equals("+")){
+					label.setIcon(new ImageIcon("hallway.png"));
+				}
+				else if(board.getTiles()[x][y].print().equals("D")){
+					label.setIcon(new ImageIcon("door.png"));
+				}
+				label.setVisible(true);
+			}
+		}
+	}
+	
 	/**
 	 * returns the number of the user enters
 	 * 
