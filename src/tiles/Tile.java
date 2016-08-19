@@ -1,6 +1,8 @@
 package tiles;
 import java.awt.Point;
 
+import javax.swing.Icon;
+
 public interface Tile { 
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 	
@@ -12,5 +14,5 @@ public interface Tile {
 	 */
 	public String print();
 	
-	
+	public Icon getIcon();
 }

@@ -2,6 +2,9 @@ package tiles;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 public class Room implements Tile {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 	ArrayList<Point> doors;
@@ -79,6 +82,13 @@ public class Room implements Tile {
 			return "s";
 		}
 		return" ";
+	}
+
+
+	@Override
+	public Icon getIcon() {
+		// TODO Auto-generated method stub
+		return new ImageIcon("room.png");
 	}
 	
 }

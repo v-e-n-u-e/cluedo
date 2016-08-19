@@ -2,6 +2,9 @@ package tiles;
 import java.awt.Point;
 //THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 public class Door implements Tile {
 	Point pos;
 	String name;
@@ -63,4 +66,11 @@ public class Door implements Tile {
 	}
 	return "Not a door? hello?";
 	}
+	
+	@Override
+	public Icon getIcon() {
+		// TODO Auto-generated method stub
+		return new ImageIcon("door.png");
+	}
+	
 }

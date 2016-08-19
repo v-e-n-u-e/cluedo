@@ -3,6 +3,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import cards.Card;
 import tiles.Tile;
 
@@ -207,6 +210,29 @@ public class Player implements Tile {
 			return "6";
 		}
 		return null;
+	}
+
+	@Override
+	public Icon getIcon() {
+		// TODO Auto-generated method stub
+		if(this.print().equals("missScarlett")){
+			return new ImageIcon("scarlett.png");
+		}
+		else if(this.print().equals("professorPlum")){
+			return new ImageIcon("plum.png");
+		}
+		else if(this.print().equals("mrsPeacock")){
+			return new ImageIcon("peacock.png");
+		}
+		else if(this.print().equals("reverendGreen")){
+			return new ImageIcon("green.png");
+		}
+		else if(this.print().equals("colonelMustard")){
+			return new ImageIcon("mustard.png");
+		}
+		else{
+			return new ImageIcon("white.png");
+		}
 	}
 
 }
