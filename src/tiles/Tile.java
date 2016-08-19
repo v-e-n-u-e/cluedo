@@ -1,3 +1,4 @@
+package tiles;
 import java.awt.Point;
 
 public interface Tile { 

@@ -1,8 +1,16 @@
+package Board;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+
+import cards.Card;
+import cards.Guess;
+import cards.RoomCard;
+import cards.Solution;
+import cards.SuspectCard;
+import cards.WeaponCard;
 
 public class Game {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
@@ -14,7 +22,7 @@ public class Game {
 	List<Card> weaponCards = new ArrayList<Card>();
 	List<Card> roomCards = new ArrayList<Card>();
 	List<Card> suspectCards = new ArrayList<Card>();
-	List<Player> players = new ArrayList<Player>();
+	public List<Player> players = new ArrayList<Player>();
 	int numPlayers;
 	private Scanner input;
 	public static int roll;

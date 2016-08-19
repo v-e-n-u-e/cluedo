@@ -1,3 +1,4 @@
+package cards;
 
 public class WeaponCard implements Card {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
