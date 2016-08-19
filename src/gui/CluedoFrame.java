@@ -38,6 +38,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		// Creates Frame.
 		super("CLUEDO");
 		this.cluedoFrame = this;
+		this.setLayout(new BorderLayout());
 		JOptionPane.showMessageDialog(null,  "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
 		this.setSize(400, 400);
 		this.setLocationRelativeTo(null);
@@ -48,7 +49,15 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		addWindowListener(this);
 		
 		// Panel stuff.
-		JPanel panelOne = new JPanel(); // is a "Section" on the frame
+		JPanel topPanel = new JPanel(); // is a "Section" on the frame
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setLayout(new BorderLayout());
+		JPanel bottomLeftPanel = new JPanel();
+		bottomLeftPanel.setLayout(new GridLayout(1,4));
+		JPanel leftPanel = new JPanel();
+		JPanel rightPanel = new JPanel();
+		JPanel centerPanel = new JPanel();
+		
 		JLabel labelOne = new JLabel("<html>hello world blah blah<br> more shit down here</html>");
 		labelOne.setToolTipText("This shows when hovering");
 
@@ -57,22 +66,27 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		assumption.setContentAreaFilled(false);
 		assumption.setText("Assumption");
 		assumption.setToolTipText("Click here to make an assumption");
+		
+		accusation = new JButton("Accusation");
+		accusation.setContentAreaFilled(false);
+		accusation.setText("Accusation");
+		accusation.setToolTipText("Click here to make an accusation");
+		
+		leave = new JButton("Leave");
+		leave.setContentAreaFilled(false);
+		leave.setText("Leave");
+		leave.setToolTipText("Click here to Leave a room");
+		
+		cards = new JButton("Card");
+		cards.setContentAreaFilled(false);
+		cards.setText("Card");
+		cards.setToolTipText("Click here to display your cards");
+		
 		ListenForButton lForButton = new ListenForButton();
 		assumption.addActionListener(lForButton);
-
-		// Text Field.
-		textField1 = new JTextField("TextField", 15);
-		textField1.setColumns(10);
-		textField1.setText("Type again");
-
-		// Text Area.
-		textArea1 = new JTextArea(15, 20);
-		textArea1.setText("TextArea");
-		textArea1.setLineWrap(true);
-		JScrollPane scrollBar1 = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		textArea1.setWrapStyleWord(true);// Words dont span on other lines
-		textArea1.requestFocus();// Highlights on open
+		accusation.addActionListener(lForButton);
+		leave.addActionListener(lForButton);
+		
 
 		// RadioButtons.
 		missScarlett = new JRadioButton("missScarlett");
@@ -94,18 +108,27 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		// Menu.
 		setUpMenu();
 		
-		// Connecting Components.panelOne
-		panelOne.add(assumption);
-		panelOne.add(textField1);
-		panelOne.add(labelOne); // adds label to "Section" one
-		panelOne.add(scrollBar1);
-		panelOne.add(selectionPanel);// adds radio buttons
-		this.add(panelOne);
+		// Connecting Components.bottomPanel
+		bottomPanel.add(assumption);
+		bottomPanel.add(accusation);
+		bottomPanel.add(leave);
+		bottomPanel.add(cards);
+		
+		// Connecting Components.topPanel
+		topPanel.add(labelOne); // adds label to "Section" one
+		this.add(topPanel,BorderLayout.NORTH);
+		this.add(bottomPanel,BorderLayout.SOUTH);
+		this.add(leftPanel,BorderLayout.EAST);
+		this.add(rightPanel,BorderLayout.WEST);
+		this.add(centerPanel,BorderLayout.CENTER);
 		this.setVisible(true); // makes current window visable
 		ListenForMouse lForMouse = new ListenForMouse();
-		panelOne.addMouseListener(lForMouse);
+		centerPanel.addMouseListener(lForMouse);
 
 	}
+	
+	
+	
 	/**
 	 * initializes the Jmenu
 	 */
@@ -135,7 +158,9 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		showHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JFrame helpFrame = new JFrame("HELP");
-				JPanel helpPanel = new JPanel();
+				JPanel helpPaneltop = new JPanel();
+				JPanel helpPanelbottom = new JPanel();
+				helpFrame.setLayout(new BorderLayout());
 				//sets up button
 				JButton close = new JButton("Close");
 				close.addActionListener(new ActionListener(){
@@ -144,18 +169,19 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					}
 				});
 				
-				JLabel text = new JLabel("<html>Move around the board using the arrow keys<br>"
+				JLabel text = new JLabel("<html>Move around the board using the arrow keys<br><br>"
 						+ "You cannot make an assumption if you are<br>"
 						+ " not in a room. If you make an accusation<br>"
 						+ " and you are wrong you will be removed<br>"
 						+ " from the game. However if you are correct<br>"
-						+ " Then you win the game. To leave a room<br>"
+						+ " Then you win the game.<br><br> To leave a room"
 						+ " press the leave button.</html>");
 				
 				//set to pop up
-				helpPanel.add(text);
-				helpPanel.add(close);
-				helpFrame.add(helpPanel);
+				helpPaneltop.add(text);
+				helpPanelbottom.add(close);
+				helpFrame.add(helpPaneltop,BorderLayout.NORTH);
+				helpFrame.add(helpPanelbottom,BorderLayout.SOUTH);
 				helpFrame.pack();
 				helpFrame.setLocationRelativeTo(cluedoFrame);
 				helpFrame.setVisible(true);
@@ -205,7 +231,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		public void mouseClicked(MouseEvent e) {
 			int x = e.getX();
 			int y = e.getY();
-			textArea1.append("Xpos: " + x + " Ypos:" + y + " ");
+			System.out.println(("Xpos: " + x + " Ypos:" + y + " "));
 
 		}
 
@@ -241,7 +267,6 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == assumption) {
-				textArea1.append("button1 pressed");
 				JOptionPane.showMessageDialog(CluedoFrame.this, "you have pressed the button", "title of message",
 						JOptionPane.PLAIN_MESSAGE);
 			}
