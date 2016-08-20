@@ -44,6 +44,9 @@ public class Game {
 	public void setFrame(CluedoFrame frame){
 		this.cFrame=frame;
 	}
+	public List<Player> getPlayers(){
+		return players;
+	}
 
 	/**
 	 * creates and stores players in a list which is then going to be passed on
