@@ -27,6 +27,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public JFrame cluedoFrame;
 	public JButton assumption, accusation, leave, cards, notes;
 	public JTextField textField1;
+	public JLabel die = new JLabel();
 	public JTextArea textArea1;
 	public JPanel selectionPanel;
 	public JPanel[][] tiles;
@@ -139,6 +140,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		this.setVisible(true); // makes current window visable
 		ListenForMouse lForMouse = new ListenForMouse();
 		//centerPanel.addMouseListener(lForMouse);
+		
 		bottomPanel.addKeyListener(kListen);
 		bottomPanel.setFocusable(true);
 		bottomPanel.requestFocus();
@@ -289,7 +291,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					label.setIcon(board.getTiles()[x][y].getIcon());
 					}
 				} else {
-					label.setBackground(Color.DARK_GRAY);
+					label.setIcon(new ImageIcon("wall.png"));
 				}
 
 				label.setVisible(true);
@@ -305,7 +307,11 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		centerPanel.add(gridPanel);
 		this.add(centerPanel);
 		this.setVisible(true);
-
+		
+		die.setText("Moves left: " + String.valueOf(game.roll));
+		bottomPanel.add(die);
+		
+		die.setVisible(true);
 	}
 
 	/**

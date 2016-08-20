@@ -21,7 +21,7 @@ public class Game {
 
 	Solution solution; // each game will have one solution
 	Board board; // each game will have one board
-	Player currentPlayer;
+	public Player currentPlayer;
 	List<Card> shuffledCards = new ArrayList<Card>();
 	List<Card> weaponCards = new ArrayList<Card>();
 	List<Card> roomCards = new ArrayList<Card>();

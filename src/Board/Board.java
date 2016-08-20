@@ -550,7 +550,7 @@ public class Board {
 		if(destination.x>24 || destination.x<0){
 			return false;//don't go there
 		}
-		else if((playLoc!=destination)){//still has some room to move, not moving on same space somehow
+		else if((playLoc!=destination) && (this.getTiles()[destination.y][destination.x]!=null)){//still has some room to move, not moving on same space somehow
 			if((this.getTiles()[destination.y][destination.x].print()=="+" || //OK if it's a hallway
 					this.getTiles()[destination.y][destination.x].print()=="D")){ //OK if it's a door
 				return true;
