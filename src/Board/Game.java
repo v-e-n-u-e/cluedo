@@ -32,6 +32,10 @@ public class Game {
 	public Game(int players) {
 		this.numPlayers = players;
 	}
+	
+	public Board getBoard(){
+		return board;
+	}
 
 	/**
 	 * creates and stores players in a list which is then going to be passed on

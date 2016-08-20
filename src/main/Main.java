@@ -24,6 +24,7 @@ public class Main {
 		game.createPlayers();
 		game.dealCards();
 		game.loadBoard();
+		cluedoframe.drawBoard(game.getBoard());
 
 
 
