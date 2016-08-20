@@ -2,6 +2,8 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -93,13 +95,14 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		notes.setToolTipText("Click here to display your notes");
 		
 		ListenForButton lForButton = new ListenForButton();
+		itemListener iListen = new itemListener();
 		assumption.addActionListener(lForButton);
 		accusation.addActionListener(lForButton);
 		leave.addActionListener(lForButton);
 		
 
 		// RadioButtons.
-		setupRadioButtons(lForButton);
+		setupRadioButtons(iListen);
 		
 		// Menu.
 		setUpMenu();
@@ -110,7 +113,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		bottomLeftPanel.add(leave);
 
 		bottomPanel.add(cards);
-		bottomPanel.add(notes);
+		//bottomPanel.add(notes);
 
 		bottomLeftPanel.add(cards);
 		JTextArea notes = new JTextArea(10,10);
@@ -137,7 +140,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		topPanel.add(labelOne); // adds label to "Section" one
 		this.add(topPanel,BorderLayout.NORTH);
 		this.add(bottomPanel,BorderLayout.SOUTH);
-		this.add(bottomLeftPanel,BorderLayout.SOUTH);
+		bottomPanel.add(bottomLeftPanel,BorderLayout.WEST);
 		this.add(leftPanel,BorderLayout.EAST);
 		this.add(rightPanel,BorderLayout.WEST);
 		this.add(centerPanel,BorderLayout.CENTER);
@@ -149,9 +152,9 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 	/**
 	 * initializes radio buttons and adds listeners
-	 * @param lForButton
+	 * @param iListen
 	 */
-	private void setupRadioButtons(ListenForButton lForButton) {
+	private void setupRadioButtons(itemListener iListen) {
 		
 		missScarlett = new JRadioButton("missScarlett");
 		professorPlum = new JRadioButton("professorPlum");
@@ -168,12 +171,12 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		group.add(mrsWhite);
 		JPanel radioPanel = new JPanel();
 		radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.PAGE_AXIS));
-		missScarlett.addActionListener(lForButton);
-		professorPlum.addActionListener(lForButton);
-		colonelMustard.addActionListener(lForButton);
-		mrsPeacock.addActionListener(lForButton);
-		reverendGreen.addActionListener(lForButton);
-		mrsWhite.addActionListener(lForButton);
+		missScarlett.addItemListener(iListen);
+		professorPlum.addItemListener(iListen);
+		colonelMustard.addItemListener(iListen);
+		mrsPeacock.addItemListener(iListen);
+		reverendGreen.addItemListener(iListen);
+		mrsWhite.addItemListener(iListen);
 		selectionPanel = new JPanel();
 		Border selectionBorder = BorderFactory.createTitledBorder("Character");
 		selectionPanel.setBorder(selectionBorder);
@@ -338,6 +341,43 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 		}
 
+	}
+	
+	class itemListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+			
+			if(e.getStateChange()==ItemEvent.SELECTED){
+				if(e.getSource()==professorPlum){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Plum?", "Hello?",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				else if(e.getSource()==missScarlett){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Scarlett?", "Hello?",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				else if(e.getSource()==colonelMustard){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Mustard?", "Hello?",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				else if(e.getSource()==mrsWhite){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Mrs White?", "Hello?",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				else if(e.getSource()==reverendGreen){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Green?", "Hello?",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				else if(e.getSource()==mrsPeacock){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Peacock?", "Hello?",
+							JOptionPane.PLAIN_MESSAGE);
+				}	
+			}
+			
+		}
+		
 	}
 
 	// BUTTON

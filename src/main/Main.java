@@ -17,14 +17,16 @@ public class Main {
 		/*Initialization-----*/
 		CluedoFrame cluedoframe = new CluedoFrame();
 		numPlayers = cluedoframe.numPlayers();
-		game = new Game();
+		game = new Game(numPlayers);
 		game.loadAllCards();
 		game.generateSolution();
 		game.shuffleDeck();
 		game.createPlayers();
 		game.dealCards();
 		game.loadBoard();
-		game.setPlayers(numPlayers);
+		cluedoframe.selectCharacters(game.players);
+		game.loadBoard();
+		//game.setPlayers(numPlayers);
 		cluedoframe.selectCharacters(game.players);
 		/*--------------------*/
 		game.running();// rest of operations will take place inside the game class
