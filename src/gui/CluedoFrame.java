@@ -1,5 +1,4 @@
 package gui;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,10 +7,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.List;
-
 import javax.swing.*;
 import javax.swing.border.*;
-
+import Board.Board;
 import Board.Player;
 
 public class CluedoFrame extends JFrame implements WindowListener {
@@ -40,7 +38,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		this.cluedoFrame = this;
 		this.setLayout(new BorderLayout());
 		JOptionPane.showMessageDialog(null,  "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
-		this.setSize(400, 400);
+		this.setSize(600, 600);
 		this.setLocationRelativeTo(null);
 		
 		// tell frame to fire a WindowsListener event
@@ -82,6 +80,11 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		cards.setText("Card");
 		cards.setToolTipText("Click here to display your cards");
 		
+		notes = new JButton("Notes");
+		notes.setContentAreaFilled(false);
+		notes.setText("Notes");
+		notes.setToolTipText("Click here to display your notes");
+		
 		ListenForButton lForButton = new ListenForButton();
 		assumption.addActionListener(lForButton);
 		accusation.addActionListener(lForButton);
@@ -109,15 +112,17 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		setUpMenu();
 		
 		// Connecting Components.bottomPanel
-		bottomPanel.add(assumption);
-		bottomPanel.add(accusation);
-		bottomPanel.add(leave);
+		bottomLeftPanel.add(assumption);
+		bottomLeftPanel.add(accusation);
+		bottomLeftPanel.add(leave);
 		bottomPanel.add(cards);
+		bottomPanel.add(notes);
 		
 		// Connecting Components.topPanel
 		topPanel.add(labelOne); // adds label to "Section" one
 		this.add(topPanel,BorderLayout.NORTH);
 		this.add(bottomPanel,BorderLayout.SOUTH);
+		this.add(bottomLeftPanel,BorderLayout.SOUTH);
 		this.add(leftPanel,BorderLayout.EAST);
 		this.add(rightPanel,BorderLayout.WEST);
 		this.add(centerPanel,BorderLayout.CENTER);
@@ -207,7 +212,27 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
 		System.out.println(num);
 		return num;
-
+	}
+	
+	//2d array of jpanels
+	//make each cell a new jpanel
+	//give each panel a jlabel
+	//give it an image icon based on the room tile
+	//
+	
+	public void drawBoard(Board board){
+		JPanel[][] tiles = new JPanel[25][25];
+		for(int x = 0; x < 25; x++){
+			for(int y = 0; y < 25; y++){
+				tiles[x][y] = new JPanel();
+				JLabel label = new JLabel();
+				label.setBackground(Color.DARK_GRAY);
+				tiles[x][y].add(label);
+				label.setIcon(board.getTiles()[x][y].getIcon());
+				
+				label.setVisible(true);
+			}
+		}
 	}
 
 	/**
@@ -267,7 +292,23 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == assumption) {
-				JOptionPane.showMessageDialog(CluedoFrame.this, "you have pressed the button", "title of message",
+				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for assumption", "Assumption",
+						JOptionPane.PLAIN_MESSAGE);
+			}
+			else if(e.getSource()==accusation){
+				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for accusation", "Accusation",
+						JOptionPane.PLAIN_MESSAGE);
+			}
+			else if(e.getSource()==leave){
+				JOptionPane.showMessageDialog(CluedoFrame.this, "Select a door to leave from", "Leave",
+						JOptionPane.PLAIN_MESSAGE);
+			}
+			else if(e.getSource()==cards){
+				JOptionPane.showMessageDialog(CluedoFrame.this, "Your cards are:", "Card",
+						JOptionPane.PLAIN_MESSAGE);
+			}
+			else{
+				JOptionPane.showMessageDialog(CluedoFrame.this, "not a button?", "hello?",
 						JOptionPane.PLAIN_MESSAGE);
 			}
 		}

@@ -1,4 +1,5 @@
 package main;
+import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class Main {
 		cluedoframe.selectCharacters(game.players);
 		game.dealCards();
 		game.loadBoard();
+
 		/*--------------------*/
 		game.running();// rest of operations will take place inside the game class
 		

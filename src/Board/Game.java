@@ -1,5 +1,7 @@
 package Board;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -438,9 +440,9 @@ public class Game {
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
 						// System.out.println(currentPlayer.getLocation());
-						command = input.next();
-
-						if (command.equals("assumption")) {
+						//command = input.next();
+						int keyCode=KeyEvent.KEY_PRESSED;
+						/*if (command.equals("assumption")) {
 							roll = 0;
 							makeAssumption(currentPlayer);
 						} else if (command.equals("accusation")) {
@@ -449,7 +451,7 @@ public class Game {
 						} else if (command.equals("leave")) {
 							roll--;
 							board.leaveRoom(currentPlayer);
-						} else if (command.equals("up")) {
+						} else*/ if (keyCode==KeyEvent.VK_UP) {
 							System.out.println();
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y - 1);
@@ -459,7 +461,7 @@ public class Game {
 							} else {
 								System.out.println("Invalid move!");
 							}
-						} else if (command.equals("down")) {
+						} else if (keyCode==KeyEvent.VK_DOWN) {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y + 1);
 							if (board.canMove(currentPlayer, destination) == true) {
@@ -468,7 +470,7 @@ public class Game {
 							} else {
 								System.out.println("Invalid move!");
 							}
-						} else if (command.equals("left")) {
+						} else if (keyCode==KeyEvent.VK_LEFT) {
 							Point destination = new Point(currentPlayer.getLocation().x - 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
@@ -477,7 +479,7 @@ public class Game {
 							} else {
 								System.out.println("Invalid move!");
 							}
-						} else if (command.equals("right")) {
+						} else if (keyCode==KeyEvent.VK_RIGHT) {
 							Point destination = new Point(currentPlayer.getLocation().x + 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
@@ -492,4 +494,5 @@ public class Game {
 			}
 		}
 	}
+	
 }
