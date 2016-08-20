@@ -24,10 +24,13 @@ public class Main {
 		game.createPlayers();
 		game.dealCards();
 		game.loadBoard();
-		cluedoframe.selectCharacters(game.players);
-		game.loadBoard();
+		cluedoframe.drawBoard(game.getBoard());
+
+
+
 		//game.setPlayers(numPlayers);
 		cluedoframe.selectCharacters(game.players);
+
 		/*--------------------*/
 		game.running();// rest of operations will take place inside the game class
 		

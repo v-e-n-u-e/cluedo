@@ -1,4 +1,5 @@
 package gui;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,6 @@ import javax.swing.border.*;
 
 import Board.Board;
 
-
 import Board.Board;
 import Board.Game;
 
@@ -23,13 +23,19 @@ import Board.Player;
 public class CluedoFrame extends JFrame implements WindowListener {
 
 	public JFrame cluedoFrame;
-	public JButton assumption,accusation,leave,cards,notes;
+	public JButton assumption, accusation, leave, cards, notes;
 	public JTextField textField1;
 	public JTextArea textArea1;
 	public JPanel selectionPanel;
 	public JPanel[][] tiles;
 	public JRadioButton missScarlett, colonelMustard, professorPlum, reverendGreen, mrsWhite, mrsPeacock;
 	public Game game;
+	public JPanel topPanel = new JPanel(); // is a "Section" on the frame
+	public JPanel bottomPanel = new JPanel();
+	public JPanel bottomLeftPanel = new JPanel();
+	public JPanel leftPanel = new JPanel();
+	public JPanel rightPanel = new JPanel();
+	public JPanel centerPanel = new JPanel();
 	private JMenu jMenu1;
 	private JMenu jMenu2;
 	private JMenuBar jMenuBar;
@@ -42,29 +48,21 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		super("CLUEDO");
 		this.cluedoFrame = this;
 		this.setLayout(new BorderLayout());
-		JOptionPane.showMessageDialog(null,  "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
+		JOptionPane.showMessageDialog(null, "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
 
-		this.setSize(600, 600);
-
-		this.setSize(500, 500);
+		this.setSize(800, 950);
 
 		this.setLocationRelativeTo(null);
-		
+
 		// tell frame to fire a WindowsListener event
 		// but not to close when "x" button clicked.
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		addWindowListener(this);
-		
+
 		// Panel stuff.
-		JPanel topPanel = new JPanel(); // is a "Section" on the frame
-		JPanel bottomPanel = new JPanel();
 		bottomPanel.setLayout(new BorderLayout());
-		JPanel bottomLeftPanel = new JPanel();
-		bottomLeftPanel.setLayout(new GridLayout(4,1));
-		JPanel leftPanel = new JPanel();
-		JPanel rightPanel = new JPanel();
-		JPanel centerPanel = new JPanel();
-		
+		bottomLeftPanel.setLayout(new GridLayout(4, 1));
+
 		JLabel labelOne = new JLabel("<html>hello world blah blah<br> more shit down here</html>");
 		labelOne.setToolTipText("This shows when hovering");
 
@@ -73,77 +71,64 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		assumption.setContentAreaFilled(false);
 		assumption.setText("Assumption");
 		assumption.setToolTipText("Click here to make an assumption");
-		
+
 		accusation = new JButton("Accusation");
 		accusation.setContentAreaFilled(false);
 		accusation.setText("Accusation");
 		accusation.setToolTipText("Click here to make an accusation");
-		
+
 		leave = new JButton("Leave");
 		leave.setContentAreaFilled(false);
 		leave.setText("Leave");
 		leave.setToolTipText("Click here to Leave a room");
-		
+
 		cards = new JButton("Card");
 		cards.setContentAreaFilled(false);
 		cards.setText("Card");
 		cards.setToolTipText("Click here to display your cards");
-		
+
 		notes = new JButton("Notes");
 		notes.setContentAreaFilled(false);
 		notes.setText("Notes");
 		notes.setToolTipText("Click here to display your notes");
-		
-		ListenForButton lForButton = new ListenForButton();
+
 		itemListener iListen = new itemListener();
+		ListenForButton lForButton = new ListenForButton();
 		assumption.addActionListener(lForButton);
 		accusation.addActionListener(lForButton);
 		leave.addActionListener(lForButton);
-		
 
 		// RadioButtons.
 		setupRadioButtons(iListen);
-		
+
 		// Menu.
 		setUpMenu();
-		
+
 		// Connecting Components.bottomPanel
 		bottomLeftPanel.add(assumption);
 		bottomLeftPanel.add(accusation);
 		bottomLeftPanel.add(leave);
 
 		bottomPanel.add(cards);
-		//bottomPanel.add(notes);
+		// bottomPanel.add(notes);
 
 		bottomLeftPanel.add(cards);
-		JTextArea notes = new JTextArea(10,10);
+		JTextArea notes = new JTextArea(10, 10);
 		notes.setText("Notes...");
 		notes.setLineWrap(true);
-		JScrollPane notesScroll = new JScrollPane(notes,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		JScrollPane notesScroll = new JScrollPane(notes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		bottomPanel.add(notesScroll, BorderLayout.EAST);
-		bottomPanel.add(bottomLeftPanel,BorderLayout.WEST);
+		bottomPanel.add(bottomLeftPanel, BorderLayout.WEST);
 
-		
-		//Create Board
-		if(game == null){
-			System.out.println("fuck you");
-		}
-		/*drawBoard(game.board);
-		JPanel gridPanel = new JPanel(new GridLayout(25, 25, 1, 1));
-    	for(int i = 0; i <25 ; i++){
-    		for(int j = 0; j < 25; j++){
-    			gridPanel.add(tiles[i][j]);
-    		}
-    	}
-		centerPanel.add(gridPanel);*/
 		// Connecting Components.topPanel
 		topPanel.add(labelOne); // adds label to "Section" one
-		this.add(topPanel,BorderLayout.NORTH);
-		this.add(bottomPanel,BorderLayout.SOUTH);
-		bottomPanel.add(bottomLeftPanel,BorderLayout.WEST);
-		this.add(leftPanel,BorderLayout.EAST);
-		this.add(rightPanel,BorderLayout.WEST);
-		this.add(centerPanel,BorderLayout.CENTER);
+		this.add(topPanel, BorderLayout.NORTH);
+		this.add(bottomPanel, BorderLayout.SOUTH);
+		bottomPanel.add(bottomLeftPanel, BorderLayout.WEST);
+		this.add(leftPanel, BorderLayout.EAST);
+		this.add(rightPanel, BorderLayout.WEST);
+		this.add(centerPanel, BorderLayout.CENTER);
 		this.setVisible(true); // makes current window visable
 		ListenForMouse lForMouse = new ListenForMouse();
 		centerPanel.addMouseListener(lForMouse);
@@ -152,10 +137,11 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 	/**
 	 * initializes radio buttons and adds listeners
+	 * 
 	 * @param iListen
 	 */
 	private void setupRadioButtons(itemListener iListen) {
-		
+
 		missScarlett = new JRadioButton("missScarlett");
 		professorPlum = new JRadioButton("professorPlum");
 		colonelMustard = new JRadioButton("colonelMustard");
@@ -169,8 +155,6 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		group.add(mrsPeacock);
 		group.add(reverendGreen);
 		group.add(mrsWhite);
-		JPanel radioPanel = new JPanel();
-		radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.PAGE_AXIS));
 		missScarlett.addItemListener(iListen);
 		professorPlum.addItemListener(iListen);
 		colonelMustard.addItemListener(iListen);
@@ -186,8 +170,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		selectionPanel.add(mrsPeacock);
 		selectionPanel.add(reverendGreen);
 		selectionPanel.add(mrsWhite);
-		
-		
+
 	}
 
 	/**
@@ -201,63 +184,59 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		exit = new JMenuItem("Exit");
 		showCards = new JMenuItem("Cards");
 		showHelp = new JMenuItem("Help");
-		
-		//setup Listener
+
+		// setup Listener
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				int r = JOptionPane.showConfirmDialog(cluedoFrame, new JLabel(
-						"Are you sure you wish to exit?"), "Confirm Exit",
-						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				int r = JOptionPane.showConfirmDialog(cluedoFrame, new JLabel("Are you sure you wish to exit?"),
+						"Confirm Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (r == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
 			}
 
 		});
-		
-		//setup Listener
+
+		// setup Listener
 		showHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JFrame helpFrame = new JFrame("HELP");
 				JPanel helpPaneltop = new JPanel();
 				JPanel helpPanelbottom = new JPanel();
 				helpFrame.setLayout(new BorderLayout());
-				//sets up button
+				// sets up button
 				JButton close = new JButton("Close");
-				close.addActionListener(new ActionListener(){
+				close.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent event) {
 						helpFrame.dispose();
 					}
 				});
-				
+
 				JLabel text = new JLabel("<html>Move around the board using the arrow keys<br><br>"
 						+ "You cannot make an assumption if you are<br>"
-						+ " not in a room. If you make an accusation<br>"
-						+ " and you are wrong you will be removed<br>"
+						+ " not in a room. If you make an accusation<br>" + " and you are wrong you will be removed<br>"
 						+ " from the game. However if you are correct<br>"
-						+ " Then you win the game.<br><br> To leave a room"
-						+ " press the leave button.</html>");
-				
-				//set to pop up
+						+ " Then you win the game.<br><br> To leave a room" + " press the leave button.</html>");
+
+				// set to pop up
 				helpPaneltop.add(text);
 				helpPanelbottom.add(close);
-				helpFrame.add(helpPaneltop,BorderLayout.NORTH);
-				helpFrame.add(helpPanelbottom,BorderLayout.SOUTH);
+				helpFrame.add(helpPaneltop, BorderLayout.NORTH);
+				helpFrame.add(helpPanelbottom, BorderLayout.SOUTH);
 				helpFrame.pack();
 				helpFrame.setLocationRelativeTo(cluedoFrame);
 				helpFrame.setVisible(true);
 			}
 		});
-		
-		//add to JMenus
+
+		// add to JMenus
 		jMenu1.add(exit);
 		jMenu1.add(showHelp);
 		jMenuBar.add(jMenu1);
 		this.setJMenuBar(jMenuBar);
-		
+
 	}
 
-	
 	/**
 	 * returns the number of the user enters
 	 * 
@@ -270,41 +249,62 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		System.out.println(num);
 		return num;
 	}
-	
-	//2d array of jpanels
-	//make each cell a new jpanel
-	//give each panel a jlabel
-	//give it an image icon based on the room tile
+
+	// 2d array of jpanels
+	// make each cell a new jpanel
+	// give each panel a jlabel
+	// give it an image icon based on the room tile
 	//
-	
-	public void drawBoard(Board board){
+
+	public void drawBoard(Board board) {
+		if (board == null) {
+			System.out.println("fuck you");
+		}
 		JPanel[][] tiles = new JPanel[25][25];
-		for(int x = 0; x < 25; x++){
-			for(int y = 0; y < 25; y++){
+		for (int x = 0; x < 25; x++) {
+			for (int y = 0; y < 25; y++) {
 				tiles[x][y] = new JPanel();
 				JLabel label = new JLabel();
 				label.setBackground(Color.DARK_GRAY);
 				tiles[x][y].add(label);
-				label.setIcon(board.getTiles()[x][y].getIcon());
-				
+				if (board.getTiles()[x][y] != null) {
+					label.setIcon(board.getTiles()[x][y].getIcon());
+				} else {
+					label.setBackground(Color.DARK_GRAY);
+				}
+
 				label.setVisible(true);
 			}
 		}
+
+		JPanel gridPanel = new JPanel(new GridLayout(25, 25, -5, -5));
+		for (int i = 0; i < 25; i++) {
+			for (int j = 0; j < 25; j++) {
+				gridPanel.add(tiles[i][j]);
+			}
+		}
+		centerPanel.add(gridPanel);
+		this.add(centerPanel);
+		this.setVisible(true);
+
 	}
 
 	/**
 	 * 
-	 * brings up a JWindow with selection via radio button, when one is selected the option is greyed out.
+	 * brings up a JWindow with selection via radio button, when one is selected
+	 * the option is greyed out.
 	 */
 	public void selectCharacters(List<Player> players) {
 		for (Player p : players) {
-			JOptionPane.showInputDialog(null,selectionPanel);
+			JOptionPane.showInputDialog(null, selectionPanel);
 			p.setName("New name");
 		}
 
 	}
 
 	// *------------------LISTENERS----------------------*//
+	//----------------------------------------------------//
+	//----------------------------------------------------//
 
 	// MOUSE
 	class ListenForMouse implements MouseListener {
@@ -342,42 +342,29 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		}
 
 	}
-	
+
 	class itemListener implements ItemListener {
 
-		@Override
 		public void itemStateChanged(ItemEvent e) {
 			// TODO Auto-generated method stub
-			
-			if(e.getStateChange()==ItemEvent.SELECTED){
-				if(e.getSource()==professorPlum){
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Plum?", "Hello?",
-							JOptionPane.PLAIN_MESSAGE);
+
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				if (e.getSource() == professorPlum) {
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Plum?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				} else if (e.getSource() == missScarlett) {
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Scarlett?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				} else if (e.getSource() == colonelMustard) {
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Mustard?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				} else if (e.getSource() == mrsWhite) {
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Mrs White?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				} else if (e.getSource() == reverendGreen) {
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Green?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				} else if (e.getSource() == mrsPeacock) {
+					JOptionPane.showMessageDialog(CluedoFrame.this, "Peacock?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				}
-				else if(e.getSource()==missScarlett){
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Scarlett?", "Hello?",
-							JOptionPane.PLAIN_MESSAGE);
-				}
-				else if(e.getSource()==colonelMustard){
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Mustard?", "Hello?",
-							JOptionPane.PLAIN_MESSAGE);
-				}
-				else if(e.getSource()==mrsWhite){
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Mrs White?", "Hello?",
-							JOptionPane.PLAIN_MESSAGE);
-				}
-				else if(e.getSource()==reverendGreen){
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Green?", "Hello?",
-							JOptionPane.PLAIN_MESSAGE);
-				}
-				else if(e.getSource()==mrsPeacock){
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Peacock?", "Hello?",
-							JOptionPane.PLAIN_MESSAGE);
-				}	
 			}
-			
+
 		}
-		
 	}
 
 	// BUTTON
@@ -388,22 +375,16 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			if (e.getSource() == assumption) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for assumption", "Assumption",
 						JOptionPane.PLAIN_MESSAGE);
-			}
-			else if(e.getSource()==accusation){
+			} else if (e.getSource() == accusation) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for accusation", "Accusation",
 						JOptionPane.PLAIN_MESSAGE);
-			}
-			else if(e.getSource()==leave){
+			} else if (e.getSource() == leave) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select a door to leave from", "Leave",
 						JOptionPane.PLAIN_MESSAGE);
-			}
-			else if(e.getSource()==cards){
-				JOptionPane.showMessageDialog(CluedoFrame.this, "Your cards are:", "Card",
-						JOptionPane.PLAIN_MESSAGE);
-			}
-			else{
-				JOptionPane.showMessageDialog(CluedoFrame.this, "not a button?", "hello?",
-						JOptionPane.PLAIN_MESSAGE);
+			} else if (e.getSource() == cards) {
+				JOptionPane.showMessageDialog(CluedoFrame.this, "Your cards are:", "Card", JOptionPane.PLAIN_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(CluedoFrame.this, "not a button?", "hello?", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 	}
@@ -442,4 +423,5 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	@Override
 	public void windowOpened(WindowEvent e) {
 	}
+
 }

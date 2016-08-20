@@ -11,15 +11,6 @@ import tiles.Tile;
 
 public class Player implements Tile {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
 	private List<Card> hand = new ArrayList<Card>();
 	private String name;
 	private boolean isOut = false;
@@ -215,19 +206,19 @@ public class Player implements Tile {
 	@Override
 	public Icon getIcon() {
 		// TODO Auto-generated method stub
-		if(this.print().equals("missScarlett")){
+		if(this.print().equals("1")){
 			return new ImageIcon("scarlett.png");
 		}
-		else if(this.print().equals("professorPlum")){
+		else if(this.print().equals("2")){
 			return new ImageIcon("plum.png");
 		}
-		else if(this.print().equals("mrsPeacock")){
+		else if(this.print().equals("3")){
 			return new ImageIcon("peacock.png");
 		}
-		else if(this.print().equals("reverendGreen")){
+		else if(this.print().equals("4")){
 			return new ImageIcon("green.png");
 		}
-		else if(this.print().equals("colonelMustard")){
+		else if(this.print().equals("5")){
 			return new ImageIcon("mustard.png");
 		}
 		else{
