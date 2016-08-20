@@ -88,7 +88,28 @@ public class Room implements Tile {
 	@Override
 	public Icon getIcon() {
 		// TODO Auto-generated method stub
+		if(this.print().equals("K")){
+			return new ImageIcon("kitchen.png");
+		}else if(this.print().equals("L")){
+			return new ImageIcon("library.png");
+		}else if(this.print().equals("B")){
+			return new ImageIcon("ballroom.png");
+		}else if(this.print().equals("C")){
+			return new ImageIcon("conservatory.png");
+		}else if(this.print().equals("d")){
+			return new ImageIcon("diningroom.png");
+		}else if(this.print().equals("b")){
+			return new ImageIcon("billiardroom.png");
+		}else if(this.print().equals("l")){
+			return new ImageIcon("lounge.png");
+		}else if(this.print().equals("H")){
+			return new ImageIcon("hall.png");
+		}else if(this.print().equals("S")){
+			return new ImageIcon("study.png");
+		}
+		else{
 		return new ImageIcon("room.png");
+	}
 	}
 	
 }
