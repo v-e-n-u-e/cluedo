@@ -61,6 +61,14 @@ public class Player implements Tile {
 		}
 		return handString;
 	}
+	
+	public String printHand() {
+		String handString = " ";
+		for (Card c : hand) {
+			handString += c.getName() + " ";
+		}
+		return handString;
+	}
 
 	/**
 	 * checks if the player is out or not

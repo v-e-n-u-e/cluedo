@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -15,7 +17,7 @@ import javax.swing.border.*;
 
 import Board.Board;
 
-import Board.Board;
+
 import Board.Game;
 
 import Board.Player;
@@ -30,6 +32,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public JPanel[][] tiles;
 	public JRadioButton missScarlett, colonelMustard, professorPlum, reverendGreen, mrsWhite, mrsPeacock;
 	public Game game;
+	public Board board;
 	public JPanel topPanel = new JPanel(); // is a "Section" on the frame
 	public JPanel bottomPanel = new JPanel();
 	public JPanel bottomLeftPanel = new JPanel();
@@ -82,9 +85,9 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		leave.setText("Leave");
 		leave.setToolTipText("Click here to Leave a room");
 
-		cards = new JButton("Card");
+		cards = new JButton("Cards");
 		cards.setContentAreaFilled(false);
-		cards.setText("Card");
+		cards.setText("Cards");
 		cards.setToolTipText("Click here to display your cards");
 
 		notes = new JButton("Notes");
@@ -94,9 +97,13 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 		itemListener iListen = new itemListener();
 		ListenForButton lForButton = new ListenForButton();
+		
 		assumption.addActionListener(lForButton);
 		accusation.addActionListener(lForButton);
+		cards.addActionListener(lForButton);
 		leave.addActionListener(lForButton);
+		
+		keyListener kListen = new keyListener();
 
 		// RadioButtons.
 		setupRadioButtons(iListen);
@@ -131,8 +138,14 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		this.add(centerPanel, BorderLayout.CENTER);
 		this.setVisible(true); // makes current window visable
 		ListenForMouse lForMouse = new ListenForMouse();
-		centerPanel.addMouseListener(lForMouse);
-
+		//centerPanel.addMouseListener(lForMouse);
+		bottomPanel.addKeyListener(kListen);
+		bottomPanel.setFocusable(true);
+		bottomPanel.requestFocus();
+	}
+	
+	public void setGameUp(Game game){
+		this.game=game;
 	}
 
 	/**
@@ -260,6 +273,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		if (board == null) {
 			System.out.println("fuck you");
 		}
+		this.board=board;
 		centerPanel.removeAll();
 		JPanel[][] tiles = new JPanel[25][25];
 		for (int x = 0; x < 25; x++) {
@@ -347,6 +361,41 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		}
 
 	}
+	
+	class keyListener implements KeyListener{
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getKeyCode()==KeyEvent.VK_W){
+				System.out.println("up");
+				game.move("up");
+				//game.dir="up";
+			}else if(e.getKeyCode()==KeyEvent.VK_S){
+				game.move("down");
+				//game.dir="down";
+			}else if(e.getKeyCode()==KeyEvent.VK_D){
+				game.move("right");
+				//game.dir="right";
+			}else if(e.getKeyCode()==KeyEvent.VK_A){
+				game.move("left");
+				//game.dir="left";
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
 
 	class itemListener implements ItemListener {
 
@@ -387,7 +436,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select a door to leave from", "Leave",
 						JOptionPane.PLAIN_MESSAGE);
 			} else if (e.getSource() == cards) {
-				JOptionPane.showMessageDialog(CluedoFrame.this, "Your cards are:", "Card", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(CluedoFrame.this, game.printHand(), "Card", JOptionPane.PLAIN_MESSAGE);
+				bottomPanel.requestFocus();
 			} else {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "not a button?", "hello?", JOptionPane.PLAIN_MESSAGE);
 			}

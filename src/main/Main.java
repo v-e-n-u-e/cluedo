@@ -32,6 +32,7 @@ public class Main {
 		cluedoframe.selectCharacters(game.players);
 		game.setFrame(cluedoframe);
 		/*--------------------*/
+		cluedoframe.setGameUp(game);
 		game.running();// rest of operations will take place inside the game class
 		
 	}

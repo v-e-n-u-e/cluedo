@@ -31,6 +31,7 @@ public class Game {
 	CluedoFrame cFrame;
 	private Scanner input;
 	public static int roll;
+	public String dir;
 
 	public Game(int players) {
 		this.numPlayers = players;
@@ -426,6 +427,7 @@ public class Game {
 	 */
 	public void running() {
 		input = new Scanner(System.in);
+		dir = "";
 		while (true) {
 			for (int i = 0; i < numPlayers; i++) {
 				String command;
@@ -443,67 +445,130 @@ public class Game {
 					System.out.println("         assumption (Must be in a room)");
 					System.out.println("         accusation");
 					System.out.println("         leave      (Must be in a room)");
-
 					while (roll != 0/* && currentPlayer.inRoom() == false */) {
-						board.createBoard();
+						/*board.createBoard();
 						board.setCharacters(players);
-						cFrame.drawBoard(board);
-						board.printBoard();
-						System.out.println("You have " + roll + " squares left to move.");
-						System.out.println("enter your command:");
+						cFrame.drawBoard(board);*/
+						//System.out.println("You have " + roll + " squares left to move.");
+						cFrame.validate();
 						// System.out.println(currentPlayer.getLocation());
-						command = input.next();
-						int keyCode=KeyEvent.KEY_PRESSED;
-						if (command.equals("assumption")) {
+						//command = input.next();
+						//int keyCode=KeyEvent.KEY_PRESSED;
+						if (dir.equals("assumption")) {
 							roll = 0;
 							makeAssumption(currentPlayer);
-						} else if (command.equals("accusation")) {
+						} else if (dir.equals("accusation")) {
 							roll = 0;
 							makeAccusation(currentPlayer);
-						} else if (command.equals("leave")) {
+						} else if (dir.equals("leave")) {
 							roll--;
 							board.leaveRoom(currentPlayer);
-						} else if (command.equals("up")) {
+						} else if (dir.equals("up")) {
 							System.out.println();
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y - 1);
 							if (board.canMove(currentPlayer, destination) == true) {
 								board.move(currentPlayer, destination, new Point(destination.x, destination.y - 1));
 								roll--;
+								board.createBoard();
+								board.setCharacters(players);
+								cFrame.drawBoard(board);
+								dir = "";
 							} else {
 								System.out.println("Invalid move!");
+								dir = "";
 							}
-						} else if (command.equals("down")) {
+						} else if (dir.equals("down")) {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y + 1);
 							if (board.canMove(currentPlayer, destination) == true) {
 								board.move(currentPlayer, destination, new Point(destination.x, destination.y + 1));
 								roll--;
+								board.createBoard();
+								board.setCharacters(players);
+								cFrame.drawBoard(board);
+								dir = "";
 							} else {
 								System.out.println("Invalid move!");
+								dir = "";
 							}
-						} else if (command.equals("left")) {
+						} else if (dir.equals("left")) {
 							Point destination = new Point(currentPlayer.getLocation().x - 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
 								board.move(currentPlayer, destination, new Point(destination.x - 1, destination.y));
-								roll--;
+								roll--;dir = "";
+								board.createBoard();
+								board.setCharacters(players);
+								cFrame.drawBoard(board);
 							} else {
 								System.out.println("Invalid move!");
+								dir = "";
 							}
-						} else if (command.equals("right")) {
+						} else if (dir.equals("right")) {
 							Point destination = new Point(currentPlayer.getLocation().x + 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
 								board.move(currentPlayer, destination, new Point(destination.x + 1, destination.y));
-								roll--;
+								roll--;dir = "";
+								board.createBoard();
+								board.setCharacters(players);
+								cFrame.drawBoard(board);
 							} else {
 								System.out.println("Invalid move!");
+								dir = "";
 							}
 						}
 					}
 				}
 			}
+		}
+	}
+	
+	public String printHand(){
+		
+		return("Your hand is :" + currentPlayer.printHand());
+	}
+	
+	public void move(String dir){
+		board.createBoard();
+		board.setCharacters(players);
+		if (dir.equals("up")) {
+			/*System.out.println();
+			Point destination = new Point(currentPlayer.getLocation().x,
+					currentPlayer.getLocation().y - 1);
+			if (board.canMove(currentPlayer, destination) == true) {
+				board.move(currentPlayer, destination, new Point(destination.x, destination.y - 1));
+				roll--;			board.printBoard();
+				cFrame.drawBoard(board);*/this.dir="up";
+
+		} else if (dir.equals("down")) {
+			/*Point destination = new Point(currentPlayer.getLocation().x,
+					currentPlayer.getLocation().y + 1);
+			if (board.canMove(currentPlayer, destination) == true) {
+				board.move(currentPlayer, destination, new Point(destination.x, destination.y + 1));
+				roll--;
+			} else {
+				System.out.println("Invalid move!");
+			}*/this.dir="down";
+			} else if (dir.equals("left")) {
+			/*Point destination = new Point(currentPlayer.getLocation().x - 1,
+					currentPlayer.getLocation().y);
+			if (board.canMove(currentPlayer, destination) == true) {
+				board.move(currentPlayer, destination, new Point(destination.x - 1, destination.y));
+				roll--;
+			} else {
+				System.out.println("Invalid move!");
+			}*/this.dir="left";
+		} else if (dir.equals("right")) {
+			/*Point destination = new Point(currentPlayer.getLocation().x + 1,
+					currentPlayer.getLocation().y);
+			if (board.canMove(currentPlayer, destination) == true) {
+				board.move(currentPlayer, destination, new Point(destination.x + 1, destination.y));
+				roll--;
+			} else {
+				System.out.println("Invalid move!");
+			}*/this.dir="right";
 		}
 	}
 	
