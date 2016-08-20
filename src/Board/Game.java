@@ -36,6 +36,9 @@ public class Game {
 	public Board getBoard(){
 		return board;
 	}
+	public List<Player> getPlayers(){
+		return players;
+	}
 
 	/**
 	 * creates and stores players in a list which is then going to be passed on
