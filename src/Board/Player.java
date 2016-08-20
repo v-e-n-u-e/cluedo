@@ -165,7 +165,7 @@ public class Player implements Tile {
 		else if(this.print().equals("5")){
 			points[0]=new Point(3,4);
 			points[1]=new Point(4,13);
-			points[2]=new Point(3,23);
+			points[2]=new Point(3,23); 
 			points[3]=new Point(13,5);
 			points[4]=new Point(12,22);
 			points[5]=new Point(22,3);
