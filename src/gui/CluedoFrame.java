@@ -258,9 +258,6 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	//
 
 	public void drawBoard(Board board) {
-		if (board == null) {
-			System.out.println("fuck you");
-		}
 		centerPanel.removeAll();
 		JPanel[][] tiles = new JPanel[25][25];
 		for (int x = 0; x < 25; x++) {
