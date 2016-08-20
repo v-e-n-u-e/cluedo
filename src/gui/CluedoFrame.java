@@ -260,6 +260,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		if (board == null) {
 			System.out.println("fuck you");
 		}
+		centerPanel.removeAll();
 		JPanel[][] tiles = new JPanel[25][25];
 		for (int x = 0; x < 25; x++) {
 			for (int y = 0; y < 25; y++) {
@@ -297,7 +298,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public void selectCharacters(List<Player> players) {
 		for (Player p : players) {
 			JOptionPane.showInputDialog(null, selectionPanel);
-			p.setName("New name");
+			//p.setName("missScarlett");
 		}
 
 	}
