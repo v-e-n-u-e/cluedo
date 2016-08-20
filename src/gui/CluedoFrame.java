@@ -345,6 +345,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 	}
 	
+
 	public int getRoomNum(){
 		return numRoom;
 	}
@@ -360,6 +361,13 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	
 	public void showLoss(){
 		JOptionPane.showMessageDialog(cluedoFrame, "Incorrect Guess, You are out of the game");
+	}
+	public String pickDoor(String[] doors){
+		Object[] nums = doors;
+		String num = (String) JOptionPane.showInputDialog(this, "Select door to leave from", "Pick door",
+				JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
+		return num;
+
 	}
 
 	// *------------------LISTENERS----------------------*//
@@ -499,9 +507,11 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			if (e.getSource() == assumption) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for assumption", "Assumption",
 						JOptionPane.PLAIN_MESSAGE);
+				bottomPanel.requestFocus();
 			} else if (e.getSource() == accusation) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for accusation", "Accusation",
 						JOptionPane.PLAIN_MESSAGE);
+
 			
 				String[] rooms = {"kitchen","ballRoom","conservatory","diningRoom","billiardRoom","library","lounge","hall","study"};
 				String[] weapons={"candleStick","knife", "leadPipe","rope","wrench", "revolver"};
@@ -565,9 +575,16 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				game.dir = "accusation";
 				
 				
+
+				bottomPanel.requestFocus();
+
 			} else if (e.getSource() == leave) {
-				JOptionPane.showMessageDialog(CluedoFrame.this, "Select a door to leave from", "Leave",
-						JOptionPane.PLAIN_MESSAGE);
+				if(game.currentPlayer.inRoom()==false){
+					JOptionPane.showMessageDialog(CluedoFrame.this, "You're not in a room!", "Leave",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				game.leave();
+				bottomPanel.requestFocus();
 			} else if (e.getSource() == cards) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, game.printHand(), "Card", JOptionPane.PLAIN_MESSAGE);
 				bottomPanel.requestFocus();

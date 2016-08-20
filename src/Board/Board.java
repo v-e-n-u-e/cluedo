@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import gui.CluedoFrame;
 import tiles.Door;
 import tiles.HallWay;
 import tiles.Room;
@@ -215,7 +216,7 @@ public class Board {
 	 * is placed in the door square
 	 * @param player
 	 */
-	public void leaveRoom(Player player){
+	public void leaveRoom(Player player, CluedoFrame cFrame){
 		Point pLoc = player.getLocation();
 		ArrayList<Point> doors = new ArrayList<Point>();
 		int px = pLoc.x;
@@ -236,7 +237,8 @@ public class Board {
 			doors.add(new Point(7,12));//right
 			doors.add(new Point(6,15));//bottom
 			System.out.println("Which door would you like to exit from?\n right|bottom");			
-			command=input.next();
+			command=cFrame.pickDoor(new String[] {"right","bottom"});
+			
 			if((this.getTiles()[doors.get(0).y][doors.get(0).x+1] instanceof Player)
 					&& (this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
@@ -273,7 +275,7 @@ public class Board {
 			doors.add(new Point(15,7));//bottom right
 			doors.add(new Point(16,5));//right
 			System.out.println("Which door would you like to exit from?\n left|bottomleft|bottomright|right");			
-			command=input.next();
+			command=cFrame.pickDoor(new String[] {"left","bottomleft","bottomright","right"});
 			if((this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)
 					&& (this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)
 					&& (this.getTiles()[doors.get(2).y+1][doors.get(2).x] instanceof Player)
@@ -281,6 +283,7 @@ public class Board {
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
 				Game.roll=0;
 			}
+			
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){
 				player.setLocation(doors.get(0));
 				player.inRoom=false;
@@ -308,7 +311,7 @@ public class Board {
 			doors.add(new Point(13,18));//right
 			doors.add(new Point(15,20));//bottom right
 			System.out.println("Which door would you like to exit from?\n left|middle|right|bottomright");			
-			command=input.next();
+			command=cFrame.pickDoor(new String[] {"left","middle","right","bottomright"});
 			if((this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(1).y-1][doors.get(1).x] instanceof Player)
 					&& (this.getTiles()[doors.get(2).y-1][doors.get(2).x] instanceof Player)
@@ -352,7 +355,7 @@ public class Board {
 			doors.add(new Point(19,9));//left
 			doors.add(new Point(23,12));//bottom
 			System.out.println("Which door would you like to exit from?\n left|bottom");			
-			command=input.next();
+			command=cFrame.pickDoor(new String[] {"left","bottom"});
 			if((this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y+1][doors.get(0).x] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
@@ -375,7 +378,7 @@ public class Board {
 			doors.add(new Point(21,14));//top
 			doors.add(new Point(18,16));//left
 			System.out.println("Which door would you like to exit from?\n top|left");			
-			command=input.next();
+			command=cFrame.pickDoor(new String[] {"top","left"});
 			if((this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
