@@ -166,6 +166,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		group.add(mrsPeacock);
 		group.add(reverendGreen);
 		group.add(mrsWhite);
+		JPanel radioPanel = new JPanel();
+		radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.PAGE_AXIS));
 		missScarlett.addActionListener(lForButton);
 		professorPlum.addActionListener(lForButton);
 		colonelMustard.addActionListener(lForButton);
@@ -181,6 +183,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		selectionPanel.add(mrsPeacock);
 		selectionPanel.add(reverendGreen);
 		selectionPanel.add(mrsWhite);
+		
 		
 	}
 
