@@ -139,7 +139,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		this.add(centerPanel, BorderLayout.CENTER);
 		this.setVisible(true); // makes current window visable
 		ListenForMouse lForMouse = new ListenForMouse();
-		//centerPanel.addMouseListener(lForMouse);
+		centerPanel.addMouseListener(lForMouse);
 		
 		bottomPanel.addKeyListener(kListen);
 		bottomPanel.setFocusable(true);
@@ -231,7 +231,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 						+ "You cannot make an assumption if you are<br>"
 						+ " not in a room. If you make an accusation<br>" + " and you are wrong you will be removed<br>"
 						+ " from the game. However if you are correct<br>"
-						+ " Then you win the game.<br><br> To leave a room" + " press the leave button.</html>");
+						+ " Then you win the game.<br><br> To leave a room" + " press the leave button.<br>"
+						+ " Click on the board to find out information about the rooms</html>");
 
 				// set to pop up
 				helpPaneltop.add(text);
@@ -289,6 +290,19 @@ public class CluedoFrame extends JFrame implements WindowListener {
 						label.setIcon(new ImageIcon("spawn.png"));
 					}else{
 					label.setIcon(board.getTiles()[x][y].getIcon());
+						if(board.getTiles()[x][y].print() == "1"){
+							label.setToolTipText("miss Scarlett");
+						}else if(board.getTiles()[x][y].print() == "2"){
+							label.setToolTipText("professorPlum");
+						}else if(board.getTiles()[x][y].print() == "3"){
+							label.setToolTipText("mrsPeacock");
+						}else if(board.getTiles()[x][y].print() == "4"){
+							label.setToolTipText("reverendGreen");
+						}else if(board.getTiles()[x][y].print() == "5"){
+							label.setToolTipText("colonelMustard");
+						}else if(board.getTiles()[x][y].print() == "6"){
+							label.setToolTipText("mrsWhite");
+						}
 					}
 				} else {
 					label.setIcon(new ImageIcon("wall.png"));
@@ -339,6 +353,35 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			int x = e.getX();
 			int y = e.getY();
 			System.out.println(("Xpos: " + x + " Ypos:" + y + " "));
+			
+			//KITCHEN
+			if(x>75 && x<241 && y>10 && y<150){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the kitchen");
+			}
+			if(x>271 && x<489 && y>62 && y<204){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the Ball Room");
+			}
+			if(x>548 && x<689 && y>11 && y<129){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the Conservatory");
+			}
+			if(x>75 && x<263 && y>260 && y<403){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the dining room");
+			}
+			if(x>547 && x<692 && y>211 && y<326){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the billiard room");
+			}
+			if(x>75 && x<238 && y>487 && y<627){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the library");
+			}
+			if(x>291 && x<464 && y>459 && y<629){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the Hall");
+			}
+			if(x>521 && x<688 && y>535 && y<630){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the Study");
+			}
+			if(x>525 && x<688 && y>389 && y<453){
+				JOptionPane.showMessageDialog(cluedoFrame, "This is the Lounge");
+			}
 
 		}
 
