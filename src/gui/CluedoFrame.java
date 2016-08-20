@@ -270,7 +270,11 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				label.setBackground(Color.DARK_GRAY);
 				tiles[x][y].add(label);
 				if (board.getTiles()[x][y] != null) {
+					if (board.getTiles()[x][y].print().equals("s")) {
+						label.setIcon(new ImageIcon("spawn.png"));
+					}else{
 					label.setIcon(board.getTiles()[x][y].getIcon());
+					}
 				} else {
 					label.setBackground(Color.DARK_GRAY);
 				}
