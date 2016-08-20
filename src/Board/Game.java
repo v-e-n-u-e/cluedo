@@ -14,6 +14,7 @@ import cards.RoomCard;
 import cards.Solution;
 import cards.SuspectCard;
 import cards.WeaponCard;
+import gui.CluedoFrame;
 
 public class Game {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
@@ -27,6 +28,7 @@ public class Game {
 	List<Card> suspectCards = new ArrayList<Card>();
 	public List<Player> players = new ArrayList<Player>();
 	int numPlayers;
+	CluedoFrame cFrame;
 	private Scanner input;
 	public static int roll;
 
@@ -36,6 +38,10 @@ public class Game {
 	
 	public Board getBoard(){
 		return board;
+	}
+	
+	public void setFrame(CluedoFrame frame){
+		this.cFrame=frame;
 	}
 	public List<Player> getPlayers(){
 		return players;
@@ -444,6 +450,7 @@ public class Game {
 					while (roll != 0/* && currentPlayer.inRoom() == false */) {
 						board.createBoard();
 						board.setCharacters(players);
+						cFrame.drawBoard(board);
 						board.printBoard();
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
