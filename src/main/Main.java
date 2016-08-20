@@ -17,7 +17,7 @@ public class Main {
 		/*Initialization-----*/
 		CluedoFrame cluedoframe = new CluedoFrame();
 		numPlayers = cluedoframe.numPlayers();
-		game = new Game();
+		game = new Game(numPlayers);
 		game.loadAllCards();
 		game.generateSolution();
 		game.shuffleDeck();
@@ -27,7 +27,7 @@ public class Main {
 
 
 
-		game.setPlayers(numPlayers);
+		//game.setPlayers(numPlayers);
 		cluedoframe.selectCharacters(game.players);
 
 		/*--------------------*/

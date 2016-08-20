@@ -110,7 +110,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		bottomLeftPanel.add(leave);
 
 		bottomPanel.add(cards);
-		bottomPanel.add(notes);
+		//bottomPanel.add(notes);
 
 		bottomLeftPanel.add(cards);
 		JTextArea notes = new JTextArea(10,10);
@@ -137,7 +137,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		topPanel.add(labelOne); // adds label to "Section" one
 		this.add(topPanel,BorderLayout.NORTH);
 		this.add(bottomPanel,BorderLayout.SOUTH);
-		this.add(bottomLeftPanel,BorderLayout.SOUTH);
+		bottomPanel.add(bottomLeftPanel,BorderLayout.WEST);
 		this.add(leftPanel,BorderLayout.EAST);
 		this.add(rightPanel,BorderLayout.WEST);
 		this.add(centerPanel,BorderLayout.CENTER);
