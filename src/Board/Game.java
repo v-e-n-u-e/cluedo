@@ -465,7 +465,10 @@ public class Game {
 							makeAccusation(currentPlayer);
 						} else if (dir.equals("leave")) {
 							roll--;
-							board.leaveRoom(currentPlayer);
+							board.leaveRoom(currentPlayer,cFrame);
+							dir="";board.createBoard();
+							board.setCharacters(players);
+							cFrame.drawBoard(board);
 						} else if (dir.equals("up")) {
 							System.out.println();
 							Point destination = new Point(currentPlayer.getLocation().x,
@@ -531,6 +534,12 @@ public class Game {
 	public String printHand(){
 		
 		return("Your hand is :" + currentPlayer.printHand());
+	}
+	
+	public void leave(){
+		board.createBoard();
+		board.setCharacters(players);
+		this.dir="leave";
 	}
 	
 	public void move(String dir){

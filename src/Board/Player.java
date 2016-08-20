@@ -127,7 +127,7 @@ public class Player implements Tile {
 			points[5]=new Point(21,1);//conservatory
 			points[6]=new Point(21,9);//billiard room
 			points[7]=new Point(20,16);//library
-			points[8]=new Point(19,22);//study
+			points[8]=new Point(20,22);//study
 		}
 		else if(this.print().equals("2")){
 			points[0]=new Point(3,2);
@@ -138,7 +138,7 @@ public class Player implements Tile {
 			points[5]=new Point(22,1);
 			points[6]=new Point(22,9);
 			points[7]=new Point(21,16);
-			points[8]=new Point(20,22);
+			points[8]=new Point(21,22);
 		}
 		else if(this.print().equals("3")){
 			points[0]=new Point(4,2);
@@ -149,7 +149,7 @@ public class Player implements Tile {
 			points[5]=new Point(23,1);
 			points[6]=new Point(23,9);
 			points[7]=new Point(22,16);
-			points[8]=new Point(21,22);
+			points[8]=new Point(22,22);
 		}
 		else if(this.print().equals("4")){
 			points[0]=new Point(2,4);
@@ -160,7 +160,7 @@ public class Player implements Tile {
 			points[5]=new Point(21,3);
 			points[6]=new Point(21,11);
 			points[7]=new Point(20,18);
-			points[8]=new Point(19,24);
+			points[8]=new Point(20,24);
 		}
 		else if(this.print().equals("5")){
 			points[0]=new Point(3,4);
@@ -171,7 +171,7 @@ public class Player implements Tile {
 			points[5]=new Point(22,3);
 			points[6]=new Point(22,11);
 			points[7]=new Point(21,18);
-			points[8]=new Point(20,24);
+			points[8]=new Point(21,24);
 		}
 		else if(this.print().equals("6")){
 			points[0]=new Point(4,4);
@@ -182,7 +182,7 @@ public class Player implements Tile {
 			points[5]=new Point(23,3);
 			points[6]=new Point(23,11);
 			points[7]=new Point(22,18);
-			points[8]=new Point(21,24);
+			points[8]=new Point(22,24);
 		}
 		return points;
 	}
