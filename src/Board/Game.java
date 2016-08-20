@@ -191,17 +191,17 @@ public class Game {
 	 * 
 	 * @param player
 	 */
-	public void makeAccusation(Player player) {
+	public void makeAccusation(Player player, CluedoFrame cFrame) {
 		/*if(player.inRoom() == false){
 			System.out.println("you are not currently in a room");
 			return;
 		}*/
 		input = new Scanner(System.in);
-		int room;
-		int suspect;
-		int weapon;
+		int room = cFrame.getRoomNum();
+		int suspect = cFrame.getCharaterNum();
+		int weapon = cFrame.getWeaponNum();
 
-		System.out.println("Please Pick a room: \n" + "0 = kitchen 1 = diningRoom 2 = lounge \n"
+		/*System.out.println("Please Pick a room: \n" + "0 = kitchen 1 = diningRoom 2 = lounge \n"
 				+ "3 = ballroom 4 = hall 5= conservatory \n" + "6= billiard room 7 = library 8 = study");
 		room = input.nextInt();
 
@@ -211,7 +211,7 @@ public class Game {
 
 		System.out.println("Please pick a suspect: \n" + "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
 				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
-		suspect = input.nextInt();
+		suspect = input.nextInt();*/
 		
 		Guess guess = new Guess(room, weapon, suspect);
 		// Player has won the game
@@ -220,6 +220,7 @@ public class Game {
 			System.out.println("Exiting game now");
 			System.exit(0);
 		} else {
+			cFrame.showLoss();
 			System.out.println("Incorrect guess, You are out of the game");
 			player.lost();
 		}
@@ -462,7 +463,8 @@ public class Game {
 							makeAssumption(currentPlayer);
 						} else if (dir.equals("accusation")) {
 							roll = 0;
-							makeAccusation(currentPlayer);
+							makeAccusation(currentPlayer,cFrame);
+							dir ="";
 						} else if (dir.equals("leave")) {
 							roll--;
 							board.leaveRoom(currentPlayer);

@@ -21,6 +21,7 @@ import Board.Board;
 import Board.Game;
 
 import Board.Player;
+import cards.RoomCard;
 
 public class CluedoFrame extends JFrame implements WindowListener {
 
@@ -40,6 +41,9 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public JPanel leftPanel = new JPanel();
 	public JPanel rightPanel = new JPanel();
 	public JPanel centerPanel = new JPanel();
+	public int numRoom;
+	public int numWeapon;
+	public int numCharacter;
 	private JMenu jMenu1;
 	private JMenu jMenu2;
 	private JMenuBar jMenuBar;
@@ -340,6 +344,23 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		}
 
 	}
+	
+	public int getRoomNum(){
+		return numRoom;
+	}
+	public int getWeaponNum(){
+		return numWeapon;
+	}
+	public int getCharaterNum(){
+		return numCharacter;
+	}
+	public CluedoFrame getFrame(){
+		return this;
+	}
+	
+	public void showLoss(){
+		JOptionPane.showMessageDialog(cluedoFrame, "Incorrect Guess, You are out of the game");
+	}
 
 	// *------------------LISTENERS----------------------*//
 	//----------------------------------------------------//
@@ -481,6 +502,69 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			} else if (e.getSource() == accusation) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for accusation", "Accusation",
 						JOptionPane.PLAIN_MESSAGE);
+			
+				String[] rooms = {"kitchen","ballRoom","conservatory","diningRoom","billiardRoom","library","lounge","hall","study"};
+				String[] weapons={"candleStick","knife", "leadPipe","rope","wrench", "revolver"};
+				String[] characters={"missScarlett","professorPlum","mrsPeacock", "reverendGreen","colonelMustard","mrsWhite"};
+				String room = (String) JOptionPane.showInputDialog(cluedoFrame, "Select room", "Room",
+						JOptionPane.QUESTION_MESSAGE, null, rooms, rooms[0]);
+					
+				if(room.equals(rooms[0])){
+					numRoom = 1;
+				}else if(room.equals(rooms[1])){
+					numRoom = 2;
+				}else if(room.equals(rooms[2])){
+					numRoom = 3;
+				}else if(room.equals(rooms[3])){
+					numRoom = 4;
+				}else if(room.equals(rooms[4])){
+					numRoom = 5;
+				}else if(room.equals(rooms[5])){
+					numRoom = 6;
+				}else if(room.equals(rooms[6])){
+					numRoom = 7;
+				}else if(room.equals(rooms[7])){
+					numRoom = 8;
+				}else if(room.equals(rooms[8])){
+					numRoom = 9;
+				}
+				
+				String weapon = (String) JOptionPane.showInputDialog(cluedoFrame, "Select weapon", "Weapon",
+						JOptionPane.QUESTION_MESSAGE, null, weapons, weapons[0]);
+				
+				if(weapon.equals(weapons[0])){
+					numWeapon = 1;
+				}else if(weapon.equals(weapons[1])){
+					numWeapon = 2;
+				}else if(weapon.equals(weapons[2])){
+					numWeapon = 3;
+				}else if(weapon.equals(weapons[3])){
+					numWeapon = 4;
+				}else if(weapon.equals(weapons[4])){
+					numWeapon = 5;
+				}else if(weapon.equals(weapons[5])){
+					numWeapon = 6;
+				}
+				
+				String character = (String) JOptionPane.showInputDialog(cluedoFrame, "Select character", "charcter",
+						JOptionPane.QUESTION_MESSAGE, null, characters, characters[0]);
+				
+				if(character.equals(characters[0])){
+					numCharacter = 1;
+				}else if(character.equals(characters[1])){
+					numCharacter = 2;
+				}else if(character.equals(characters[2])){
+					numCharacter = 3;
+				}else if(character.equals(characters[3])){
+					numCharacter = 4;
+				}else if(character.equals(characters[4])){
+					numCharacter = 5;
+				}else if(character.equals(characters[5])){
+					numCharacter = 6;
+				}
+				game.dir = "accusation";
+				
+				
 			} else if (e.getSource() == leave) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select a door to leave from", "Leave",
 						JOptionPane.PLAIN_MESSAGE);
