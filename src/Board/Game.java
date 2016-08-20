@@ -1,3 +1,4 @@
+
 package Board;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -447,9 +448,9 @@ public class Game {
 						System.out.println("You have " + roll + " squares left to move.");
 						System.out.println("enter your command:");
 						// System.out.println(currentPlayer.getLocation());
-						//command = input.next();
+						command = input.next();
 						int keyCode=KeyEvent.KEY_PRESSED;
-						/*if (command.equals("assumption")) {
+						if (command.equals("assumption")) {
 							roll = 0;
 							makeAssumption(currentPlayer);
 						} else if (command.equals("accusation")) {
@@ -458,7 +459,7 @@ public class Game {
 						} else if (command.equals("leave")) {
 							roll--;
 							board.leaveRoom(currentPlayer);
-						} else*/ if (keyCode==KeyEvent.VK_UP) {
+						} else if (command.equals("up")) {
 							System.out.println();
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y - 1);
@@ -468,7 +469,7 @@ public class Game {
 							} else {
 								System.out.println("Invalid move!");
 							}
-						} else if (keyCode==KeyEvent.VK_DOWN) {
+						} else if (command.equals("down")) {
 							Point destination = new Point(currentPlayer.getLocation().x,
 									currentPlayer.getLocation().y + 1);
 							if (board.canMove(currentPlayer, destination) == true) {
@@ -477,7 +478,7 @@ public class Game {
 							} else {
 								System.out.println("Invalid move!");
 							}
-						} else if (keyCode==KeyEvent.VK_LEFT) {
+						} else if (command.equals("left")) {
 							Point destination = new Point(currentPlayer.getLocation().x - 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {
@@ -486,7 +487,7 @@ public class Game {
 							} else {
 								System.out.println("Invalid move!");
 							}
-						} else if (keyCode==KeyEvent.VK_RIGHT) {
+						} else if (command.equals("right")) {
 							Point destination = new Point(currentPlayer.getLocation().x + 1,
 									currentPlayer.getLocation().y);
 							if (board.canMove(currentPlayer, destination) == true) {

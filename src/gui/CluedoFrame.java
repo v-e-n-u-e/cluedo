@@ -50,7 +50,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		this.setLayout(new BorderLayout());
 		JOptionPane.showMessageDialog(null, "Welcome to Cluedo!\nMade by Connor Moot and Callum Crosby");
 
-		this.setSize(1000, 1000);
+		this.setSize(800, 950);
 
 		this.setLocationRelativeTo(null);
 
@@ -234,6 +234,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		jMenu1.add(showHelp);
 		jMenuBar.add(jMenu1);
 		this.setJMenuBar(jMenuBar);
+		
 
 	}
 
@@ -274,7 +275,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			}
 		}
 
-		JPanel gridPanel = new JPanel(new GridLayout(25, 25, 0, 0));
+		JPanel gridPanel = new JPanel(new GridLayout(25, 25, -5, -5));
 		for (int i = 0; i < 25; i++) {
 			for (int j = 0; j < 25; j++) {
 				gridPanel.add(tiles[i][j]);

@@ -29,7 +29,11 @@ public class Main {
 
 
 		//game.setPlayers(numPlayers);
+
 		cluedoframe.selectCharacters(game.getPlayers());
+
+
+		cluedoframe.selectCharacters(game.players);
 
 		/*--------------------*/
 		game.running();// rest of operations will take place inside the game class

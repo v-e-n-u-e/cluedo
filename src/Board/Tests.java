@@ -1,4 +1,4 @@
-package Board;
+/*package Board;
 
 import static org.junit.Assert.*;
 
@@ -10,10 +10,10 @@ public class Tests {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 
 	@Test
-	/**
+	*//**
 	 * moves player (1) miss scarlett up once on the board to a hallway tile.
 	 * 
-	 */
+	 *//*
 	public void testValidMove(){
 		
 		Game game = new Game(5);
@@ -30,9 +30,9 @@ public class Tests {
 	}
 	
 	@Test
-	/**
+	*//**
 	 * test a player enters a room
-	 */
+	 *//*
 	public void testValidEnter(){
 		
 		Game game = new Game(5);
@@ -53,9 +53,9 @@ public class Tests {
 	}
 	
 	@Test
-	/**
+	*//**
 	 * test a player enters a room
-	 */
+	 *//*
 	public void testValidLeaveRoom(){
 		
 		Game game = new Game(5);
@@ -77,9 +77,9 @@ public class Tests {
 	
 
 	@Test
-	/**
+	*//**
 	 * tests roll is between 2 and 12
-	 */
+	 *//*
 	public void testValidRollDice(){
 		Game game = new Game(5);
 		game.loadAllCards();
@@ -94,9 +94,9 @@ public class Tests {
 	}
 	
 	@Test
-	/**
+	*//**
 	 * checks you cant move onto wall or room
-	 */
+	 *//*
 	public void testInvalidMove(){
 		
 		Game game = new Game(5);
@@ -113,9 +113,9 @@ public class Tests {
 	}
 	
 	@Test
-	/**
+	*//**
 	 * checks you cant move onto a null square
-	 */
+	 *//*
 	public void testInvalidMoveToNull(){
 		
 		Game game = new Game(5);
@@ -132,9 +132,9 @@ public class Tests {
 	}
 	
 	@Test
-	/**
+	*//**
 	 * checks that you cant leave a room if you arnt in one
-	 */
+	 *//*
 	public void testInvalidLeaveRoom(){
 		
 		Game game = new Game(5);
@@ -150,4 +150,4 @@ public class Tests {
 	}
 
 	
-}
+}*/
