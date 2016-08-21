@@ -33,6 +33,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	public JPanel selectionPanel;
 	public JPanel[][] tiles;
 	public JRadioButton missScarlett, colonelMustard, professorPlum, reverendGreen, mrsWhite, mrsPeacock;
+	public JLabel labelOne = new JLabel("");
 	public Game game;
 	public Board board;
 	public JPanel topPanel = new JPanel(); // is a "Section" on the frame
@@ -71,8 +72,6 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		bottomPanel.setLayout(new BorderLayout());
 		bottomLeftPanel.setLayout(new GridLayout(4, 1));
 
-		JLabel labelOne = new JLabel("<html>hello world blah blah<br> more shit down here</html>");
-		labelOne.setToolTipText("This shows when hovering");
 
 		// Buttons.
 		assumption = new JButton("Assumption");
@@ -134,7 +133,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		bottomPanel.add(bottomLeftPanel, BorderLayout.WEST);
 
 		// Connecting Components.topPanel
-		topPanel.add(labelOne); // adds label to "Section" one
+		topPanel.add(labelOne);
 		this.add(topPanel, BorderLayout.NORTH);
 		this.add(bottomPanel, BorderLayout.SOUTH);
 		bottomPanel.add(bottomLeftPanel, BorderLayout.WEST);
@@ -325,7 +324,6 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		
 		die.setText("         Moves left: " + String.valueOf(game.roll));
 		bottomPanel.add(die);
-		
 		die.setVisible(true);
 	}
 
@@ -362,6 +360,13 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	}
 	public CluedoFrame getFrame(){
 		return this;
+	}
+	
+	/**
+	 * changes the label at the top of the screen
+	 */
+	public void changeLabel(String name){
+		labelOne.setText(name+"'s turn");
 	}
 	
 	public void showLoss(){
