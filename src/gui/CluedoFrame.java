@@ -231,7 +231,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					}
 				});
 
-				JLabel text = new JLabel("<html>Move around the board using the arrow keys<br><br>"
+				JLabel text = new JLabel("<html>Move around the board using the w,a,s and d keys<br><br>"
 						+ "You cannot make an assumption if you are<br>"
 						+ " not in a room. If you make an accusation<br>" + " and you are wrong you will be removed<br>"
 						+ " from the game. However if you are correct<br>"
@@ -277,9 +277,6 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	//
 
 	public void drawBoard(Board board) {
-		if (board == null) {
-			System.out.println("fuck you");
-		}
 		this.board=board;
 		centerPanel.removeAll();
 		JPanel[][] tiles = new JPanel[25][25];
@@ -326,7 +323,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		this.add(centerPanel);
 		this.setVisible(true);
 		
-		die.setText("Moves left: " + String.valueOf(game.roll));
+		die.setText("         Moves left: " + String.valueOf(game.roll));
 		bottomPanel.add(die);
 		
 		die.setVisible(true);
@@ -345,7 +342,15 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 	}
 	
-
+	public void notInRoom(){
+		JOptionPane.showMessageDialog(cluedoFrame, "You need to be in a room to do this");
+	}
+	public void noHold(){
+		JOptionPane.showMessageDialog(cluedoFrame, "No player holds these cards");
+	}
+	public void holdNotice(String p, String c){
+		JOptionPane.showMessageDialog(cluedoFrame, p + " holds "+ c);
+	}
 	public int getRoomNum(){
 		return numRoom;
 	}
@@ -446,7 +451,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getKeyCode()==KeyEvent.VK_W){
-				System.out.println("up");
+				//System.out.println("up");
 				game.move("up");
 				//game.dir="up";
 			}else if(e.getKeyCode()==KeyEvent.VK_S){
@@ -482,17 +487,17 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (e.getSource() == professorPlum) {
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Plum?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+					//JOptionPane.showMessageDialog(CluedoFrame.this, "Plum?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				} else if (e.getSource() == missScarlett) {
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Scarlett?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+					//JOptionPane.showMessageDialog(CluedoFrame.this, "Scarlett?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				} else if (e.getSource() == colonelMustard) {
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Mustard?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+					//JOptionPane.showMessageDialog(CluedoFrame.this, "Mustard?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				} else if (e.getSource() == mrsWhite) {
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Mrs White?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+					//JOptionPane.showMessageDialog(CluedoFrame.this, "Mrs White?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				} else if (e.getSource() == reverendGreen) {
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Green?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+					//JOptionPane.showMessageDialog(CluedoFrame.this, "Green?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				} else if (e.getSource() == mrsPeacock) {
-					JOptionPane.showMessageDialog(CluedoFrame.this, "Peacock?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+					//JOptionPane.showMessageDialog(CluedoFrame.this, "Peacock?", "Hello?", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 
@@ -507,6 +512,46 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			if (e.getSource() == assumption) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for assumption", "Assumption",
 						JOptionPane.PLAIN_MESSAGE);
+				
+				String[] rooms = {"kitchen","ballRoom","conservatory","diningRoom","billiardRoom","library","lounge","hall","study"};
+				String[] weapons={"candleStick","knife", "leadPipe","rope","wrench", "revolver"};
+				String[] characters={"missScarlett","professorPlum","mrsPeacock", "reverendGreen","colonelMustard","mrsWhite"};
+
+				
+				String weapon = (String) JOptionPane.showInputDialog(cluedoFrame, "Select weapon", "Weapon",
+						JOptionPane.QUESTION_MESSAGE, null, weapons, weapons[0]);
+				
+				if(weapon.equals(weapons[0])){
+					numWeapon = 1;
+				}else if(weapon.equals(weapons[1])){
+					numWeapon = 2;
+				}else if(weapon.equals(weapons[2])){
+					numWeapon = 3;
+				}else if(weapon.equals(weapons[3])){
+					numWeapon = 4;
+				}else if(weapon.equals(weapons[4])){
+					numWeapon = 5;
+				}else if(weapon.equals(weapons[5])){
+					numWeapon = 6;
+				}
+				
+				String character = (String) JOptionPane.showInputDialog(cluedoFrame, "Select character", "charcter",
+						JOptionPane.QUESTION_MESSAGE, null, characters, characters[0]);
+				
+				if(character.equals(characters[0])){
+					numCharacter = 1;
+				}else if(character.equals(characters[1])){
+					numCharacter = 2;
+				}else if(character.equals(characters[2])){
+					numCharacter = 3;
+				}else if(character.equals(characters[3])){
+					numCharacter = 4;
+				}else if(character.equals(characters[4])){
+					numCharacter = 5;
+				}else if(character.equals(characters[5])){
+					numCharacter = 6;
+				}
+				game.dir = "assumption";
 				bottomPanel.requestFocus();
 			} else if (e.getSource() == accusation) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, "Select cards for accusation", "Accusation",

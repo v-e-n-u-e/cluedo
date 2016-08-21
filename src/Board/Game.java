@@ -233,15 +233,17 @@ public class Game {
 	 * 
 	 * @param player
 	 */
-	public void makeAssumption(Player player) {
+	public void makeAssumption(Player player,CluedoFrame cFrame) {
 		if(player.inRoom() == false){
+			cFrame.notInRoom();
 			System.out.println("you are not currently in a room");
 			return;
 		}
 		input = new Scanner(System.in);
 		int room;
-		int suspect;
-		int weapon;
+		//int room = cFrame.getRoomNum();
+		int suspect = cFrame.getCharaterNum();
+		int weapon = cFrame.getWeaponNum();
 
 		/*-------------------------------making Guess------------------------------------------------*/
 		/*System.out.println("Please Pick a room: \n" + "1 = kitchen 2 = ballRoom 3 = conservatory \n"
@@ -277,13 +279,13 @@ public class Game {
 		}
 		//room = input.nextInt();
 
-		System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
+		/*System.out.println("Please pick a weapon: \n" + "1 = candleStick 2 = knife 3 =leadPipe \n"
 				+ "4 = rope 5 = wrench 6 =revolver");
 		weapon = input.nextInt();
 
 		System.out.println("Please pick a suspect: \n" + "1 = missScarlett 2 = professorPlum 3 = mrsPeacock \n"
 				+ "4 = reverendGreen 5 = colonelMustard 6 = mrsWhite");
-		suspect = input.nextInt();
+		suspect = input.nextInt();*/
 
 		Guess guess = new Guess(room, weapon, suspect);
 		/*------------------------------------------------------------------------------------------*/
@@ -392,13 +394,23 @@ public class Game {
 				}
 			
 			if(found == false){
+				cFrame.noHold();
 				System.out.println("No Player is holding your cards");
 			}else{
 				if(item instanceof RoomCard){
+					String pName =players.get(playerHolding).getName();
+					String rName =guess.getRoom().getName();
+					cFrame.holdNotice(pName,rName);
 					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getRoom().getName());
 				}else if(item instanceof SuspectCard){
+					String pName =players.get(playerHolding).getName();
+					String rName =guess.getMurderer().getName();
+					cFrame.holdNotice(pName,rName);
 					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getMurderer().getName());
 				}else if(item instanceof WeaponCard){
+					String pName =players.get(playerHolding).getName();
+					String rName =guess.getWeapon().getName();
+					cFrame.holdNotice(pName,rName);
 					System.out.println(players.get(playerHolding).getName()+": was holding " + guess.getWeapon().getName());
 				}
 				
@@ -460,11 +472,16 @@ public class Game {
 						//int keyCode=KeyEvent.KEY_PRESSED;
 						if (dir.equals("assumption")) {
 							roll = 0;
-							makeAssumption(currentPlayer);
+							makeAssumption(currentPlayer,cFrame);
+							dir="";board.createBoard();
+							board.setCharacters(players);
+							cFrame.drawBoard(board);
 						} else if (dir.equals("accusation")) {
 							roll = 0;
 							makeAccusation(currentPlayer,cFrame);
-							dir ="";
+							dir ="";board.createBoard();
+							board.setCharacters(players);
+							cFrame.drawBoard(board);
 						} else if (dir.equals("leave")) {
 							roll--;
 							board.leaveRoom(currentPlayer,cFrame);

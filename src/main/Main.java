@@ -30,7 +30,7 @@ public class Main {
 
 		//game.setPlayers(numPlayers);
 
-		cluedoframe.selectCharacters(game.getPlayers());
+		//cluedoframe.selectCharacters(game.getPlayers());
 
 
 		cluedoframe.selectCharacters(game.players);
