@@ -423,7 +423,7 @@ public class Game {
 	 * @param player
 	 */
 	public void printCards(Player player) {
-		System.out.println(player.handString());
+		//System.out.println(player.handString());
 	}
 
 	/**
@@ -442,6 +442,7 @@ public class Game {
 	 * This runs until a player has won the game.
 	 */
 	public void running() {
+		board.cFrame=this.cFrame;
 		input = new Scanner(System.in);
 		dir = "";
 		for(int i = 0; i < players.size(); i++){
@@ -459,17 +460,18 @@ public class Game {
 				cFrame.changeLabel(currentPlayer.getUser());
 				if (currentPlayer.isOut() != true) {
 					roll = this.rollDice();
+					cFrame.drawBoard(board);
 					// board.printBoard();
 					/*System.out.println("KEY:    D=Door             +=Hallway       #=Wall      K=Kitchen \n");
 					System.out.println("        C=Conservatory     S=Study         L=Library   b=Billiard Room \n");
 					System.out.println("        B=Ballroom         d=Dining Room   H=Hall      l=Lounge \n");*/
-					System.out.println(currentPlayer.getName() + "(" + currentPlayer.print() + ")" + ": You Rolled a "
-							+ roll);
-					System.out.println("your hand is :" + currentPlayer.handString());
-					System.out.println("Commands:|up|down|left|right|");
-					System.out.println("         assumption (Must be in a room)");
-					System.out.println("         accusation");
-					System.out.println("         leave      (Must be in a room)");
+					//System.out.println(currentPlayer.getName() + "(" + currentPlayer.print() + ")" + ": You Rolled a "
+					//		+ roll);
+					//System.out.println("your hand is :" + currentPlayer.handString());
+					//System.out.println("Commands:|up|down|left|right|");
+					//System.out.println("         assumption (Must be in a room)");
+					//System.out.println("         accusation");
+					//System.out.println("         leave      (Must be in a room)");
 					while (roll != 0/* && currentPlayer.inRoom() == false */) {
 						/*board.createBoard();
 						board.setCharacters(players);
@@ -509,7 +511,7 @@ public class Game {
 								cFrame.drawBoard(board);
 								dir = "";
 							} else {
-								System.out.println("Invalid move!");
+								//System.out.println("Invalid move!");
 								dir = "";
 							}
 						} else if (dir.equals("down")) {
@@ -523,7 +525,7 @@ public class Game {
 								cFrame.drawBoard(board);
 								dir = "";
 							} else {
-								System.out.println("Invalid move!");
+								//System.out.println("Invalid move!");
 								dir = "";
 							}
 						} else if (dir.equals("left")) {
@@ -536,7 +538,7 @@ public class Game {
 								board.setCharacters(players);
 								cFrame.drawBoard(board);
 							} else {
-								System.out.println("Invalid move!");
+								//System.out.println("Invalid move!");
 								dir = "";
 							}
 						} else if (dir.equals("right")) {
@@ -549,11 +551,12 @@ public class Game {
 								board.setCharacters(players);
 								cFrame.drawBoard(board);
 							} else {
-								System.out.println("Invalid move!");
+								//System.out.println("Invalid move!");
 								dir = "";
 							}
 						}
 					}
+					cFrame.endOfTurn();
 				}
 			}
 		}

@@ -15,6 +15,7 @@ import tiles.Tile;
 public class Board {
 	private Tile[][] tiles;
 	private Scanner input;
+	CluedoFrame cFrame;
 	/**THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 	 * upon Construction, loads the board. KEY:
 	 * # = wall
@@ -227,6 +228,7 @@ public class Board {
 			doors.add(new Point(4,6));
 			if((this.getTiles()[doors.get(0).y+1][doors.get(0).x] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}else{//good to go
 			player.setLocation(doors.get(0));
@@ -242,6 +244,7 @@ public class Board {
 			if((this.getTiles()[doors.get(0).y][doors.get(0).x+1] instanceof Player)
 					&& (this.getTiles()[doors.get(1).y+1][doors.get(1).x] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}
 			else if(command.equals("right") && !(this.getTiles()[doors.get(0).y][doors.get(0).x+1] instanceof Player)){//These check whether or not someone is standing
@@ -254,6 +257,7 @@ public class Board {
 			}
 			else{
 				System.out.println("Invalid door to leave from!");
+				cFrame.invalidDoor();
 				Game.roll++;
 			}
 		}
@@ -263,6 +267,7 @@ public class Board {
 			if((this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y][doors.get(0).x+1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}else{
 			player.setLocation(new Point(6,19));
@@ -281,6 +286,7 @@ public class Board {
 					&& (this.getTiles()[doors.get(2).y+1][doors.get(2).x] instanceof Player)
 					&& (this.getTiles()[doors.get(3).y][doors.get(3).x+1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}
 			
@@ -302,6 +308,7 @@ public class Board {
 			}
 			else{
 				System.out.println("Invalid door to leave from!");
+				cFrame.invalidDoor();
 				Game.roll++;
 			}
 		}
@@ -317,6 +324,7 @@ public class Board {
 					&& (this.getTiles()[doors.get(2).y-1][doors.get(2).x] instanceof Player)
 					&& (this.getTiles()[doors.get(3).y][doors.get(3).x+1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)){
@@ -337,6 +345,7 @@ public class Board {
 			}
 			else{
 				System.out.println("Invalid door to leave from!");
+				cFrame.invalidDoor();
 				Game.roll++;
 			}
 		}
@@ -345,6 +354,7 @@ public class Board {
 			if((this.getTiles()[doors.get(0).y+1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}else{ 
 			player.setLocation(doors.get(0));
@@ -359,6 +369,7 @@ public class Board {
 			if((this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y+1][doors.get(0).x] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}
 			else if(command.equals("left")  && !(this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){
@@ -371,6 +382,7 @@ public class Board {
 			}
 			else{
 				System.out.println("Invalid door to leave from!");
+				cFrame.invalidDoor();
 				Game.roll++;
 			}
 		}
@@ -382,6 +394,7 @@ public class Board {
 			if((this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}
 			else if(command.equals("top")  && !(this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)){
@@ -394,6 +407,7 @@ public class Board {
 			}
 			else{
 				System.out.println("Invalid door to leave from!");
+				cFrame.invalidDoor();
 				Game.roll++;
 			}
 		}
@@ -402,6 +416,7 @@ public class Board {
 			if((this.getTiles()[doors.get(0).y-1][doors.get(0).x] instanceof Player)
 					&& (this.getTiles()[doors.get(0).y][doors.get(0).x-1] instanceof Player)){//This checks if all doors are blocked by players
 				System.out.println("All your exits are blocked! Your turn is over!");//Turn ends if you have no way out. unlucky
+				cFrame.blocked();
 				Game.roll=0;
 			}else{
 			player.setLocation(doors.get(0));
@@ -427,6 +442,7 @@ public class Board {
 					if(player.lastRoom.equals("K")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 						player.inRoom=true;
@@ -438,6 +454,7 @@ public class Board {
 					if(player.lastRoom.equals("d")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					player.inRoom=true;
@@ -449,6 +466,7 @@ public class Board {
 					if(player.lastRoom.equals("l")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;
@@ -460,6 +478,7 @@ public class Board {
 					if(player.lastRoom.equals("B")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;
@@ -471,6 +490,7 @@ public class Board {
 					if(player.lastRoom.equals("H")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;
@@ -482,6 +502,7 @@ public class Board {
 					if(player.lastRoom.equals("C")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;
@@ -493,6 +514,7 @@ public class Board {
 					if(player.lastRoom.equals("b")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;
@@ -504,6 +526,7 @@ public class Board {
 					if(player.lastRoom.equals("L")){
 						Game.roll++;
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;
@@ -513,8 +536,9 @@ public class Board {
 				}
 				else if(this.getTiles()[lookahead.y][lookahead.x].print()=="S"){//study
 					if(player.lastRoom.equals("S")){
-						Game.roll++;
+						Game.roll++; 
 						System.out.println("You can't enter the last room you were in!");
+						cFrame.invalidRoom();
 						return;
 					}
 					Game.roll=1;

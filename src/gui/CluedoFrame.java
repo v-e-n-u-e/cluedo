@@ -316,7 +316,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			}
 		}
 
-		JPanel gridPanel = new JPanel(new GridLayout(25, 25, -5, -5));
+		JPanel gridPanel = new JPanel(new GridLayout(25, 25, -3, -3));
 		for (int i = 0; i < 25; i++) {
 			for (int j = 0; j < 25; j++) {
 				gridPanel.add(tiles[i][j]);
@@ -325,7 +325,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		centerPanel.add(gridPanel);
 		this.add(centerPanel);
 		this.setVisible(true);
-		
+		die.setFont(new Font(die.getFont().getName(),Font.PLAIN,20));
 		die.setText("         Moves left: " + String.valueOf(game.roll));
 		bottomPanel.add(die);
 		die.setVisible(true);
@@ -346,6 +346,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		charNames.add("reverendGreen");
 		//ArrayList charNames = new ArrayList {"professorPlum","missScarlett","colonelMustard","mrsWhite","mrsPeacock","reverendGreen"}();
 		for (int i = 0; i<num;i++) {
+			pName="";
 			JOptionPane.showMessageDialog(null, selectionPanel);
 			if(pName.equals("professorPlum")){
 				selectionPanel.remove(professorPlum);
@@ -366,13 +367,16 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				selectionPanel.remove(reverendGreen);
 				pName="reverendGreen";
 			}
-			uName = JOptionPane.showInputDialog("Please select a username. Leave this blank if this");
+			
+			uName = JOptionPane.showInputDialog("Please select a username. If no name is provided, your characters name will be used.");
+			if(uName.equals("")){
+				uName=(pName);
+			}
 			players.get(i).setUser(uName);
 			players.get(i).setName(pName);
 			charNames.remove(pName);
 		}int x = 0;
 		for(int i = num; i<6;i++){
-			
 			players.get(i).setName(charNames.get(x));
 			x++;
 		}
@@ -416,6 +420,18 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
 		return num;
 
+	}
+	public void blocked(){
+		JOptionPane.showMessageDialog(cluedoFrame, "All of the doors are blocked, your turn is over!");
+	}
+	public void invalidDoor(){
+		JOptionPane.showMessageDialog(cluedoFrame, "This door is blocked, pick another!");
+	}
+	public void endOfTurn(){
+		JOptionPane.showMessageDialog(cluedoFrame, "You have no moves left, your turn is over!");
+	}
+	public void invalidRoom(){
+		JOptionPane.showMessageDialog(cluedoFrame, "You can't enter the room you were last in!");
 	}
 
 	// *------------------LISTENERS----------------------*//

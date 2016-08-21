@@ -19,12 +19,14 @@ public class Player implements Tile {
 	private Point startingPos;
 	public String lastRoom;
 	private String userName;
+	private String note;
 
 	public Player(String name, Point startingPos) {
 		this.name = name;
 		this.location = startingPos;
 		this.startingPos =startingPos;
 		this.lastRoom="";
+		this.note="";
 	}
 
 	public String getName() {
