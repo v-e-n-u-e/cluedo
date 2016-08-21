@@ -485,7 +485,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		
 	}
 
-	class itemListener implements ItemListener {
+	class itemListener implements ItemListener { 
 
 		public void itemStateChanged(ItemEvent e) {
 			// TODO Auto-generated method stub
