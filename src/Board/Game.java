@@ -444,11 +444,19 @@ public class Game {
 	public void running() {
 		input = new Scanner(System.in);
 		dir = "";
+		for(int i = 0; i < players.size(); i++){
+			if(players.get(i).getUser()==null){
+				players.get(i).isOut=true;
+			}
+		}
+		board.createBoard();
+		board.setCharacters(players);
+		cFrame.drawBoard(board);
 		while (true) {
-			for (int i = 0; i < numPlayers; i++) {
+			for (int i = 0; i < players.size(); i++) {
 				String command;
 				currentPlayer = players.get(i);
-				cFrame.changeLabel(currentPlayer.getName());
+				cFrame.changeLabel(currentPlayer.getUser());
 				if (currentPlayer.isOut() != true) {
 					roll = this.rollDice();
 					// board.printBoard();

@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -26,6 +27,7 @@ import cards.RoomCard;
 public class CluedoFrame extends JFrame implements WindowListener {
 
 	public JFrame cluedoFrame;
+	private int num;
 	public JButton assumption, accusation, leave, cards, notes;
 	public JTextField textField1;
 	public JLabel die = new JLabel();
@@ -51,6 +53,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	private JMenuItem exit;
 	private JMenuItem showCards;
 	private JMenuItem showHelp;
+	private String pName;
+	private String uName;
 
 	public CluedoFrame() {
 		// Creates Frame.
@@ -180,7 +184,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		reverendGreen.addItemListener(iListen);
 		mrsWhite.addItemListener(iListen);
 		selectionPanel = new JPanel();
-		Border selectionBorder = BorderFactory.createTitledBorder("Character");
+		Border selectionBorder = BorderFactory.createTitledBorder("Please pick a character");
 		selectionPanel.setBorder(selectionBorder);
 		selectionPanel.add(missScarlett);
 		selectionPanel.add(professorPlum);
@@ -263,9 +267,9 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	 */
 	public int numPlayers() {
 		Object[] nums = { 3, 4, 5, 6 };
-		int num = (int) JOptionPane.showInputDialog(this, "Select Number of players", "Number of players",
+		 num = (int) JOptionPane.showInputDialog(this, "Select Number of players", "Number of players",
 				JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
-		System.out.println(num);
+		//System.out.println(num);
 		return num;
 	}
 
@@ -333,11 +337,45 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	 * the option is greyed out.
 	 */
 	public void selectCharacters(List<Player> players) {
-		for (Player p : players) {
-			JOptionPane.showInputDialog(null, selectionPanel);
-			//p.setName("missScarlett");
+		ArrayList<String> charNames = new ArrayList<String>();
+		charNames.add("professorPlum");
+		charNames.add("missScarlett");
+		charNames.add("colonelMustard");
+		charNames.add("mrsWhite");
+		charNames.add("mrsPeacock");
+		charNames.add("reverendGreen");
+		//ArrayList charNames = new ArrayList {"professorPlum","missScarlett","colonelMustard","mrsWhite","mrsPeacock","reverendGreen"}();
+		for (int i = 0; i<num;i++) {
+			JOptionPane.showMessageDialog(null, selectionPanel);
+			if(pName.equals("professorPlum")){
+				selectionPanel.remove(professorPlum);
+				pName="professorPlum";
+			}else if(pName.equals("missScarlett")){
+				selectionPanel.remove(missScarlett);
+				pName="missScarlett";
+			}else if(pName.equals("colonelMustard")){
+				selectionPanel.remove(colonelMustard);
+				pName="colonelMustard";
+			}else if(pName.equals("mrsWhite")){
+				selectionPanel.remove(mrsWhite);
+				pName="mrsWhite";
+			}else if(pName.equals("mrsPeacock")){
+				selectionPanel.remove(mrsPeacock);
+				pName="mrsPeacock";
+			}else if(pName.equals("reverendGreen")){
+				selectionPanel.remove(reverendGreen);
+				pName="reverendGreen";
+			}
+			uName = JOptionPane.showInputDialog("Please select a username. Leave this blank if this");
+			players.get(i).setUser(uName);
+			players.get(i).setName(pName);
+			charNames.remove(pName);
+		}int x = 0;
+		for(int i = num; i<6;i++){
+			
+			players.get(i).setName(charNames.get(x));
+			x++;
 		}
-
 	}
 	
 	public void notInRoom(){
@@ -489,23 +527,33 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 		public void itemStateChanged(ItemEvent e) {
 			// TODO Auto-generated method stub
-
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (e.getSource() == professorPlum) {
-					//JOptionPane.showMessageDialog(CluedoFrame.this, "Plum?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				//	JOptionPane.showMessageDialog(CluedoFrame.this, "You've selected Professor Plum. Please hit 'OK' to confirm.", "Notice", JOptionPane.PLAIN_MESSAGE);
+					pName="professorPlum";
+					//selectionPanel.remove(professorPlum);
 				} else if (e.getSource() == missScarlett) {
-					//JOptionPane.showMessageDialog(CluedoFrame.this, "Scarlett?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				//	JOptionPane.showMessageDialog(CluedoFrame.this, "You've selected Miss Scarlett. Please hit 'OK' to confirm.", "Notice", JOptionPane.PLAIN_MESSAGE);
+					pName="missScarlett";
+					//selectionPanel.remove(missScarlett);
 				} else if (e.getSource() == colonelMustard) {
-					//JOptionPane.showMessageDialog(CluedoFrame.this, "Mustard?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				//	JOptionPane.showMessageDialog(CluedoFrame.this, "You've selected Colonel Mustard. Please hit 'OK' to confirm.", "Notice", JOptionPane.PLAIN_MESSAGE);
+					pName="colonelMustard";
+					//selectionPanel.remove(colonelMustard);
 				} else if (e.getSource() == mrsWhite) {
-					//JOptionPane.showMessageDialog(CluedoFrame.this, "Mrs White?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				//	JOptionPane.showMessageDialog(CluedoFrame.this, "You've selected Mrs White. Please hit 'OK' to confirm.", "Notice", JOptionPane.PLAIN_MESSAGE);
+					pName="mrsWhite";
+					//selectionPanel.remove(mrsWhite);
 				} else if (e.getSource() == reverendGreen) {
-					//JOptionPane.showMessageDialog(CluedoFrame.this, "Green?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				//	JOptionPane.showMessageDialog(CluedoFrame.this, "You've selected Reverend Green. Please hit 'OK' to confirm.", "Notice", JOptionPane.PLAIN_MESSAGE);
+					pName="reverendGreen";
+					//selectionPanel.remove(reverendGreen);
 				} else if (e.getSource() == mrsPeacock) {
-					//JOptionPane.showMessageDialog(CluedoFrame.this, "Peacock?", "Hello?", JOptionPane.PLAIN_MESSAGE);
+				//	JOptionPane.showMessageDialog(CluedoFrame.this, "You've selected Mrs Peacock. Please hit 'OK' to confirm.", "Notice", JOptionPane.PLAIN_MESSAGE);
+					pName="mrsPeacock";
+					//selectionPanel.remove(mrsPeacock);
 				}
 			}
-
 		}
 	}
 

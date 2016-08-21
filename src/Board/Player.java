@@ -13,11 +13,12 @@ public class Player implements Tile {
 	//THIS PROGRAM WAS MADE BY CONNOR MOOT AND CALLUM CROSBY
 	private List<Card> hand = new ArrayList<Card>();
 	private String name;
-	private boolean isOut = false;
+	public boolean isOut = false;
 	private Point location;
 	public boolean inRoom = false;
 	private Point startingPos;
 	public String lastRoom;
+	private String userName;
 
 	public Player(String name, Point startingPos) {
 		this.name = name;
@@ -31,6 +32,12 @@ public class Player implements Tile {
 	}
 	public void setName(String name){
 		this.name = name;
+	}
+	public String getUser(){
+		return this.userName;
+	}
+	public void setUser(String user){
+		this.userName=user;
 	}
 
 	public Point getLocation() {
