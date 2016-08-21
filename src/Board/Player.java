@@ -26,7 +26,7 @@ public class Player implements Tile {
 		this.location = startingPos;
 		this.startingPos =startingPos;
 		this.lastRoom="";
-		this.note="";
+		this.note="Notes...";
 	}
 
 	public String getName() {
@@ -41,7 +41,12 @@ public class Player implements Tile {
 	public void setUser(String user){
 		this.userName=user;
 	}
-
+	public void setNote(String note){
+		this.note=note;
+	}
+	public String getNote(){
+		return this.note;
+	}
 	public Point getLocation() {
 		return location;
 	}

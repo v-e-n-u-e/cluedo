@@ -28,7 +28,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 
 	public JFrame cluedoFrame;
 	private int num;
-	public JButton assumption, accusation, leave, cards, notes;
+	public JButton assumption, accusation, leave, cards, notes, notesButton;
 	public JTextField textField1;
 	public JLabel die = new JLabel();
 	public JTextArea textArea1;
@@ -55,6 +55,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	private JMenuItem showHelp;
 	private String pName;
 	private String uName;
+	private JScrollPane notesScroll;
 
 	public CluedoFrame() {
 		// Creates Frame.
@@ -98,10 +99,10 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		cards.setText("Cards");
 		cards.setToolTipText("Click here to display your cards");
 
-		notes = new JButton("Notes");
-		notes.setContentAreaFilled(false);
-		notes.setText("Notes");
-		notes.setToolTipText("Click here to display your notes");
+		notesButton = new JButton("Notes");
+		notesButton.setContentAreaFilled(false);
+		notesButton.setText("Notes");
+		notesButton.setToolTipText("Click here to change your notes");
 
 		itemListener iListen = new itemListener();
 		ListenForButton lForButton = new ListenForButton();
@@ -110,6 +111,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		accusation.addActionListener(lForButton);
 		cards.addActionListener(lForButton);
 		leave.addActionListener(lForButton);
+		notesButton.addActionListener(lForButton);
 		
 		keyListener kListen = new keyListener();
 
@@ -125,15 +127,17 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		bottomLeftPanel.add(leave);
 
 		bottomPanel.add(cards);
-		// bottomPanel.add(notes);
+		bottomLeftPanel.add(notesButton);
 
 		bottomLeftPanel.add(cards);
-		JTextArea notes = new JTextArea(10, 10);
+		JLabel notes = new JLabel();
 		notes.setText("Notes...");
-		notes.setLineWrap(true);
-		JScrollPane notesScroll = new JScrollPane(notes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+		//notes.setEnabled(false);
+		
+		//notes.setLineWrap(true);
+		notesScroll = new JScrollPane(notes, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		bottomPanel.add(notesScroll, BorderLayout.EAST);
+		bottomPanel.add(notesButton, BorderLayout.EAST);
 		bottomPanel.add(bottomLeftPanel, BorderLayout.WEST);
 
 		// Connecting Components.topPanel
@@ -702,7 +706,16 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			} else if (e.getSource() == cards) {
 				JOptionPane.showMessageDialog(CluedoFrame.this, game.printHand(), "Card", JOptionPane.PLAIN_MESSAGE);
 				bottomPanel.requestFocus();
-			} else {
+			} else if(e.getSource()==notesButton){
+				String test;
+				test = JOptionPane.showInputDialog("<html>Type in notes to remember important information!<br><br>Current notes: <html>"+game.currentPlayer.getNote());
+				game.currentPlayer.setNote(test);
+				System.out.println(game.currentPlayer.getNote());
+
+			
+			}
+				else {
+			
 				JOptionPane.showMessageDialog(CluedoFrame.this, "not a button?", "hello?", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
