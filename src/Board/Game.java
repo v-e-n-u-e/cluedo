@@ -436,6 +436,7 @@ public class Game {
 			for (int i = 0; i < numPlayers; i++) {
 				String command;
 				currentPlayer = players.get(i);
+				cFrame.changeLabel(currentPlayer.getName());
 				if (currentPlayer.isOut() != true) {
 					roll = this.rollDice();
 					// board.printBoard();
