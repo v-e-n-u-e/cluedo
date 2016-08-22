@@ -188,7 +188,7 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		reverendGreen.addItemListener(iListen);
 		mrsWhite.addItemListener(iListen);
 		selectionPanel = new JPanel();
-		Border selectionBorder = BorderFactory.createTitledBorder("Please pick a character");
+		Border selectionBorder = BorderFactory.createTitledBorder("Please pick a character. If none are selected, one will be chosen for you.");
 		selectionPanel.setBorder(selectionBorder);
 		selectionPanel.add(missScarlett);
 		selectionPanel.add(professorPlum);
@@ -271,9 +271,13 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	 */
 	public int numPlayers() {
 		Object[] nums = { 3, 4, 5, 6 };
-		 num = (int) JOptionPane.showInputDialog(this, "Select Number of players", "Number of players",
+		Object firstNum;
+		 firstNum =  JOptionPane.showInputDialog(this, "Select Number of players.", "Number of players",
 				JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
 		//System.out.println(num);
+		 if(firstNum!=null){//can't check num against null, so need to do this. Don't know why the program stops if you don't select something though
+			 num=(int) firstNum;
+		 }
 		return num;
 	}
 
@@ -352,7 +356,16 @@ public class CluedoFrame extends JFrame implements WindowListener {
 		for (int i = 0; i<num;i++) {
 			pName="";
 			JOptionPane.showMessageDialog(null, selectionPanel);
-			if(pName.equals("professorPlum")){
+			if(pName==null){//if someone doesn't pick a character
+				for(int check = 0; check <= 5; check ++){
+					if(charNames.get(check)!=null){
+				pName=charNames.get(check);
+				selectionPanel.remove(check);
+				check = 6;
+					}
+			}
+			}
+			else if(pName.equals("professorPlum")){
 				selectionPanel.remove(professorPlum);
 				pName="professorPlum";
 			}else if(pName.equals("missScarlett")){
@@ -373,7 +386,10 @@ public class CluedoFrame extends JFrame implements WindowListener {
 			}
 			
 			uName = JOptionPane.showInputDialog("Please select a username. If no name is provided, your characters name will be used.");
-			if(uName.equals("")){
+			if(uName==null){
+				uName=(pName);
+			}
+			else if(uName.equals("")){
 				uName=(pName);
 			}
 			players.get(i).setUser(uName);
@@ -420,8 +436,11 @@ public class CluedoFrame extends JFrame implements WindowListener {
 	}
 	public String pickDoor(String[] doors){
 		Object[] nums = doors;
-		String num = (String) JOptionPane.showInputDialog(this, "Select door to leave from", "Pick door",
+		String num = (String) JOptionPane.showInputDialog(this, "Select door to leave from. If none are selected, the first be chosen for you.", "Pick door",
 				JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
+		if(num==null){
+			num=doors[0];
+		}
 		return num;
 
 	}
