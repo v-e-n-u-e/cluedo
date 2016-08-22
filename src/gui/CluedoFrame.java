@@ -594,7 +594,10 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				String weapon = (String) JOptionPane.showInputDialog(cluedoFrame, "Select weapon", "Weapon",
 						JOptionPane.QUESTION_MESSAGE, null, weapons, weapons[0]);
 				
-				if(weapon.equals(weapons[0])){
+				if(weapon==null){
+					numWeapon = 1; //This is in case someone closes the window without selecting something
+				}
+				else if(weapon.equals(weapons[0])){
 					numWeapon = 1;
 				}else if(weapon.equals(weapons[1])){
 					numWeapon = 2;
@@ -606,12 +609,17 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					numWeapon = 5;
 				}else if(weapon.equals(weapons[5])){
 					numWeapon = 6;
+				}else{
+					numWeapon = 1; //This is in case someone closes the window without selecting something.
 				}
 				
 				String character = (String) JOptionPane.showInputDialog(cluedoFrame, "Select character", "charcter",
 						JOptionPane.QUESTION_MESSAGE, null, characters, characters[0]);
 				
-				if(character.equals(characters[0])){
+				if(character==null){
+					numCharacter = 1; //This is in case someone closes the window without selecting something
+				}
+				else if(character.equals(characters[0])){
 					numCharacter = 1;
 				}else if(character.equals(characters[1])){
 					numCharacter = 2;
@@ -623,6 +631,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					numCharacter = 5;
 				}else if(character.equals(characters[5])){
 					numCharacter = 6;
+				}else{
+					numCharacter = 1; //This is in case someone closes the window without selecting something
 				}
 				game.dir = "assumption";
 				bottomPanel.requestFocus();
@@ -637,7 +647,10 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				String room = (String) JOptionPane.showInputDialog(cluedoFrame, "Select room", "Room",
 						JOptionPane.QUESTION_MESSAGE, null, rooms, rooms[0]);
 					
-				if(room.equals(rooms[0])){
+				if(room==null){
+					numRoom = 1; //This is in case someone closes the window without selecting something
+				}
+				else if(room.equals(rooms[0])){
 					numRoom = 1;
 				}else if(room.equals(rooms[1])){
 					numRoom = 2;
@@ -660,7 +673,10 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				String weapon = (String) JOptionPane.showInputDialog(cluedoFrame, "Select weapon", "Weapon",
 						JOptionPane.QUESTION_MESSAGE, null, weapons, weapons[0]);
 				
-				if(weapon.equals(weapons[0])){
+				if(weapon==null){
+					numWeapon = 1; //This is in case someone closes the window without selecting something
+				}
+				else if(weapon.equals(weapons[0])){
 					numWeapon = 1;
 				}else if(weapon.equals(weapons[1])){
 					numWeapon = 2;
@@ -672,12 +688,17 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					numWeapon = 5;
 				}else if(weapon.equals(weapons[5])){
 					numWeapon = 6;
+				}else{
+					numWeapon = 1; //This is in case someone closes the window without selecting something
 				}
 				
 				String character = (String) JOptionPane.showInputDialog(cluedoFrame, "Select character", "charcter",
 						JOptionPane.QUESTION_MESSAGE, null, characters, characters[0]);
 				
-				if(character.equals(characters[0])){
+				if(character==null){
+					numCharacter = 1; //This is in case someone closes the window without selecting something
+				}
+				else if(character.equals(characters[0])){
 					numCharacter = 1;
 				}else if(character.equals(characters[1])){
 					numCharacter = 2;
@@ -689,6 +710,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 					numCharacter = 5;
 				}else if(character.equals(characters[5])){
 					numCharacter = 6;
+				}else{
+					numCharacter = 1; //This is in case someone closes the window without selecting something
 				}
 				game.dir = "accusation";
 				
