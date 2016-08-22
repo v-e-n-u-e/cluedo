@@ -753,8 +753,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 				String test;
 				test = JOptionPane.showInputDialog("<html>Type in notes to remember important information!<br><br>Current notes: <html>"+game.currentPlayer.getNote());
 				game.currentPlayer.setNote(test);
-				System.out.println(game.currentPlayer.getNote());
-
+				//System.out.println(game.currentPlayer.getNote());
+				bottomPanel.requestFocus();
 			
 			}
 				else {
