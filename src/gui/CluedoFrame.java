@@ -243,7 +243,8 @@ public class CluedoFrame extends JFrame implements WindowListener {
 						+ " not in a room. If you make an accusation<br>" + " and you are wrong you will be removed<br>"
 						+ " from the game. However if you are correct<br>"
 						+ " Then you win the game.<br><br> To leave a room" + " press the leave button.<br>"
-						+ " Click on the board to find out information about the rooms</html>");
+						+ " Click on the board to find out information about the rooms.<br>"
+						+ "You can hover over a player to see their name.</html>");
 
 				// set to pop up
 				helpPaneltop.add(text);
